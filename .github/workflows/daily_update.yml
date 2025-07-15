@@ -9,14 +9,14 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # 添加写入权限
+      contents: write
       
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
-        token: ${{ secrets.GITHUB_TOKEN }}  # 使用认证令牌
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -37,8 +37,27 @@ jobs:
 
     - name: Commit changes
       run: |
+        # 设置Git身份
         git config --local user.email "zyylian@qq.com"
         git config --local user.name "Lightconer"
+        
+        # 确保使用最新远程分支
+        echo "重置工作区到远程main分支..."
+        git fetch origin main
+        git reset --hard origin/main
+        
+        # 添加并提交更改
         git add output/tvbox.m3u
-        git commit -m "Auto: Daily TVBox Source Update [$(date +'%Y-%m-%d %H:%M')]"
-        git push origin HEAD:main
+        
+        # 检查是否有变更
+        if git diff-index --quiet HEAD --; then
+          echo "没有需要提交的更改"
+        else
+          echo "提交更改..."
+          git commit -m "Auto: Daily TVBox Source Update [$(date +'%Y-%m-%d %H:%M')]"
+          
+          # 强制推送更新
+          echo "强制推送更改..."
+          git push origin HEAD:main --force
+          echo "更新推送完成"
+        fi
