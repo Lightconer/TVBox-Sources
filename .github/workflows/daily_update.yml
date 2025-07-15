@@ -9,14 +9,14 @@ jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
+      contents: write  # 添加写入权限
       
-      
-      contents: write
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
         fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}  # 使用认证令牌
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -41,4 +41,4 @@ jobs:
         git config --local user.name "Lightconer"
         git add output/tvbox.m3u
         git commit -m "Auto: Daily TVBox Source Update [$(date +'%Y-%m-%d %H:%M')]"
-        git push
+        git push origin HEAD:main
