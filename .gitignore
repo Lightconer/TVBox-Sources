@@ -1,0 +1,10 @@
+# 忽略中间数据文件
+data/
+
+# 忽略Python缓存
+__pycache__/
+*.pyc
+
+# 忽略IDE文件
+.vscode/
+.idea/
