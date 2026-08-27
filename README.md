@@ -4,7 +4,31 @@
 
 > 仓库地址：`https://github.com/Lightconer/TVBox-Sources`
 
-![更新状态](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/badge.json)
+![更新状态](https://img.shields.io/endpoint?url=https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/badge.json)
+
+---
+
+## 📺 直播源地址（直接复制使用）
+
+> 地址由 GitHub Actions 每 6 小时自动更新，复制到 TVBox / 影视仓 / 各 IPTV 播放器即可，无需手动维护。
+
+**① TXT 格式（影视仓 / TVBox 通用，推荐）** —— jsdelivr 加速（国内快）：
+
+```
+https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt
+```
+
+备用直链（raw）：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.txt`
+
+**② M3U 格式（带台标 / EPG 信息）** —— jsdelivr 加速（国内快）：
+
+```
+https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u
+```
+
+备用直链（raw）：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.m3u`
+
+**使用方法**：影视仓 → 设置 → 直播 → 添加直播源 → 粘贴 TXT 地址；TVBox → 配置接口 → 直播地址填入 TXT/M3U 链接。国内网络若 `raw` 打不开，优先用 **jsdelivr** 链接。
 
 ---
 
