@@ -2,169 +2,120 @@
 #EXTENC:UTF-8
 #PLAYLIST:自动更新直播源
 #EXTGRP:Religious
-#EXTINF:-1 tvg-id="AndoTV.cn@SD" group-title="Religious" tvg-logo="https://i.imgur.com/EpTsFVu.png",Ando TV (1080p)
-http://play.kankanlive.com/live/1711956137852982.m3u8
-#EXTINF:-1 tvg-id="AngelTV.in@Chinese" group-title="Religious" tvg-logo="https://i.imgur.com/qKLEGU7.png",Angel TV Chinese (720p)
-https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8
 #EXTINF:-1 tvg-id="ABNChina.us@SD" group-title="Religious" tvg-logo="https://i.imgur.com/zagVLQH.png",ABN China (720p)
 https://mediaserver.abnvideos.com/streams/abnchina.m3u8
-#EXTGRP:News
-#EXTINF:-1 tvg-id="TonghuaTV.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/thtv1.jpg",Tonghua TV (1080p)
-http://lsfb.avap.jilintv.cn/zqvk7vpj/channel/43ea5771aa44421591f9dfd2b71f1b9b/index.m3u8
-#EXTINF:-1 tvg-id="CCTVPlus1.cn@SD" group-title="News" tvg-logo="https://i.imgur.com/U8d4Is6.png",CCTV+ 1 (600p) [Not 24/7]
-https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="AnshunComprehensiveNewsChannel.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/anshun.jpg",Anshun Comprehensive News Channel
-https://hplayer1.juyun.tv/camera/154379194.m3u8
-#EXTINF:-1 tvg-id="HunanNewsChannel.cn@SD" group-title="News" tvg-logo="https://static.tvtropes.org/pmwiki/pub/images/hunantv_logo.png",长沙新闻 [Geo-blocked]
-http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_346.m3u8
-#EXTINF:-1 tvg-id="ChifengComprehensiveNewsChanel.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/cfxwzhpd.jpg",Chifeng Comprehensive News Chanel
-http://play1-qk.nmtv.cn/live/1735546697341033.m3u8
-#EXTINF:-1 tvg-id="CCTVPlus2.cn@SD" group-title="News" tvg-logo="https://i.imgur.com/qSg862A.png",CCTV+ 2 (600p) [Not 24/7]
-https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8
-#EXTINF:-1 tvg-id="HebiNewsChannel.cn@SD" group-title="News" tvg-logo="https://i.imgur.com/Osw5yRW.png",鹤壁新闻综合 (480p) [Not 24/7]
-http://pili-live-hls.hebitv.com/hebi/hebi.m3u8
-#EXTINF:-1 tvg-id="CCTV13.cn@HD" group-title="News" tvg-logo="https://i.imgur.com/6MTar6J.png",CCTV-13 (1080p)
-http://go.bkpcp.top/mg/cctv13
-#EXTINF:-1 tvg-id="HarbinComprehensiveNewsChannel.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/haerbin.jpg",Harbin Comprehensive News Channel
-https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594
-#EXTINF:-1 tvg-id="QTV1.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/qdtv1.jpg",QTV-1
-http://video10.qtv.com.cn/drm/qtv1at/manifest.m3u8
-#EXTINF:-1 tvg-id="LanzhouComprehensiveNewsChannel.cn@SD" group-title="News" tvg-logo="https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_c2a13a952c0111b21f081d672798c8ed~c5_300x300.jpeg?from=2956013662",Lanzhou Comprehensive News Channel
-https://liveplus.lzr.com.cn/xwzh/HD/live.m3u8
-#EXTINF:-1 tvg-id="CCTV13.cn@SD" group-title="News" tvg-logo="https://i.imgur.com/6MTar6J.png",CCTV-13 (720p)
-http://74.91.26.218:82/live/cctv13hd.m3u8
-#EXTGRP:Documentary
-#EXTINF:-1 tvg-id="CCTV9.cn@SD" group-title="Documentary" tvg-logo="https://i.imgur.com/3tivvMm.png",CCTV-9 (576i)
-https://xykt-fix.github.io/Y77.m3u8
-#EXTINF:-1 tvg-id="CCTVWeaponTechnology.cn@HD" group-title="Documentary" tvg-logo="https://i.imgur.com/QlF96eS.png",CCTV-Weapon & Technology (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/gfjs.m3u8?auth=testpub
-#EXTGRP:Music
-#EXTINF:-1 tvg-id="CCTV15.cn@SD" group-title="Music" tvg-logo="https://i.imgur.com/CCV0eRG.png",CCTV-15 (1080p)
-https://xykt-fix.github.io/play/a02e/index.m3u8
-#EXTINF:-1 tvg-id="CCTVStormMusic.cn@HD" group-title="Music" tvg-logo="https://i.imgur.com/IiiRmrf.png",CCTV-Storm Music (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/fyyy.m3u8?auth=testpub
-#EXTINF:-1 tvg-id="CCTV11.cn@SD" group-title="Music" tvg-logo="https://i.imgur.com/CjOWx7L.png",CCTV-11 (720p)
-http://74.91.26.218:82/live/cctv11hd.m3u8
-#EXTGRP:Sports
-#EXTINF:-1 tvg-id="ShandongTVSportsChannel.cn@SD" group-title="Sports" tvg-logo="https://i.imgur.com/zX4RxvG.png",山东体育 (1080p) [Geo-blocked]
-http://livealone302.iqilu.com/iqilu/typd.m3u8
-#EXTINF:-1 tvg-id="CCTVGolfTennis.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/iqJJTmH.png",CCTV-Golf & Tennis (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/gefwq.m3u8?auth=testpub
-#EXTINF:-1 tvg-id="CCTVStormFootball.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/Fy6HkX0.png",CCTV-Storm Football (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/fyzq.m3u8?auth=testpub
-#EXTINF:-1 tvg-id="CCTV16.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/ZzV6JQp.png",CCTV-16 (1080p)
-http://74.91.26.218:82/live/cctv16hd.m3u8
-#EXTINF:-1 tvg-id="CCTVBilliards.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/WK3keM9.png",CCTV-Billiards (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
-#EXTGRP:Undefined
-#EXTINF:-1 tvg-id="ShandongTVVarietyChannel.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/a2XK8N9.png",山东综艺 (406p) [Geo-blocked]
-http://livealone302.iqilu.com/iqilu/zypd.m3u8
-#EXTINF:-1 tvg-id="ShandongTVQiluChannel.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/U9wNMmm.png",山东齐鲁 (1080p) [Geo-blocked]
-http://livealone302.iqilu.com/iqilu/qlpd.m3u8
-#EXTINF:-1 tvg-id="ShandongTVLifeChannel.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/bWPiC14.png",山东生活 (1080p) [Geo-blocked]
-http://livealone302.iqilu.com/iqilu/shpd.m3u8
-#EXTINF:-1 tvg-id="HunanTV.cn@SD" group-title="Undefined" tvg-logo="https://parco-zh.github.io/demo/HNWS.png",Hunan TV (2160p)
-http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
-#EXTINF:-1 tvg-id="XinjiangTV2.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/GXFLqxx.png",Xinjiang TV 2
-http://110.153.180.106:55555/out_3/index.m3u8
-#EXTINF:-1 tvg-id="NeiMonggolTV.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/WeugJBE.png",Nei Monggol TV (1080i) [Not 24/7]
-http://play1-qk.nmtv.cn/live/1769652018126032.m3u8
-#EXTINF:-1 tvg-id="XinjiangTV3.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/l8S5qQB.png",Xinjiang TV 3
-http://110.153.180.106:55555/out_2/index.m3u8
-#EXTINF:-1 tvg-id="VoATVChina.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/XCTZkoq.png",VOA美国之音 (1080p)
-https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08/playlist.m3u8
-#EXTINF:-1 tvg-id="ZhejiangInternationalChannel.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/XOL1Hph.png",Zhejiang TV International
-https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8
-#EXTINF:-1 tvg-id="CCTVCultureofQuality.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/Paig8gG.png",CCTV-Culture of Quality (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub
-#EXTINF:-1 tvg-id="CCTV8K.cn@HD" group-title="Undefined" tvg-logo="https://i.imgur.com/fxVPMJF.png",CCTV-8K (1080p)
-http://192.151.150.154/live/cctv8k.m3u8
-#EXTGRP:General
-#EXTINF:-1 tvg-id="BaichengTV.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/baicheng.jpg",白城新闻综合 [Geo-blocked]
-https://stream2.jlntv.cn/baicheng1/sd/live.m3u8
-#EXTINF:-1 tvg-id="KangbaTV.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/kangbatv.jpg",Kangba TV
-http://110.185.237.164:8888/hls/30/index.m3u8
-#EXTINF:-1 tvg-id="QTV5.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/qdtv5.jpg",QTV-5
-http://video10.qtv.com.cn/drm/qtv5at/manifest.m3u8
-#EXTINF:-1 tvg-id="QTV4.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/qdtv4.jpg",QTV-4
-http://video10.qtv.com.cn/drm/qtv4at/manifest.m3u8
-#EXTINF:-1 tvg-id="HebeiTV.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/Z5Ppzbi.png",Hebei TV (2160p)
-https://event.pull.hebtv.com/live/live101.m3u8
-#EXTINF:-1 tvg-id="SipingTV.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/sptv1.jpg",Siping TV
-http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598
-#EXTINF:-1 tvg-id="CCTV1.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/TpA3cUl.png",CCTV-1 (720p)
-http://74.91.26.218:82/live/cctv1hd.m3u8
-#EXTINF:-1 tvg-id="BeijingSatelliteTV.cn@HD" group-title="General" tvg-logo="https://i.imgur.com/vsktAez.png",BRTV 北京卫视 (1080p)
-http://go.bkpcp.top/mg/bjws
-#EXTINF:-1 tvg-id="TVBRICSChinese.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/896132Z.png",TV BRICS Chinese (1080p)
-https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist.m3u8
-#EXTGRP:Entertainment
-#EXTINF:-1 tvg-id="CCTV3.cn@SD" group-title="Entertainment" tvg-logo="https://i.imgur.com/iFlkIuw.png",CCTV-3 (720p)
-http://74.91.26.218:82/live/cctv3hd.m3u8
+#EXTINF:-1 tvg-id="AngelTV.in@Chinese" group-title="Religious" tvg-logo="https://i.imgur.com/qKLEGU7.png",Angel TV Chinese (720p)
+https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8
+#EXTINF:-1 tvg-id="AndoTV.cn@SD" group-title="Religious" tvg-logo="https://i.imgur.com/EpTsFVu.png",Ando TV (1080p)
+http://play.kankanlive.com/live/1711956137852982.m3u8
+#EXTGRP:Lifestyle
+#EXTINF:-1 tvg-id="CCTV12.cn@SD" group-title="Lifestyle" tvg-logo="https://i.imgur.com/3yTuiOM.png",CCTV-12 (720p)
+http://74.91.26.218:82/live/cctv12hd.m3u8
+#EXTINF:-1 tvg-id="CCTVHealth.cn@HD" group-title="Lifestyle" tvg-logo="https://i.imgur.com/AzpRtCz.png",CCTV-Health (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/wsjk.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="CCTVWomensFashion.cn@SD" group-title="Lifestyle" tvg-logo="https://i.imgur.com/FVbP0aP.png",CCTV-Women's Fashion (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/nxss.m3u8?auth=testpub
 #EXTGRP:Education
+#EXTINF:-1 tvg-id="CCTV10.cn@SD" group-title="Education" tvg-logo="https://i.imgur.com/sSSO7UD.png",CCTV-10 (720p)
+http://74.91.26.218:82/live/cctv10hd.m3u8
 #EXTINF:-1 tvg-id="CCTV7.cn@SD" group-title="Education" tvg-logo="https://i.imgur.com/CKcPMQC.png",CCTV-7 (720p)
 http://74.91.26.218:82/live/cctv7hd.m3u8
 #EXTINF:-1 tvg-id="CCTVWorldGeography.cn@SD" group-title="Education" tvg-logo="https://i.imgur.com/V2ncOXi.png",CCTV-World Geography (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/sjdl.m3u8?auth=testpub
-#EXTGRP:Business
-#EXTINF:-1 tvg-id="CCTV2.cn@SD" group-title="Business" tvg-logo="https://i.imgur.com/ILamhwU.png",CCTV-2 (720p)
-http://74.91.26.218:82/live/cctv2hd.m3u8
+#EXTGRP:Music
+#EXTINF:-1 tvg-id="CCTV11.cn@SD" group-title="Music" tvg-logo="https://i.imgur.com/CjOWx7L.png",CCTV-11 (720p)
+http://74.91.26.218:82/live/cctv11hd.m3u8
+#EXTINF:-1 tvg-id="CCTVStormMusic.cn@HD" group-title="Music" tvg-logo="https://i.imgur.com/IiiRmrf.png",CCTV-Storm Music (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/fyyy.m3u8?auth=testpub
+#EXTGRP:General
+#EXTINF:-1 tvg-id="CCTV1.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/TpA3cUl.png",CCTV-1 (720p)
+http://74.91.26.218:82/live/cctv1hd.m3u8
+#EXTINF:-1 tvg-id="KangbaTV.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/kangbatv.jpg",Kangba TV
+http://110.185.237.164:8888/hls/30/index.m3u8
+#EXTINF:-1 tvg-id="TVBRICSChinese.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/896132Z.png",TV BRICS Chinese (1080p)
+https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist.m3u8
+#EXTINF:-1 tvg-id="SipingTV.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/sptv1.jpg",Siping TV
+http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598
+#EXTINF:-1 tvg-id="HebeiTV.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/Z5Ppzbi.png",Hebei TV (2160p)
+https://event.pull.hebtv.com/live/live101.m3u8
+#EXTINF:-1 tvg-id="GuangzhouTV.cn@SD" group-title="General" tvg-logo="https://i.imgur.com/ff3KQXp.png",Guangzhou TV
+https://tencentplaybusiness.gztv.com/live/zonghes.m3u8
+#EXTINF:-1 tvg-id="BaichengTV.cn@SD" group-title="General" tvg-logo="https://www.tvchinese.net/uploads/tv/baicheng.jpg",白城新闻综合 [Geo-blocked]
+https://stream2.jlntv.cn/baicheng1/sd/live.m3u8
 #EXTGRP:Movies
-#EXTINF:-1 tvg-id="CNDFilmMiddleSchoolChannel.cn@SD" group-title="Movies" tvg-logo="https://i.imgur.com/4uG8HsQ.png",CND Film Middle School Channel
-http://live2.rxip.sc96655.com/live/zxs_4000.m3u8?A=&E=&K=&P=&S=&U=
-#EXTINF:-1 tvg-id="HarbinMovieChannel.cn@SD" group-title="Movies" tvg-logo="https://www.tvchinese.net/uploads/tv/haerbin.jpg",Harbin Movie Channel
-https://stream.hrbtv.net/yspd/playlist.m3u8
-#EXTINF:-1 tvg-id="JilinMovieChannel.cn@SD" group-title="Movies" tvg-logo="https://www.tvchinese.net/uploads/tv/jlyspd.jpg",Jilin Movie Channel
-https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/906341e6f19b4c4bacdc89941eb85d12/index.m3u8
-#EXTINF:-1 tvg-id="QTV3.cn@SD" group-title="Movies" tvg-logo="https://www.tvchinese.net/uploads/tv/qdtv3.jpg",QTV-3
-http://video10.qtv.com.cn/drm/qtv3at/manifest.m3u8
+#EXTINF:-1 tvg-id="CCTV6.cn@HD" group-title="Movies" tvg-logo="https://i.imgur.com/rFiaef7.png",CCTV-6 (1080p)
+http://69.30.245.50/live/cctv6.m3u8
 #EXTINF:-1 tvg-id="CCTVStormTheater.cn@HD" group-title="Movies" tvg-logo="https://i.imgur.com/rEttkKm.png",CCTV-Storm Theater (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/fyjc.m3u8?auth=testpub
 #EXTINF:-1 tvg-id="CCTVTheFirstTheater.cn@HD" group-title="Movies" tvg-logo="https://i.imgur.com/eFxD3hq.png",CCTV-The First Theater (1080p)
 http://38.75.136.137:98/gslb/dsdqpub/dyjc.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="HomePlus.ir@SD" group-title="Movies",Home Plus
+https://homeplushls.wns.live/hls/stream.m3u8
+#EXTINF:-1 tvg-id="HarbinMovieChannel.cn@SD" group-title="Movies" tvg-logo="https://www.tvchinese.net/uploads/tv/haerbin.jpg",Harbin Movie Channel
+https://stream.hrbtv.net/yspd/playlist.m3u8
 #EXTGRP:Kids
-#EXTINF:-1 tvg-id="ShandongTVChildrensChannel.cn@SD" group-title="Kids" tvg-logo="https://i.imgur.com/ph7YKNa.png",山东少儿 (406p) [Geo-blocked]
-http://livealone302.iqilu.com/iqilu/sepd.m3u8
 #EXTINF:-1 tvg-id="CCTV14.cn@HD" group-title="Kids" tvg-logo="https://i.imgur.com/c5SXW7i.png",CCTV-14 (1080p)
 http://74.91.26.218:82/live/cctv14hd.m3u8
-#EXTGRP:General;Travel
-#EXTINF:-1 tvg-id="GuangxiVarietyTravelChannel.cn@SD" group-title="General;Travel" tvg-logo="https://www.tvchinese.net/uploads/tv/gxzypd.jpg",Guangxi Variety & Travel Channel
-http://111.59.24.227:8181/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0
-#EXTGRP:Lifestyle
-#EXTINF:-1 tvg-id="HunanWomensChannel.cn@SD" group-title="Lifestyle" tvg-logo="https://www.tvchinese.net/uploads/tv/csnxpd.jpg",长沙女性 [Geo-blocked]
-http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_349.m3u8
-#EXTINF:-1 tvg-id="JilinLifestyleChannel.cn@SD" group-title="Lifestyle" tvg-logo="https://www.tvchinese.net/uploads/tv/jlshpd.jpg",Jilin Lifestyle Channel
-https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/0a76740c72b74fabae611845aa21e06a/index.m3u8
-#EXTINF:-1 tvg-id="JilinCityChannel.cn@SD" group-title="Lifestyle" tvg-logo="https://www.tvchinese.net/uploads/tv/jldspd.jpg",Jilin City Channel
-https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/7e8474e6daea44ccaa5aa2300191439e/index.m3u8
-#EXTINF:-1 tvg-id="QTV2.cn@SD" group-title="Lifestyle" tvg-logo="https://www.tvchinese.net/uploads/tv/qdtv2.jpg",QTV-2
-http://video10.qtv.com.cn/drm/qtv2at/manifest.m3u8
-#EXTINF:-1 tvg-id="CCTVWomensFashion.cn@SD" group-title="Lifestyle" tvg-logo="https://i.imgur.com/FVbP0aP.png",CCTV-Women's Fashion (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/nxss.m3u8?auth=testpub
-#EXTINF:-1 tvg-id="CCTVHealth.cn@HD" group-title="Lifestyle" tvg-logo="https://i.imgur.com/AzpRtCz.png",CCTV-Health (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/wsjk.m3u8?auth=testpub
-#EXTINF:-1 tvg-id="CCTV12.cn@SD" group-title="Lifestyle" tvg-logo="https://i.imgur.com/3yTuiOM.png",CCTV-12 (720p)
-http://74.91.26.218:82/live/cctv12hd.m3u8
-#EXTGRP:Education;Lifestyle;Science
-#EXTINF:-1 tvg-id="JilinRuralChannel.cn@SD" group-title="Education;Lifestyle;Science" tvg-logo="https://www.tvchinese.net/uploads/tv/jlxcpd.jpg",Jilin Rural Channel
-https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/3ffc4824dce54b92be185555923ce382/index.m3u8
-#EXTGRP:Culture
-#EXTINF:-1 tvg-id="NeiMonggolTV2MongolianCultureChannel.cn@SD" group-title="Culture" tvg-logo="https://i.imgur.com/kpsjahG.png",Nei Monggol TV 2 Mongolian Culture Channel (1080i) [Not 24/7]
-http://play1-qk.nmtv.cn/live/1769652109096027.m3u8
-#EXTINF:-1 tvg-id="LanzhouCultureTourismChannel.cn@SD" group-title="Culture" tvg-logo="https://www.tvchinese.net/uploads/tv/lanzhou.jpg",Lanzhou Culture & Tourism Channel
-https://liveplus.lzr.com.cn/wlpd/HD/live.m3u8
-#EXTGRP:Kids;Lifestyle
-#EXTINF:-1 tvg-id="QTV6.cn@SD" group-title="Kids;Lifestyle" tvg-logo="https://www.tvchinese.net/uploads/tv/qdtv6.jpg",QTV-6
-http://video10.qtv.com.cn/drm/qtv6at/manifest.m3u8
-#EXTGRP:Classic
-#EXTINF:-1 tvg-id="CCTVNostalgiaTheater.cn@HD" group-title="Classic" tvg-logo="https://i.imgur.com/TVs9PBc.png",CCTV-Nostalgia Theater (1080p)
-http://38.75.136.137:98/gslb/dsdqpub/hjjc.m3u8?auth=testpub
-#EXTGRP:Science
-#EXTINF:-1 tvg-id="ShandongTVAgriculturalScienceChannel.cn@SD" group-title="Science" tvg-logo="https://i.imgur.com/EY2zH06.png",山东农科 (406p) [Geo-blocked]
-http://livealone302.iqilu.com/iqilu/nkpd.m3u8
+#EXTGRP:Entertainment
+#EXTINF:-1 tvg-id="CCTV3.cn@SD" group-title="Entertainment" tvg-logo="https://i.imgur.com/iFlkIuw.png",CCTV-3 (720p)
+http://74.91.26.218:82/live/cctv3hd.m3u8
+#EXTGRP:Undefined
+#EXTINF:-1 tvg-id="CCTV8K.cn@HD" group-title="Undefined" tvg-logo="https://i.imgur.com/fxVPMJF.png",CCTV-8K (1080p)
+http://192.151.150.154/live/cctv8k.m3u8
+#EXTINF:-1 tvg-id="VoATVChina.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/XCTZkoq.png",VOA美国之音 (1080p)
+https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08/playlist.m3u8
+#EXTINF:-1 tvg-id="CCTVCultureofQuality.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/Paig8gG.png",CCTV-Culture of Quality (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="GuangdongSatelliteTV.cn@SD" group-title="Undefined" tvg-logo="https://parco-zh.github.io/demo/guangdong.jpg",Guangdong Satellite TV
+https://h5cul1yar48um3t.wcetv.com/hls/gdsatellite.m3u8
+#EXTINF:-1 tvg-id="XinjiangTV2.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/GXFLqxx.png",Xinjiang TV 2
+http://110.153.180.106:55555/out_3/index.m3u8
+#EXTINF:-1 tvg-id="XinjiangTV3.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/l8S5qQB.png",Xinjiang TV 3
+http://110.153.180.106:55555/out_2/index.m3u8
+#EXTINF:-1 tvg-id="AnhuiTV.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/gDn101f.png",Anhui TV
+https://restream.pdtvhd.com/memfs/c1cd2ed0-3b2b-4c25-af98-a7fb0b1eb130.m3u8
+#EXTINF:-1 tvg-id="NeiMonggolTV.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/WeugJBE.png",Nei Monggol TV (1080i) [Not 24/7]
+http://play1-qk.nmtv.cn/live/1769652018126032.m3u8
+#EXTINF:-1 tvg-id="HunanTV.cn@SD" group-title="Undefined" tvg-logo="https://parco-zh.github.io/demo/HNWS.png",Hunan TV (2160p)
+http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8
+#EXTINF:-1 tvg-id="BreadTV.cn@SD" group-title="Undefined" tvg-logo="https://bread-tv.com/uploads/allimg/241202/9_1836542371.png",Bread TV面包台 (720p)
+https://video.bread-tv.com:8091/hls-live24/online/index.m3u8
+#EXTINF:-1 tvg-id="ZhejiangInternationalChannel.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/XOL1Hph.png",Zhejiang TV International
+https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8
+#EXTINF:-1 tvg-id="XizangTVTibetan.cn@SD" group-title="Undefined" tvg-logo="https://i.imgur.com/NtvfnVV.png",Xizang TV Tibetan (720p) [Not 24/7]
+http://php.jdshipin.com:8880/xztv.php?id=zy
 #EXTGRP:Education;Outdoor
 #EXTINF:-1 tvg-id="CCTV17.cn@HD" group-title="Education;Outdoor" tvg-logo="https://i.imgur.com/jSQURxS.png",CCTV-17 (1080p)
 http://74.91.26.218:82/live/cctv17hd.m3u8
-#EXTGRP:Legislative
-#EXTINF:-1 tvg-id="HunanPoliticsLawChannel.cn@SD" group-title="Legislative" tvg-logo="https://www.tvchinese.net/uploads/tv/cszfpd.jpg",长沙政法 [Geo-blocked]
-http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_348.m3u8
+#EXTGRP:Sports
+#EXTINF:-1 tvg-id="CCTVStormFootball.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/Fy6HkX0.png",CCTV-Storm Football (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/fyzq.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="CCTVGolfTennis.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/iqJJTmH.png",CCTV-Golf & Tennis (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/gefwq.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="CCTVBilliards.cn@HD" group-title="Sports" tvg-logo="https://i.imgur.com/WK3keM9.png",CCTV-Billiards (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub
+#EXTINF:-1 tvg-id="CCTV5Plus.cn@SD" group-title="Sports" tvg-logo="https://i.imgur.com/OK8mdJV.png",CCTV-5+
+https://myip.pdtvhd.com/Sports/streams/CCTV5pul.m3u8
+#EXTGRP:Documentary
+#EXTINF:-1 tvg-id="CCTVWeaponTechnology.cn@HD" group-title="Documentary" tvg-logo="https://i.imgur.com/QlF96eS.png",CCTV-Weapon & Technology (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/gfjs.m3u8?auth=testpub
+#EXTGRP:News
+#EXTINF:-1 tvg-id="CCTV13.cn@SD" group-title="News" tvg-logo="https://i.imgur.com/6MTar6J.png",CCTV-13 (720p)
+http://74.91.26.218:82/live/cctv13hd.m3u8
+#EXTINF:-1 tvg-id="CCTVPlus1.cn@SD" group-title="News" tvg-logo="https://i.imgur.com/U8d4Is6.png",CCTV+ 1 (600p) [Not 24/7]
+https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8
+#EXTINF:-1 tvg-id="HarbinComprehensiveNewsChannel.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/haerbin.jpg",Harbin Comprehensive News Channel
+https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594
+#EXTINF:-1 tvg-id="ChifengComprehensiveNewsChanel.cn@SD" group-title="News" tvg-logo="https://www.tvchinese.net/uploads/tv/cfxwzhpd.jpg",Chifeng Comprehensive News Chanel
+http://play1-qk.nmtv.cn/live/1735546697341033.m3u8
+#EXTGRP:Classic
+#EXTINF:-1 tvg-id="CCTVNostalgiaTheater.cn@HD" group-title="Classic" tvg-logo="https://i.imgur.com/TVs9PBc.png",CCTV-Nostalgia Theater (1080p)
+http://38.75.136.137:98/gslb/dsdqpub/hjjc.m3u8?auth=testpub
+#EXTGRP:Culture
+#EXTINF:-1 tvg-id="CCTV8.cn@SD" group-title="Culture" tvg-logo="https://i.imgur.com/GyHaZ8X.png",CCTV-8 (720p)
+http://74.91.26.218:82/live/cctv8hd.m3u8
+#EXTINF:-1 tvg-id="NeiMonggolTV2MongolianCultureChannel.cn@SD" group-title="Culture" tvg-logo="https://i.imgur.com/kpsjahG.png",Nei Monggol TV 2 Mongolian Culture Channel (1080i) [Not 24/7]
+http://play1-qk.nmtv.cn/live/1769652109096027.m3u8
+#EXTGRP:Business
+#EXTINF:-1 tvg-id="CCTV2.cn@SD" group-title="Business" tvg-logo="https://i.imgur.com/ILamhwU.png",CCTV-2 (720p)
+http://74.91.26.218:82/live/cctv2hd.m3u8
