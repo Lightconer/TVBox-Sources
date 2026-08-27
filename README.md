@@ -219,7 +219,7 @@ python scripts/run.py --skip-check
    `git push "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF##*/}`
 
 2. **播放失败 / 请更换频道？**
-   已内置三重保障：① 测速校验会剔除死链与不可播源（Actions 端 ffprobe 严格验证）；② 频道名带 `Geo-blocked` / `Not 24/7` / `Offline` 等失效标注的会被自动过滤；③ **每个频道保留多个可用地址**（`check.max_urls_per_channel`，默认 8），单个地址失效时 TVBox 会自动切换下一个。若仍偏少，可放宽 `min_score`、调大 `max_urls_per_channel` 或增加数据源。
+   已内置四重保障，保证「每个频道确实可用、不重复」：① 测速校验会剔除死链与**200 假页面**（非 4xx/5xx 且 Content-Type 非网页/JSON 才判可用，Actions 端再经 ffprobe 验证真实可播）；② 频道名带 `Geo-blocked` / `Not 24/7` / `Offline` / `失效` 等标注的自动过滤；③ **每个频道保留多个可用地址**（`check.max_urls_per_channel`，默认 8），单个地址失效时 TVBox 自动切换下一个；④ **每次更新内置最终审计**：拦截残留失效标注频道、校验重复地址为 0、统计唯一频道数与冗余数，结果写入 `output/status.json`。若仍偏少，可放宽 `min_score`、调大 `max_urls_per_channel` 或增加数据源。
 
 3. **要不要 commit 输出文件？**
    要。TVBox 通过 raw 链接读 `output/` 文件，文件必须提交进仓库才能被访问；`cache/`、`__pycache__` 等已 gitignore。

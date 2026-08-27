@@ -40,8 +40,18 @@ class CheckResult:
         self.score = score
 
 
+# 明确非直播流的页面类型（命中即判定为错误页/非可用源，防止 200 假页面）
+_NON_STREAM_CT = ("text/html", "application/json", "text/xml", "application/xml")
+
+
 def http_probe(url, connect_timeout, read_timeout, user_agent):
-    """HTTP 首包测速，返回 (ok, latency_ms)"""
+    """HTTP 首包测速，返回 (ok, latency_ms)。
+
+    校验三项，确保"确实可用"：
+      1. 状态码 < 400（404/403 等错误页不算可达）；
+      2. Content-Type 不是网页/JSON 等非流类型（200 假页面判失败）；
+      3. 首包能读到内容。
+    """
     if requests is None:
         return False, 0
     start = time.time()
@@ -55,9 +65,14 @@ def http_probe(url, connect_timeout, read_timeout, user_agent):
         )
         ok = False
         try:
-            for _ in r.iter_content(chunk_size=1024):
-                ok = True
-                break
+            if r.ok:
+                ct = (r.headers.get("Content-Type") or "").lower().split(";")[0].strip()
+                if ct in _NON_STREAM_CT:
+                    ok = False  # 明确是网页/错误页，不是直播流
+                else:
+                    for _ in r.iter_content(chunk_size=1024):
+                        ok = True
+                        break
         except Exception:  # noqa: BLE001
             ok = False
         latency = int((time.time() - start) * 1000)
@@ -199,9 +214,13 @@ def select_best(results, cfg):
     passed = [r for r in results if r.ok and r.score >= min_score]
     passed.sort(key=lambda r: (-r.score, r.latency_ms))
 
-    # 1) 按 (分组, 规范化频道名) 聚合，取分数最高的多个 URL
+    # 1) 按 (分组, 规范化频道名) 聚合，同一 URL 只保留一次（防跨源重复），取分数最高的多个地址
+    seen_urls = set()
     slots = {}  # key -> {"name": 展示名, "items": [CheckResult,...]}
     for r in passed:
+        if r.channel.url in seen_urls:
+            continue
+        seen_urls.add(r.channel.url)
         key = (r.channel.group, normalize_name(r.channel.name))
         slot = slots.setdefault(key, {"name": r.channel.name, "items": []})
         if len(slot["items"]) < max_urls_per_channel:

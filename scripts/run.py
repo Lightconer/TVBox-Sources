@@ -18,8 +18,46 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import setup_logging, LOGGER  # noqa: E402
 from crawl import crawl_sources, apply_filters  # noqa: E402
 from group_map import apply_group_map  # noqa: E402
-from check import run_check, select_best  # noqa: E402
+from check import run_check, select_best, normalize_name  # noqa: E402
 from output import write_m3u, write_txt, write_json, write_badge, write_tvbox_config  # noqa: E402
+
+
+def final_audit(selected, cfg):
+    """输出前最终质量审计：
+    - 关键词双保险：频道名命中失效标注关键词的强制剔除（防分组改名后漏网）；
+    - 不重复校验：统计重复 URL（同一地址出现多次，应为 0）；
+    - 冗余覆盖：统计唯一频道数与多源冗余频道数（冗余是 TVBox 自动切换的正常特性）。
+    返回 (过滤后的频道, 审计统计)
+    """
+    kw = [str(k).lower() for k in
+          (cfg.get("crawl", {}).get("filters", {}) or {}).get("exclude_keywords", [])]
+    keep, blocked = [], 0
+    for ch in selected:
+        n = (ch.name or "").lower()
+        if any(k and k in n for k in kw):
+            blocked += 1
+            LOGGER.warning("审计拦截失效标注频道: %s", ch.name)
+            continue
+        keep.append(ch)
+
+    seen_urls, dup_urls = set(), 0
+    channel_keys, url_count = set(), 0
+    for ch in keep:
+        url_count += 1
+        if ch.url in seen_urls:
+            dup_urls += 1
+        else:
+            seen_urls.add(ch.url)
+        channel_keys.add((ch.group, normalize_name(ch.name)))
+
+    audit = {
+        "keyword_blocked": blocked,
+        "dup_urls": dup_urls,
+        "channels": len(channel_keys),        # 唯一频道数
+        "urls": url_count,                    # 总地址数（含冗余）
+        "redundant_channels": url_count - len(channel_keys),  # 多源冗余频道数
+    }
+    return keep, audit
 
 
 def load_config(path):
@@ -98,7 +136,19 @@ def main():
             "avg_latency_ms": avg_lat,
         })
 
-    # ---------- 3. 生成输出 ----------
+    # ---------- 3. 最终质量审计（关键词双保险 + 不重复校验）----------
+    selected, audit = final_audit(selected, cfg)
+    LOGGER.info("最终审计：拦截失效标注 %d，重复地址 %d，唯一频道 %d，多源冗余频道 %d",
+                audit["keyword_blocked"], audit["dup_urls"],
+                audit["channels"], audit["redundant_channels"])
+    meta.update({
+        "keyword_blocked": audit["keyword_blocked"],
+        "dup_urls": audit["dup_urls"],
+        "channels": audit["channels"],
+        "redundant_channels": audit["redundant_channels"],
+    })
+
+    # ---------- 4. 生成输出 ----------
     LOGGER.info("==> 步骤3/3 生成输出（%d 个频道）", len(selected))
     header = out_cfg.get("header", {})
     for fmt in out_cfg.get("formats", ["m3u", "txt", "json"]):
