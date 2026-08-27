@@ -93,7 +93,6 @@ TVBox-Sources/
 │   ├── live.txt                   # ★ TVBox/影视仓 txt 格式（推荐）
 │   ├── live.m3u                   # ★ 标准 m3u 格式
 │   ├── tvbox.json                 # ★ TVBox 配置接口（配置地址一键导入）
-│   ├── live.json                  # 结构化数据（程序读取用）
 │   ├── status.json                # 本次运行统计
 │   └── badge.json                 # README 徽章数据
 ├── requirements.txt

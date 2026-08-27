@@ -3,7 +3,7 @@ import json
 import os
 import re
 import sys
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import LOGGER, make_session, download_text  # noqa: E402
@@ -242,10 +242,3 @@ def apply_filters(channels, cfg):
         seen.add(k)
         dedup.append(c)
     return dedup
-
-
-def save_raw(channels, path):
-    """调试用：把过滤后的频道存为 json，方便离线查看"""
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump([asdict(c) for c in channels], f, ensure_ascii=False, indent=2)

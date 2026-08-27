@@ -55,7 +55,7 @@ check:
 
 output:
   dir: "output"
-  formats: ["m3u", "txt", "json"]   # 同时产出三种格式，TVBox/影视仓主要用 txt 和 m3u
+  formats: ["m3u", "txt"]   # 同时产出两种格式，TVBox/影视仓主要用 txt 和 m3u
   header:                   # 写入 m3u 的元信息
     name: "自动更新直播源"
     url: "https://github.com/Lightconer/TVBox-Sources"

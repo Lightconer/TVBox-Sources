@@ -1,8 +1,7 @@
-"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt、json 与配置接口"""
+"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt 与配置接口"""
 import json
 import os
 import re
-from dataclasses import asdict
 
 
 def _open(path):
@@ -44,17 +43,6 @@ def write_txt(channels, path):
         lines.append(f"{ch.name},{ch.url}")
     with _open(path) as f:
         f.write("\n".join(lines) + "\n")
-
-
-def write_json(channels, path, meta):
-    """结构化 json（便于程序读取/做聚合源），元信息在前"""
-    data = {
-        "meta": meta,
-        "total": len(channels),
-        "channels": [asdict(c) for c in channels],
-    }
-    with _open(path) as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
 
 
 def write_badge(path, text, color="brightgreen"):

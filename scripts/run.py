@@ -19,7 +19,7 @@ from utils import setup_logging, LOGGER  # noqa: E402
 from crawl import crawl_sources, apply_filters  # noqa: E402
 from group_map import apply_group_map  # noqa: E402
 from check import run_check, select_best, normalize_name  # noqa: E402
-from output import write_m3u, write_txt, write_json, write_badge, write_tvbox_config  # noqa: E402
+from output import write_m3u, write_txt, write_badge, write_tvbox_config  # noqa: E402
 
 
 def final_audit(selected, cfg):
@@ -151,14 +151,12 @@ def main():
     # ---------- 4. 生成输出 ----------
     LOGGER.info("==> 步骤3/3 生成输出（%d 个频道）", len(selected))
     header = out_cfg.get("header", {})
-    for fmt in out_cfg.get("formats", ["m3u", "txt", "json"]):
+    for fmt in out_cfg.get("formats", ["m3u", "txt"]):
         path = os.path.join(out_dir, f"live.{fmt}")
         if fmt == "m3u":
             write_m3u(selected, path, header)
         elif fmt == "txt":
             write_txt(selected, path)
-        elif fmt == "json":
-            write_json(selected, path, meta)
         LOGGER.info("  已生成 %s", path)
 
     # 状态 + 徽章
