@@ -175,6 +175,10 @@ python scripts/run.py --limit 50
 
 # 只爬取生成、跳过测速
 python scripts/run.py --skip-check
+
+# 国内可用性自查：用本机网络对生成的 live.txt 做「分片级」严格校验，
+# 找出会显示"播放失败"的频道（Actions 在海外测速，本机更能代表国内视角）
+python scripts/diag.py output/live.txt
 ```
 
 > 建议本地装一下 ffmpeg（`winget install ffmpeg` / `brew install ffmpeg` / `apt install ffmpeg`），测速更严格——会真正探测流是否可播放。

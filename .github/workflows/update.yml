@@ -11,6 +11,13 @@ on:
   schedule:
     - cron: '0 0,6,12,18 * * *'
   workflow_dispatch: {}
+  push:
+    # 代码/配置变更立即触发更新；Actions 自己提交的 output/ 不触发（避免循环）
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - 'requirements.txt'
+      - '.github/workflows/**'
 
 # 同一时间只跑一个实例，避免并发推送冲突
 concurrency:
@@ -64,3 +71,11 @@ jobs:
             # 并把下面 push 改为：git push "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF##*/}
             git push
           fi
+
+      - name: 刷新 jsdelivr CDN 缓存（让用户立即拿到最新版）
+        # 无论本次是否产生提交都执行：jsdelivr 有最长数小时缓存，不 purge 用户会拿到旧版
+        if: always()
+        run: |
+          curl -s -X POST \
+            "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/output/live.txt&gh/${GITHUB_REPOSITORY}@main/output/live.m3u&gh/${GITHUB_REPOSITORY}@main/output/tvbox.json&gh/${GITHUB_REPOSITORY}@main/output/badge.json" \
+            -o /dev/null -w "purge http_code=%{http_code}\n" || echo "purge 失败（不影响流程）"

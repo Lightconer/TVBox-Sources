@@ -206,6 +206,7 @@ def apply_filters(channels, cfg):
     exclude_groups = [re.compile(p) for p in filters.get("exclude_groups", [])]
     include_kw = [k.lower() for k in filters.get("include_keywords", [])]
     exclude_kw = [k.lower() for k in filters.get("exclude_keywords", [])]
+    exclude_ch = [c.lower() for c in filters.get("exclude_channels", [])]
     country = (filters.get("country") or "").strip().upper()
 
     def ok(ch):
@@ -223,6 +224,8 @@ def apply_filters(channels, cfg):
         if include_kw and not any(k in n for k in include_kw):
             return False
         if any(k in n for k in exclude_kw):
+            return False
+        if any(k and k in n for k in exclude_ch):
             return False
         if country and ch.tvg_country.strip().upper() not in ("", country):
             return False

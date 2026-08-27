@@ -38,6 +38,7 @@ crawl:
     exclude_groups: []       # 排除的分组，支持正则。例: ["test", "境外"]
     include_keywords: []     # 频道名需包含的关键词（留空=全部）。例: ["CCTV"]
     exclude_keywords: ["测试", "test", "广告", "演示", "预告", "失效", "暂停", "停播", "geo-blocked", "not 24/7", "offline", "blocked", "unavailable"]  # 频道名含这些词则剔除（含失效标注）
+    exclude_channels: ["cctv-women's fashion", "cctv-the first theater", "cctv-world geography", "cctv-storm theater", "cctv-storm football", "cctv-storm music", "cctv-culture of quality", "cctv-weapon", "cctv-health", "cctv-golf", "cctv-nostalgia theater", "cctv-billiards", "cctv-8k", "cgtn西语", "cgtn法语", "cgtn俄语", "江苏城市", "anshun"]  # 精确黑名单：iptv-org 海外版子台等「国内实测不可用」的频道（子串匹配，小写）
     country: ""              # 按 tvg-country 过滤（如 "CN"；留空=不过滤）
     allowed_schemes: ["http", "https"]   # 只保留这些协议开头的地址
 
