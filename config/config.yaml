@@ -1,0 +1,54 @@
+# ============================================================
+# TVBox / 影视仓 直播源自动更新 · 配置文件
+# 修改后推送到仓库，下一次 GitHub Actions 运行即生效
+# ============================================================
+
+crawl:
+  # ---------- 数据源列表（m3u / txt / json 均可，可随时增删，enabled=false 可临时停用） ----------
+  sources:
+    - name: "iptv-org 全球公开源"
+      url: "https://iptv-org.github.io/iptv/index.m3u"
+      enabled: false        # 全量源太大，默认关闭；需要时打开
+    - name: "iptv-org 中国频道"
+      url: "https://iptv-org.github.io/iptv/countries/cn.m3u"
+      enabled: true
+    - name: "iptv-org 中国·中文频道"
+      url: "https://iptv-org.github.io/iptv/languages/zho.m3u"
+      enabled: false        # 与 cn 源高度重合，按需开启
+    # - name: "自建/其他公开源"
+    #   url: "https://example.com/live.txt"
+    #   enabled: true
+
+  # ---------- 请求参数 ----------
+  request:
+    timeout: 15             # 单次请求超时（秒）
+    retries: 2              # 失败重试次数
+    max_size: 20            # 单源最大下载大小（MB），防止超大源拖慢任务
+    user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+
+  # ---------- 过滤规则 ----------
+  filters:
+    include_groups: []       # 仅保留这些分组（小写匹配；留空=全部）。例: ["央视", "卫视"]
+    exclude_groups: []       # 排除的分组，支持正则。例: ["test", "境外"]
+    include_keywords: []     # 频道名需包含的关键词（留空=全部）。例: ["CCTV"]
+    exclude_keywords: ["测试", "test", "广告", "演示"]  # 频道名含这些词则剔除
+    country: ""              # 按 tvg-country 过滤（如 "CN"；留空=不过滤）
+    allowed_schemes: ["http", "https"]   # 只保留这些协议开头的地址
+
+check:
+  enabled: true
+  workers: 30               # 并发测速线程数（Actions 机器通常给 2 核，30 线程足够）
+  connect_timeout: 5        # TCP 连接超时（秒）
+  read_timeout: 8           # 首包读取超时（秒）
+  ffprobe_timeout: 10       # ffprobe 媒体探测超时（秒）
+  require_ffprobe: true     # 是否强制 ffprobe 验证可播放媒体流（Actions 已装 ffmpeg；本地没装会自动降级为仅 HTTP 测速）
+  min_score: 40             # 最低通过分（0-100）：延迟60分+媒体有效性40分，低于则丢弃
+  max_per_group: 50         # 每个分组最多保留的频道数（0=不限）
+
+output:
+  dir: "output"
+  formats: ["m3u", "txt", "json"]   # 同时产出三种格式，TVBox/影视仓主要用 txt 和 m3u
+  header:                   # 写入 m3u 的元信息
+    name: "自动更新直播源"
+    url: "https://github.com/Lightconer/TVBox-Sources"
+    desc: "由 GitHub Actions 自动爬取+测速生成"

@@ -1,0 +1,7 @@
+* text=auto
+*.py text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.txt text eol=lf
+*.m3u text eol=lf
+*.json text eol=lf

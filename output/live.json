@@ -1,0 +1,675 @@
+{
+  "meta": {
+    "update_time": "2026-08-27 17:53:17",
+    "sources": [
+      "iptv-org 中国频道"
+    ],
+    "crawled": 143,
+    "dedup": 143,
+    "http_ok": 75,
+    "passed": 73,
+    "dead": 70,
+    "groups": 21,
+    "avg_latency_ms": 716
+  },
+  "total": 73,
+  "channels": [
+    {
+      "name": "Ando TV (1080p)",
+      "url": "http://play.kankanlive.com/live/1711956137852982.m3u8",
+      "group": "Religious",
+      "tvg_id": "AndoTV.cn@SD",
+      "tvg_logo": "https://i.imgur.com/EpTsFVu.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Angel TV Chinese (720p)",
+      "url": "https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8",
+      "group": "Religious",
+      "tvg_id": "AngelTV.in@Chinese",
+      "tvg_logo": "https://i.imgur.com/qKLEGU7.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "ABN China (720p)",
+      "url": "https://mediaserver.abnvideos.com/streams/abnchina.m3u8",
+      "group": "Religious",
+      "tvg_id": "ABNChina.us@SD",
+      "tvg_logo": "https://i.imgur.com/zagVLQH.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Tonghua TV (1080p)",
+      "url": "http://lsfb.avap.jilintv.cn/zqvk7vpj/channel/43ea5771aa44421591f9dfd2b71f1b9b/index.m3u8",
+      "group": "News",
+      "tvg_id": "TonghuaTV.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/thtv1.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV+ 1 (600p) [Not 24/7]",
+      "url": "https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8",
+      "group": "News",
+      "tvg_id": "CCTVPlus1.cn@SD",
+      "tvg_logo": "https://i.imgur.com/U8d4Is6.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Anshun Comprehensive News Channel",
+      "url": "https://hplayer1.juyun.tv/camera/154379194.m3u8",
+      "group": "News",
+      "tvg_id": "AnshunComprehensiveNewsChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/anshun.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "长沙新闻 [Geo-blocked]",
+      "url": "http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_346.m3u8",
+      "group": "News",
+      "tvg_id": "HunanNewsChannel.cn@SD",
+      "tvg_logo": "https://static.tvtropes.org/pmwiki/pub/images/hunantv_logo.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Chifeng Comprehensive News Chanel",
+      "url": "http://play1-qk.nmtv.cn/live/1735546697341033.m3u8",
+      "group": "News",
+      "tvg_id": "ChifengComprehensiveNewsChanel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/cfxwzhpd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV+ 2 (600p) [Not 24/7]",
+      "url": "https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8",
+      "group": "News",
+      "tvg_id": "CCTVPlus2.cn@SD",
+      "tvg_logo": "https://i.imgur.com/qSg862A.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "鹤壁新闻综合 (480p) [Not 24/7]",
+      "url": "http://pili-live-hls.hebitv.com/hebi/hebi.m3u8",
+      "group": "News",
+      "tvg_id": "HebiNewsChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/Osw5yRW.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-13 (1080p)",
+      "url": "http://go.bkpcp.top/mg/cctv13",
+      "group": "News",
+      "tvg_id": "CCTV13.cn@HD",
+      "tvg_logo": "https://i.imgur.com/6MTar6J.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Harbin Comprehensive News Channel",
+      "url": "https://stream.hrbtv.net/xwzh/playlist.m3u8?_upt=ef41dd531755913594",
+      "group": "News",
+      "tvg_id": "HarbinComprehensiveNewsChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/haerbin.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-1",
+      "url": "http://video10.qtv.com.cn/drm/qtv1at/manifest.m3u8",
+      "group": "News",
+      "tvg_id": "QTV1.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv1.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Lanzhou Comprehensive News Channel",
+      "url": "https://liveplus.lzr.com.cn/xwzh/HD/live.m3u8",
+      "group": "News",
+      "tvg_id": "LanzhouComprehensiveNewsChannel.cn@SD",
+      "tvg_logo": "https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_c2a13a952c0111b21f081d672798c8ed~c5_300x300.jpeg?from=2956013662",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-13 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv13hd.m3u8",
+      "group": "News",
+      "tvg_id": "CCTV13.cn@SD",
+      "tvg_logo": "https://i.imgur.com/6MTar6J.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-9 (576i)",
+      "url": "https://xykt-fix.github.io/Y77.m3u8",
+      "group": "Documentary",
+      "tvg_id": "CCTV9.cn@SD",
+      "tvg_logo": "https://i.imgur.com/3tivvMm.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Weapon & Technology (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/gfjs.m3u8?auth=testpub",
+      "group": "Documentary",
+      "tvg_id": "CCTVWeaponTechnology.cn@HD",
+      "tvg_logo": "https://i.imgur.com/QlF96eS.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-15 (1080p)",
+      "url": "https://xykt-fix.github.io/play/a02e/index.m3u8",
+      "group": "Music",
+      "tvg_id": "CCTV15.cn@SD",
+      "tvg_logo": "https://i.imgur.com/CCV0eRG.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Storm Music (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyyy.m3u8?auth=testpub",
+      "group": "Music",
+      "tvg_id": "CCTVStormMusic.cn@HD",
+      "tvg_logo": "https://i.imgur.com/IiiRmrf.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-11 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv11hd.m3u8",
+      "group": "Music",
+      "tvg_id": "CCTV11.cn@SD",
+      "tvg_logo": "https://i.imgur.com/CjOWx7L.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "山东体育 (1080p) [Geo-blocked]",
+      "url": "http://livealone302.iqilu.com/iqilu/typd.m3u8",
+      "group": "Sports",
+      "tvg_id": "ShandongTVSportsChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/zX4RxvG.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Golf & Tennis (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/gefwq.m3u8?auth=testpub",
+      "group": "Sports",
+      "tvg_id": "CCTVGolfTennis.cn@HD",
+      "tvg_logo": "https://i.imgur.com/iqJJTmH.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Storm Football (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyzq.m3u8?auth=testpub",
+      "group": "Sports",
+      "tvg_id": "CCTVStormFootball.cn@HD",
+      "tvg_logo": "https://i.imgur.com/Fy6HkX0.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-16 (1080p)",
+      "url": "http://74.91.26.218:82/live/cctv16hd.m3u8",
+      "group": "Sports",
+      "tvg_id": "CCTV16.cn@HD",
+      "tvg_logo": "https://i.imgur.com/ZzV6JQp.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Billiards (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub",
+      "group": "Sports",
+      "tvg_id": "CCTVBilliards.cn@HD",
+      "tvg_logo": "https://i.imgur.com/WK3keM9.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "山东综艺 (406p) [Geo-blocked]",
+      "url": "http://livealone302.iqilu.com/iqilu/zypd.m3u8",
+      "group": "Undefined",
+      "tvg_id": "ShandongTVVarietyChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/a2XK8N9.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "山东齐鲁 (1080p) [Geo-blocked]",
+      "url": "http://livealone302.iqilu.com/iqilu/qlpd.m3u8",
+      "group": "Undefined",
+      "tvg_id": "ShandongTVQiluChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/U9wNMmm.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "山东生活 (1080p) [Geo-blocked]",
+      "url": "http://livealone302.iqilu.com/iqilu/shpd.m3u8",
+      "group": "Undefined",
+      "tvg_id": "ShandongTVLifeChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/bWPiC14.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Hunan TV (2160p)",
+      "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
+      "group": "Undefined",
+      "tvg_id": "HunanTV.cn@SD",
+      "tvg_logo": "https://parco-zh.github.io/demo/HNWS.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Xinjiang TV 2",
+      "url": "http://110.153.180.106:55555/out_3/index.m3u8",
+      "group": "Undefined",
+      "tvg_id": "XinjiangTV2.cn@SD",
+      "tvg_logo": "https://i.imgur.com/GXFLqxx.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Nei Monggol TV (1080i) [Not 24/7]",
+      "url": "http://play1-qk.nmtv.cn/live/1769652018126032.m3u8",
+      "group": "Undefined",
+      "tvg_id": "NeiMonggolTV.cn@SD",
+      "tvg_logo": "https://i.imgur.com/WeugJBE.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Xinjiang TV 3",
+      "url": "http://110.153.180.106:55555/out_2/index.m3u8",
+      "group": "Undefined",
+      "tvg_id": "XinjiangTV3.cn@SD",
+      "tvg_logo": "https://i.imgur.com/l8S5qQB.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "VOA美国之音 (1080p)",
+      "url": "https://voa-ingest.akamaized.net/hls/live/2033878/tvmc08/playlist.m3u8",
+      "group": "Undefined",
+      "tvg_id": "VoATVChina.cn@SD",
+      "tvg_logo": "https://i.imgur.com/XCTZkoq.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Zhejiang TV International",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8",
+      "group": "Undefined",
+      "tvg_id": "ZhejiangInternationalChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/XOL1Hph.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Culture of Quality (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub",
+      "group": "Undefined",
+      "tvg_id": "CCTVCultureofQuality.cn@SD",
+      "tvg_logo": "https://i.imgur.com/Paig8gG.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-8K (1080p)",
+      "url": "http://192.151.150.154/live/cctv8k.m3u8",
+      "group": "Undefined",
+      "tvg_id": "CCTV8K.cn@HD",
+      "tvg_logo": "https://i.imgur.com/fxVPMJF.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "白城新闻综合 [Geo-blocked]",
+      "url": "https://stream2.jlntv.cn/baicheng1/sd/live.m3u8",
+      "group": "General",
+      "tvg_id": "BaichengTV.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/baicheng.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Kangba TV",
+      "url": "http://110.185.237.164:8888/hls/30/index.m3u8",
+      "group": "General",
+      "tvg_id": "KangbaTV.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/kangbatv.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-5",
+      "url": "http://video10.qtv.com.cn/drm/qtv5at/manifest.m3u8",
+      "group": "General",
+      "tvg_id": "QTV5.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv5.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-4",
+      "url": "http://video10.qtv.com.cn/drm/qtv4at/manifest.m3u8",
+      "group": "General",
+      "tvg_id": "QTV4.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv4.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Hebei TV (2160p)",
+      "url": "https://event.pull.hebtv.com/live/live101.m3u8",
+      "group": "General",
+      "tvg_id": "HebeiTV.cn@SD",
+      "tvg_logo": "https://i.imgur.com/Z5Ppzbi.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Siping TV",
+      "url": "http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598",
+      "group": "General",
+      "tvg_id": "SipingTV.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/sptv1.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-1 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv1hd.m3u8",
+      "group": "General",
+      "tvg_id": "CCTV1.cn@SD",
+      "tvg_logo": "https://i.imgur.com/TpA3cUl.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "BRTV 北京卫视 (1080p)",
+      "url": "http://go.bkpcp.top/mg/bjws",
+      "group": "General",
+      "tvg_id": "BeijingSatelliteTV.cn@HD",
+      "tvg_logo": "https://i.imgur.com/vsktAez.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "TV BRICS Chinese (1080p)",
+      "url": "https://chibrics.mediacdn.ru/cdn/brics/chinese/playlist.m3u8",
+      "group": "General",
+      "tvg_id": "TVBRICSChinese.cn@SD",
+      "tvg_logo": "https://i.imgur.com/896132Z.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv3hd.m3u8",
+      "group": "Entertainment",
+      "tvg_id": "CCTV3.cn@SD",
+      "tvg_logo": "https://i.imgur.com/iFlkIuw.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-7 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv7hd.m3u8",
+      "group": "Education",
+      "tvg_id": "CCTV7.cn@SD",
+      "tvg_logo": "https://i.imgur.com/CKcPMQC.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-World Geography (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/sjdl.m3u8?auth=testpub",
+      "group": "Education",
+      "tvg_id": "CCTVWorldGeography.cn@SD",
+      "tvg_logo": "https://i.imgur.com/V2ncOXi.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv2hd.m3u8",
+      "group": "Business",
+      "tvg_id": "CCTV2.cn@SD",
+      "tvg_logo": "https://i.imgur.com/ILamhwU.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CND Film Middle School Channel",
+      "url": "http://live2.rxip.sc96655.com/live/zxs_4000.m3u8?A=&E=&K=&P=&S=&U=",
+      "group": "Movies",
+      "tvg_id": "CNDFilmMiddleSchoolChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/4uG8HsQ.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Harbin Movie Channel",
+      "url": "https://stream.hrbtv.net/yspd/playlist.m3u8",
+      "group": "Movies",
+      "tvg_id": "HarbinMovieChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/haerbin.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Jilin Movie Channel",
+      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/906341e6f19b4c4bacdc89941eb85d12/index.m3u8",
+      "group": "Movies",
+      "tvg_id": "JilinMovieChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlyspd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-3",
+      "url": "http://video10.qtv.com.cn/drm/qtv3at/manifest.m3u8",
+      "group": "Movies",
+      "tvg_id": "QTV3.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv3.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Storm Theater (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyjc.m3u8?auth=testpub",
+      "group": "Movies",
+      "tvg_id": "CCTVStormTheater.cn@HD",
+      "tvg_logo": "https://i.imgur.com/rEttkKm.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-The First Theater (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/dyjc.m3u8?auth=testpub",
+      "group": "Movies",
+      "tvg_id": "CCTVTheFirstTheater.cn@HD",
+      "tvg_logo": "https://i.imgur.com/eFxD3hq.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "山东少儿 (406p) [Geo-blocked]",
+      "url": "http://livealone302.iqilu.com/iqilu/sepd.m3u8",
+      "group": "Kids",
+      "tvg_id": "ShandongTVChildrensChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/ph7YKNa.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-14 (1080p)",
+      "url": "http://74.91.26.218:82/live/cctv14hd.m3u8",
+      "group": "Kids",
+      "tvg_id": "CCTV14.cn@HD",
+      "tvg_logo": "https://i.imgur.com/c5SXW7i.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Guangxi Variety & Travel Channel",
+      "url": "http://111.59.24.227:8181/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "General;Travel",
+      "tvg_id": "GuangxiVarietyTravelChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/gxzypd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "长沙女性 [Geo-blocked]",
+      "url": "http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_349.m3u8",
+      "group": "Lifestyle",
+      "tvg_id": "HunanWomensChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/csnxpd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Jilin Lifestyle Channel",
+      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/0a76740c72b74fabae611845aa21e06a/index.m3u8",
+      "group": "Lifestyle",
+      "tvg_id": "JilinLifestyleChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlshpd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Jilin City Channel",
+      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/7e8474e6daea44ccaa5aa2300191439e/index.m3u8",
+      "group": "Lifestyle",
+      "tvg_id": "JilinCityChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jldspd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-2",
+      "url": "http://video10.qtv.com.cn/drm/qtv2at/manifest.m3u8",
+      "group": "Lifestyle",
+      "tvg_id": "QTV2.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv2.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Women's Fashion (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/nxss.m3u8?auth=testpub",
+      "group": "Lifestyle",
+      "tvg_id": "CCTVWomensFashion.cn@SD",
+      "tvg_logo": "https://i.imgur.com/FVbP0aP.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Health (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/wsjk.m3u8?auth=testpub",
+      "group": "Lifestyle",
+      "tvg_id": "CCTVHealth.cn@HD",
+      "tvg_logo": "https://i.imgur.com/AzpRtCz.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-12 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv12hd.m3u8",
+      "group": "Lifestyle",
+      "tvg_id": "CCTV12.cn@SD",
+      "tvg_logo": "https://i.imgur.com/3yTuiOM.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Jilin Rural Channel",
+      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/3ffc4824dce54b92be185555923ce382/index.m3u8",
+      "group": "Education;Lifestyle;Science",
+      "tvg_id": "JilinRuralChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlxcpd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Nei Monggol TV 2 Mongolian Culture Channel (1080i) [Not 24/7]",
+      "url": "http://play1-qk.nmtv.cn/live/1769652109096027.m3u8",
+      "group": "Culture",
+      "tvg_id": "NeiMonggolTV2MongolianCultureChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/kpsjahG.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Lanzhou Culture & Tourism Channel",
+      "url": "https://liveplus.lzr.com.cn/wlpd/HD/live.m3u8",
+      "group": "Culture",
+      "tvg_id": "LanzhouCultureTourismChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/lanzhou.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-6",
+      "url": "http://video10.qtv.com.cn/drm/qtv6at/manifest.m3u8",
+      "group": "Kids;Lifestyle",
+      "tvg_id": "QTV6.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv6.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Nostalgia Theater (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/hjjc.m3u8?auth=testpub",
+      "group": "Classic",
+      "tvg_id": "CCTVNostalgiaTheater.cn@HD",
+      "tvg_logo": "https://i.imgur.com/TVs9PBc.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "山东农科 (406p) [Geo-blocked]",
+      "url": "http://livealone302.iqilu.com/iqilu/nkpd.m3u8",
+      "group": "Science",
+      "tvg_id": "ShandongTVAgriculturalScienceChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/EY2zH06.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-17 (1080p)",
+      "url": "http://74.91.26.218:82/live/cctv17hd.m3u8",
+      "group": "Education;Outdoor",
+      "tvg_id": "CCTV17.cn@HD",
+      "tvg_logo": "https://i.imgur.com/jSQURxS.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "长沙政法 [Geo-blocked]",
+      "url": "http://35848.hlsplay.aodianyun.com/guangdianyun_35848/tv_channel_348.m3u8",
+      "group": "Legislative",
+      "tvg_id": "HunanPoliticsLawChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/cszfpd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    }
+  ]
+}

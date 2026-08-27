@@ -1,0 +1,13 @@
+{
+  "update_time": "2026-08-27 17:53:17",
+  "sources": [
+    "iptv-org 中国频道"
+  ],
+  "crawled": 143,
+  "dedup": 143,
+  "http_ok": 75,
+  "passed": 73,
+  "dead": 70,
+  "groups": 21,
+  "avg_latency_ms": 716
+}

@@ -1,0 +1,66 @@
+# ============================================================
+# TVBox / 影视仓 直播源自动更新工作流
+#   · 定时触发：每 6 小时一次（GitHub Actions 的 cron 使用 UTC 时间）
+#       0 0,6,12,18 * * *  (UTC) = 北京时间 08:00 / 14:00 / 20:00 / 02:00
+#   · 手动触发：仓库 Actions 页面点 Run workflow
+#   · 自动提交：仅在直播源内容发生变化时提交，避免空提交噪音
+# ============================================================
+name: TVBox 直播源自动更新
+
+on:
+  schedule:
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch: {}
+
+# 同一时间只跑一个实例，避免并发推送冲突
+concurrency:
+  group: live-source-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # 允许把生成的 output/ 提交回仓库
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: 安装 ffmpeg（测速校验用）
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: 安装 Python 依赖
+        run: pip install -r requirements.txt
+
+      - name: 爬取 + 测速 + 生成直播源
+        run: python scripts/run.py --config config/config.yaml
+
+      - name: 提交变更（无变化则不提交）
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # 先只暂存直播源文件，判断是否有实质变化
+          git add output/live.m3u output/live.txt output/live.json
+          if git diff --cached --quiet; then
+            echo "::notice::直播源无变化，跳过提交"
+          else
+            # 有变化：一并提交状态与徽章
+            git add output/status.json output/badge.json
+            git commit -m "chore: 自动更新直播源 $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M')"
+            # 默认使用 GITHUB_TOKEN 即可推送到本仓库；
+            # 若你的仓库因保护规则拒绝推送，可在 Settings→Secrets 配置 GH_TOKEN(fine-grained PAT, contents:write)，
+            # 并把下面 push 改为：git push "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF##*/}
+            git push
+          fi
