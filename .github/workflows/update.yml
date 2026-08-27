@@ -74,8 +74,9 @@ jobs:
 
       - name: 刷新 jsdelivr CDN 缓存（让用户立即拿到最新版）
         # 无论本次是否产生提交都执行：jsdelivr 有最长数小时缓存，不 purge 用户会拿到旧版
+        # 注意：jsdelivr purge API 是 GET 请求（POST 会返回 405），curl 默认 GET 即可
         if: always()
         run: |
-          curl -s -X POST \
+          curl -s \
             "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/output/live.txt&gh/${GITHUB_REPOSITORY}@main/output/live.m3u&gh/${GITHUB_REPOSITORY}@main/output/tvbox.json&gh/${GITHUB_REPOSITORY}@main/output/badge.json" \
             -o /dev/null -w "purge http_code=%{http_code}\n" || echo "purge 失败（不影响流程）"
