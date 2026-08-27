@@ -8,6 +8,7 @@
 """
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -168,25 +169,59 @@ def run_check(channels, cfg):
     return results
 
 
-def select_best(results, cfg):
-    """按分组择优：丢弃低分，组内按分数排序并截断 max_per_group
+_NORM_SUFFIX_RE = re.compile(r"(高清|标清|超清|hd|sd|uhd|4k|8k|2160p|1440p|1080p|720p|540p|480p|360p)$")
 
+
+def normalize_name(name):
+    """频道名规范化：去分辨率/标注括号与尾缀，用于把「同一频道」的不同写法合并。
+
+    例：'CCTV-1 综合 (1080p)' / 'CCTV-1 综合' / 'CCTV1综合' → 'cctv1综合'
+    """
+    n = (name or "").lower()
+    n = re.sub(r"[\(\[][^\)\]]*[\)\]]", "", n)          # 去 (1080p) [Geo-blocked]
+    n = re.sub(r"[\s\-_—:：,，.。'\"’‘]+", "", n)         # 去空格/分隔符
+    n = _NORM_SUFFIX_RE.sub("", n)                       # 去尾部清晰度词
+    return n.strip()
+
+
+def select_best(results, cfg):
+    """择优：丢弃低分 → 同频道名聚合多源（播放失败自动切换）→ 组内截断。
+
+    - 每个频道名保留最多 max_urls_per_channel 个可用地址（默认 5），按分数排序；
+    - 每个分组保留最多 max_per_group 个频道（0=不限）。
     返回 (selected_channels, passed_results)
     """
     check_cfg = cfg.get("check", {})
     min_score = check_cfg.get("min_score", 40)
-    max_per_group = check_cfg.get("max_per_group", 50)
+    max_per_group = check_cfg.get("max_per_group", 60)
+    max_urls_per_channel = max(1, check_cfg.get("max_urls_per_channel", 5))
 
     passed = [r for r in results if r.ok and r.score >= min_score]
-    groups = {}
+    passed.sort(key=lambda r: (-r.score, r.latency_ms))
+
+    # 1) 按 (分组, 规范化频道名) 聚合，取分数最高的多个 URL
+    slots = {}  # key -> {"name": 展示名, "items": [CheckResult,...]}
     for r in passed:
-        groups.setdefault(r.channel.group, []).append(r)
+        key = (r.channel.group, normalize_name(r.channel.name))
+        slot = slots.setdefault(key, {"name": r.channel.name, "items": []})
+        if len(slot["items"]) < max_urls_per_channel:
+            slot["items"].append(r)
+            # 展示名取更长/更完整的那个
+            if len(r.channel.name) > len(slot["name"]):
+                slot["name"] = r.channel.name
+
+    # 2) 按分组聚合，组内频道数截断
+    by_group = {}
+    for (group, _nk), slot in slots.items():
+        by_group.setdefault(group, []).append(slot)
 
     selected = []
-    for gname, gres in groups.items():
-        gres.sort(key=lambda r: (-r.score, r.latency_ms))
+    for gname, gslots in by_group.items():
         if max_per_group and max_per_group > 0:
-            gres = gres[:max_per_group]
-        for r in gres:
-            selected.append(r.channel)
+            gslots = gslots[:max_per_group]
+        for slot in gslots:
+            for r in slot["items"]:
+                ch = r.channel
+                ch.name = slot["name"]   # 统一展示名，便于 TVBox 合并多源
+                selected.append(ch)
     return selected, passed

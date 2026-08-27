@@ -8,27 +8,41 @@
 
 ---
 
-## 📺 直播源地址（直接复制使用）
+## 📺 直播源地址（直接复制 / 一键导入）
 
-> 地址由 GitHub Actions 每 6 小时自动更新，复制到 TVBox / 影视仓 / 各 IPTV 播放器即可，无需手动维护。
+> 地址由 GitHub Actions 每 6 小时自动更新；每个频道都保留了多个可用源，**播放失败会自动切换**，无需手动维护。
 
-**① TXT 格式（影视仓 / TVBox 通用，推荐）** —— jsdelivr 加速（国内快）：
+### 📲 一键导入（TVBox / 影视仓，推荐）
+
+把下面的**配置接口地址**粘贴到 TVBox / 影视仓的 **配置地址** 栏 → 确定，即可自动导入全部直播源：
+
+```
+https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/tvbox.json
+```
+
+➡️ [点击打开配置接口](https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/tvbox.json)　·　备用直链：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/tvbox.json`
+
+> 部分 TVBox 版本支持 `tvbox://json/` 深链跳转（格式随版本而异）；若深链不生效，请直接粘贴上面的配置接口地址。
+
+### 直接订阅地址
+
+**① TXT 格式（影视仓 / TVBox 通用，推荐）**，点击或复制：
 
 ```
 https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt
 ```
 
-备用直链（raw）：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.txt`
+➡️ [点击打开 live.txt](https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt)　·　备用直链：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.txt`
 
-**② M3U 格式（带台标 / EPG 信息）** —— jsdelivr 加速（国内快）：
+**② M3U 格式（带台标 / EPG）**，点击或复制：
 
 ```
 https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u
 ```
 
-备用直链（raw）：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.m3u`
+➡️ [点击打开 live.m3u](https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u)　·　备用直链：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.m3u`
 
-**使用方法**：影视仓 → 设置 → 直播 → 添加直播源 → 粘贴 TXT 地址；TVBox → 配置接口 → 直播地址填入 TXT/M3U 链接。国内网络若 `raw` 打不开，优先用 **jsdelivr** 链接。
+**使用方法**：影视仓 → 设置 → 直播 → 添加直播源 → 粘贴 TXT 地址；TVBox → 配置地址 → 填入接口/TXT 链接。国内网络若 `raw` 打不开，优先用 **jsdelivr** 链接。
 
 ---
 
@@ -74,8 +88,9 @@ TVBox-Sources/
 │   ├── output.py                  # 输出：m3u / txt / json / badge
 │   └── utils.py                   # 日志与 HTTP 请求公共工具
 ├── output/                        # 生成的直播源（提交到仓库供 raw 链接读取）
-│   ├── live.txt                   # ★ TVBox/影视仓 txt 格式
+│   ├── live.txt                   # ★ TVBox/影视仓 txt 格式（推荐）
 │   ├── live.m3u                   # ★ 标准 m3u 格式
+│   ├── tvbox.json                 # ★ TVBox 配置接口（配置地址一键导入）
 │   ├── live.json                  # 结构化数据（程序读取用）
 │   ├── status.json                # 本次运行统计
 │   └── badge.json                 # README 徽章数据
@@ -184,6 +199,7 @@ python scripts/run.py --skip-check
 | `check.require_ffprobe` | 是否强制 ffprobe 媒体校验 | true |
 | `check.min_score` | 最低通过分，低于丢弃 | 40 |
 | `check.max_per_group` | 每分组最多保留频道数（0=不限） | 60 |
+| `check.max_urls_per_channel` | 每频道最多保留地址数（多源冗余，失败自动切换） | 5 |
 | `output.formats` | 输出的格式 | m3u, txt, json |
 
 ---
@@ -202,8 +218,8 @@ python scripts/run.py --skip-check
    默认 `GITHUB_TOKEN` 只能推本仓库、且不能通过需要 status check 的分支保护。若失败：仓库 Settings → Secrets → 新建 `GH_TOKEN`（fine-grained PAT，勾选仓库 `Contents: Read and write`），并把工作流里 `git push` 改为
    `git push "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF##*/}`
 
-2. **生成的源打不开 / 频道少？**
-   直播源稳定性由上游决定，公开源常有失效地址。可：加大 `workers`、放宽 `min_score`、增加更多数据源、调大 `max_per_group`。
+2. **播放失败 / 请更换频道？**
+   已内置三重保障：① 测速校验会剔除死链与不可播源（Actions 端 ffprobe 严格验证）；② 频道名带 `Geo-blocked` / `Not 24/7` / `Offline` 等失效标注的会被自动过滤；③ **每个频道保留多个可用地址**（`check.max_urls_per_channel`，默认 5），单个地址失效时 TVBox 会自动切换下一个。若仍偏少，可放宽 `min_score`、调大 `max_urls_per_channel` 或增加数据源。
 
 3. **要不要 commit 输出文件？**
    要。TVBox 通过 raw 链接读 `output/` 文件，文件必须提交进仓库才能被访问；`cache/`、`__pycache__` 等已 gitignore。

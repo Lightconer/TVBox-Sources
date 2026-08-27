@@ -19,7 +19,7 @@ from utils import setup_logging, LOGGER  # noqa: E402
 from crawl import crawl_sources, apply_filters  # noqa: E402
 from group_map import apply_group_map  # noqa: E402
 from check import run_check, select_best  # noqa: E402
-from output import write_m3u, write_txt, write_json, write_badge  # noqa: E402
+from output import write_m3u, write_txt, write_json, write_badge, write_tvbox_config  # noqa: E402
 
 
 def load_config(path):
@@ -119,6 +119,8 @@ def main():
         f"{meta['update_time'][:16]} · {len(selected)} 频道",
         "brightgreen" if selected else "yellow",
     )
+    # TVBox/影视仓配置接口（一键导入）
+    write_tvbox_config(os.path.join(out_dir, "tvbox.json"), cfg)
     LOGGER.info("状态与徽章已写入 %s", out_dir)
     LOGGER.info("==> 全部完成 ✔")
 

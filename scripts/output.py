@@ -1,6 +1,7 @@
-"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt 与 json"""
+"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt、json 与配置接口"""
 import json
 import os
+import re
 from dataclasses import asdict
 
 
@@ -67,3 +68,32 @@ def write_badge(path, text, color="brightgreen"):
     }
     with _open(path) as f:
         json.dump(badge, f, ensure_ascii=False)
+
+
+def derive_links(cfg):
+    """根据 output.header.url 推导 raw 与 jsdelivr 直链基地址（用于生成配置接口）"""
+    url = (cfg.get("output") or {}).get("header", {}).get("url", "")
+    m = re.search(r"github\.com/([^/]+)/([^/]+)", url or "")
+    if not m:
+        return None, None
+    owner, repo = m.group(1), m.group(2)
+    raw_base = f"https://raw.githubusercontent.com/{owner}/{repo}/main/output"
+    jsd_base = f"https://cdn.jsdelivr.net/gh/{owner}/{repo}@main/output"
+    return raw_base, jsd_base
+
+
+def write_tvbox_config(path, cfg):
+    """生成 TVBox/影视仓「配置接口」json：填入配置地址即可一键导入直播源"""
+    raw_base, jsd_base = derive_links(cfg)
+    live_url = f"{jsd_base}/live.txt" if jsd_base else ""
+    m3u_url = f"{jsd_base}/live.m3u" if jsd_base else ""
+    data = {
+        "lives": [
+            {"name": "自动更新直播源 (TXT)", "url": live_url, "epg": ""},
+            {"name": "自动更新直播源 (M3U)", "url": m3u_url, "epg": ""},
+        ],
+        "sites": [],
+        "spider": "",
+    }
+    with _open(path) as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
