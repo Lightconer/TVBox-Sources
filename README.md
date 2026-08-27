@@ -197,9 +197,9 @@ python scripts/run.py --skip-check
 | `check.workers` | 并发测速线程数 | 30 |
 | `check.connect_timeout / read_timeout / ffprobe_timeout` | 连接 / 首包 / 探测超时（秒） | 5 / 8 / 10 |
 | `check.require_ffprobe` | 是否强制 ffprobe 媒体校验 | true |
-| `check.min_score` | 最低通过分，低于丢弃 | 40 |
+| `check.min_score` | 最低通过分，低于丢弃 | 30 |
 | `check.max_per_group` | 每分组最多保留频道数（0=不限） | 60 |
-| `check.max_urls_per_channel` | 每频道最多保留地址数（多源冗余，失败自动切换） | 5 |
+| `check.max_urls_per_channel` | 每频道最多保留地址数（多源冗余，失败自动切换） | 8 |
 | `output.formats` | 输出的格式 | m3u, txt, json |
 
 ---
@@ -219,7 +219,7 @@ python scripts/run.py --skip-check
    `git push "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF##*/}`
 
 2. **播放失败 / 请更换频道？**
-   已内置三重保障：① 测速校验会剔除死链与不可播源（Actions 端 ffprobe 严格验证）；② 频道名带 `Geo-blocked` / `Not 24/7` / `Offline` 等失效标注的会被自动过滤；③ **每个频道保留多个可用地址**（`check.max_urls_per_channel`，默认 5），单个地址失效时 TVBox 会自动切换下一个。若仍偏少，可放宽 `min_score`、调大 `max_urls_per_channel` 或增加数据源。
+   已内置三重保障：① 测速校验会剔除死链与不可播源（Actions 端 ffprobe 严格验证）；② 频道名带 `Geo-blocked` / `Not 24/7` / `Offline` 等失效标注的会被自动过滤；③ **每个频道保留多个可用地址**（`check.max_urls_per_channel`，默认 8），单个地址失效时 TVBox 会自动切换下一个。若仍偏少，可放宽 `min_score`、调大 `max_urls_per_channel` 或增加数据源。
 
 3. **要不要 commit 输出文件？**
    要。TVBox 通过 raw 链接读 `output/` 文件，文件必须提交进仓库才能被访问；`cache/`、`__pycache__` 等已 gitignore。

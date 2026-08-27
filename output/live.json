@@ -1,6 +1,6 @@
 {
   "meta": {
-    "update_time": "2026-08-27 23:08:05",
+    "update_time": "2026-08-27 23:12:08",
     "sources": [
       "iptv-org 中国频道",
       "fanmingming 央视/卫视高清(IPv4)",
@@ -10,101 +10,38 @@
     ],
     "crawled": 758,
     "dedup": 714,
-    "http_ok": 293,
-    "passed": 269,
-    "dead": 435,
-    "groups": 12,
-    "avg_latency_ms": 686
+    "http_ok": 294,
+    "passed": 289,
+    "dead": 425,
+    "groups": 11,
+    "avg_latency_ms": 730
   },
-  "total": 269,
+  "total": 289,
   "channels": [
     {
-      "name": "黑龙江卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HEILJHD/index.m3u8?gMac=unknown&livodToken=64cde00fa51eb520daec6aa6c1e3e90225906560d67b2607381a34d4431ebcc6_1720508553_604800&fromCDN=ws",
+      "name": "内蒙古卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/NMGWS/index.m3u8?gMac=unknown&livodToken=a09588cc53538af6402a57be79ed9490f6cdcdaef12f38888e5a3365a7a4d7c1_1720508643_604800&fromCDN=ws",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/黑龙江卫视.png",
+      "tvg_logo": "https://live.fanmingming.com/tv/内蒙古卫视.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
     },
     {
-      "name": "黑龙江卫视",
-      "url": "http://120.198.95.220:9901/tsfile/live/1049_1.m3u8?key=txiptv&playlive=1&down=1",
+      "name": "内蒙古卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0118_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/黑龙江卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/内蒙古卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "黑龙江卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0142_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "name": "内蒙古卫视",
+      "url": "http://61.178.227.57:9901/tsfile/live/0109_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/黑龙江卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "深圳卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/SHENZHD/index.m3u8?gMac=unknown&livodToken=6b52c18155b74d913b2a3060db6d74f2a29dd8a824d70f648a9882dca63fd962_1720509238_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/深圳卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "深圳卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0126_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "深圳卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0126_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "深圳卫视",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/szwshd.m3u8?auth=testpub",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "深圳卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/1000_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "湖北卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HUBEIHD/index.m3u8?gMac=unknown&livodToken=b8f876f4b394029039b5d1733070c8731bc880530b0fb975397a5eeb37ca0cec_1720508906_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/湖北卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "湖北卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/1001_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/湖北卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/内蒙古卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -128,7 +65,25 @@
     },
     {
       "name": "天津卫视",
+      "url": "http://111.59.24.227:8181/tsfile/live/0135_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/天津卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "天津卫视",
       "url": "http://221.7.175.154:8445/tsfile/live/0135_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/天津卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "天津卫视",
+      "url": "http://153.0.171.163:9901/tsfile/live/0135_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/天津卫视.png",
@@ -146,7 +101,7 @@
     },
     {
       "name": "天津卫视",
-      "url": "http://153.0.171.163:9901/tsfile/live/0135_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://198.204.228.26/live/tjwshd.m3u8",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/天津卫视.png",
@@ -154,83 +109,11 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "陕西卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/SXTV/index.m3u8?gMac=unknown&livodToken=c553bb820ba0fceee866c695e3e7ca27fc9cd874769c2d9c16cadad386c4a71e_1720508744_604800&fromCDN=ws",
+      "name": "天津卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0128_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/陕西卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "陕西卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1040_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "陕西卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0109_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "陕西卫视",
-      "url": "http://107.150.60.122/live/snwshd.m3u8",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "江西卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/JXWSHD/index.m3u8?gMac=unknown&livodToken=84e38030fc4f1248603777a24ade5ab82ef30103522330bb3444634a1b66307f_1720509019_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/江西卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "江西卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "江西卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1035_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "江西卫视",
-      "url": "http://111.59.24.227:8181/tsfile/live/0138_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "江西卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0132_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/天津卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -262,177 +145,6 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "四川卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/SICHD/index.m3u8?gMac=unknown&livodToken=539d7323a2cbb4240388051e285321f2684e79db2a7c484168b386d99dc393b3_1720509350_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/四川卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "四川卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1031_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "四川卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "四川卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "四川卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0139_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "内蒙古卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/NMGWS/index.m3u8?gMac=unknown&livodToken=a09588cc53538af6402a57be79ed9490f6cdcdaef12f38888e5a3365a7a4d7c1_1720508643_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/内蒙古卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "内蒙古卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0118_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/内蒙古卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "内蒙古卫视",
-      "url": "http://61.178.227.57:9901/tsfile/live/0109_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/内蒙古卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "甘肃卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GSWS/index.m3u8?gMac=unknown&livodToken=171a8342304b3c81ad3c96545782987d838c6b9fb512cc6905270159a52113c2_1720508692_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/甘肃卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "甘肃卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1047_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/甘肃卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "甘肃卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0123_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/甘肃卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "广东卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GUANGDHD/index.m3u8?gMac=unknown&livodToken=59fd71bc9ab8ccb098e20dba7502351a73b4a120648316b836686754ebd7dbd2_1720509211_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/广东卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "广东卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0125_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广东卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "广东卫视",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/gdwshd.m3u8?auth=testpub",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广东卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "广东卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0135_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广东卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "河北卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HAIBHD/index.m3u8?gMac=unknown&livodToken=e80bcd155eabf8e0dbe4c1fa52d05d048c86c1398334b5085f6c985eb88548ca_1720508762_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/河北卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "河北卫视",
-      "url": "http://event.pull.hebtv.com/jishi/weishi_tingyun.m3u8",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河北卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "河北卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0018_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河北卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "海南卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HAINHD/index.m3u8?gMac=unknown&livodToken=337c9e24645beaea9e1dc2761e5d0e44cdce5dc90c3fedafcce5f9bde7faac9a_1720509432_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/海南卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
       "name": "河南卫视",
       "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HENHD/index.m3u8?gMac=unknown&livodToken=c7713f989c35d7b798afec34071e72743fa784617458f4679369d1842cd422ac_1720508889_604800&fromCDN=ws",
       "group": "卫视",
@@ -452,7 +164,7 @@
     },
     {
       "name": "河南卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0139_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://221.7.175.154:8445/tsfile/live/0139_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河南卫视.png",
@@ -461,7 +173,7 @@
     },
     {
       "name": "河南卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0139_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://222.169.85.8:9901/tsfile/live/0139_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河南卫视.png",
@@ -478,56 +190,92 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "东方卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/DONGFHD/index.m3u8?gMac=unknown&livodToken=4cb7770cf7195c2891acab71a8b5139c0f4abf80546956b07e6b8dd94b49e4e8_1720508420_604800&fromCDN=ws",
+      "name": "河南卫视",
+      "url": "http://204.12.221.218:8181/3m1080p/haws.m3u8",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/东方卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "河南卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0121_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "黑龙江卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HEILJHD/index.m3u8?gMac=unknown&livodToken=64cde00fa51eb520daec6aa6c1e3e90225906560d67b2607381a34d4431ebcc6_1720508553_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/黑龙江卫视.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
     },
     {
-      "name": "东方卫视",
-      "url": "https://txmov2.a.kwimgs.com/bs3/video-hls/5219953535631090825_hlsb.m3u8",
+      "name": "黑龙江卫视",
+      "url": "http://120.198.95.220:9901/tsfile/live/1049_1.m3u8?key=txiptv&playlive=1&down=1",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东方卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/黑龙江卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "东方卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0124_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "name": "黑龙江卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0142_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东方卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/黑龙江卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "北京卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/BEIJHD/index.m3u8?gMac=unknown&livodToken=43dbb4a601652fcaea2ddbd73cd2f2f488aff86faee350276951eadd10dfb441_1720508364_604800&fromCDN=ws",
+      "name": "江西卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/JXWSHD/index.m3u8?gMac=unknown&livodToken=84e38030fc4f1248603777a24ade5ab82ef30103522330bb3444634a1b66307f_1720509019_604800&fromCDN=ws",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/北京卫视.png",
+      "tvg_logo": "https://live.fanmingming.com/tv/江西卫视.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
     },
     {
-      "name": "北京卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0127_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "name": "江西卫视",
+      "url": "http://111.59.24.227:8181/tsfile/live/0138_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/北京卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "北京卫视",
-      "url": "http://107.150.60.122/live/bjwshd.m3u8",
+      "name": "江西卫视",
+      "url": "http://221.7.175.154:8445/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/北京卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "江西卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1035_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "江西卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0132_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/江西卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -596,7 +344,7 @@
     },
     {
       "name": "湖南卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0128_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://221.7.175.154:8445/tsfile/live/0128_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/湖南卫视.png",
@@ -605,7 +353,7 @@
     },
     {
       "name": "湖南卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0128_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://222.169.85.8:9901/tsfile/live/0128_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/湖南卫视.png",
@@ -618,6 +366,177 @@
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/湖南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "深圳卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/SHENZHD/index.m3u8?gMac=unknown&livodToken=6b52c18155b74d913b2a3060db6d74f2a29dd8a824d70f648a9882dca63fd962_1720509238_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/深圳卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "深圳卫视",
+      "url": "http://221.7.175.154:8445/tsfile/live/0126_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "深圳卫视",
+      "url": "http://222.169.85.8:9901/tsfile/live/0126_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "深圳卫视",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/szwshd.m3u8?auth=testpub",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "深圳卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/1000_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/深圳卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "海南卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HAINHD/index.m3u8?gMac=unknown&livodToken=337c9e24645beaea9e1dc2761e5d0e44cdce5dc90c3fedafcce5f9bde7faac9a_1720509432_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/海南卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "青海卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/QHWS/index.m3u8?gMac=unknown&livodToken=495e44fa15aa6f066ed03ad059c8141856fd0591fd05036b71f202d50d2ee91f_1720508709_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/青海卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "青海卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1043_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/青海卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "湖北卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HUBEIHD/index.m3u8?gMac=unknown&livodToken=b8f876f4b394029039b5d1733070c8731bc880530b0fb975397a5eeb37ca0cec_1720508906_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/湖北卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "湖北卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/1001_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/湖北卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "新疆卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/XJWS/index.m3u8?gMac=unknown&livodToken=3b0868c32bc314dfdd41bf46f20a8179d1494db60d9ce810bb8e7be0ca092c84_1720509373_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/新疆卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "新疆卫视",
+      "url": "http://112.27.5.218:9901/tsfile/live/0110_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "新疆卫视",
+      "url": "http://222.71.55.147:9901/tsfile/live/0110_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "新疆卫视",
+      "url": "http://222.169.85.8:9901/tsfile/live/0110_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "新疆卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0143_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广东卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GUANGDHD/index.m3u8?gMac=unknown&livodToken=59fd71bc9ab8ccb098e20dba7502351a73b4a120648316b836686754ebd7dbd2_1720509211_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/广东卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "广东卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0135_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广东卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广东卫视",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/gdwshd.m3u8?auth=testpub",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广东卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广东卫视",
+      "url": "http://222.169.85.8:9901/tsfile/live/0125_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广东卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -658,6 +577,240 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
+      "name": "陕西卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/SXTV/index.m3u8?gMac=unknown&livodToken=c553bb820ba0fceee866c695e3e7ca27fc9cd874769c2d9c16cadad386c4a71e_1720508744_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/陕西卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "陕西卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1040_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "陕西卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0109_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "陕西卫视",
+      "url": "http://107.150.60.122/live/snwshd.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "陕西卫视",
+      "url": "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=snwshd",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/陕西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "东方卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/DONGFHD/index.m3u8?gMac=unknown&livodToken=4cb7770cf7195c2891acab71a8b5139c0f4abf80546956b07e6b8dd94b49e4e8_1720508420_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/东方卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "东方卫视",
+      "url": "https://txmov2.a.kwimgs.com/bs3/video-hls/5219953535631090825_hlsb.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东方卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "东方卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0124_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东方卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "甘肃卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GSWS/index.m3u8?gMac=unknown&livodToken=171a8342304b3c81ad3c96545782987d838c6b9fb512cc6905270159a52113c2_1720508692_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/甘肃卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "甘肃卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0123_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/甘肃卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "甘肃卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1047_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/甘肃卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "北京卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/BEIJHD/index.m3u8?gMac=unknown&livodToken=43dbb4a601652fcaea2ddbd73cd2f2f488aff86faee350276951eadd10dfb441_1720508364_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/北京卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "北京卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0127_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/北京卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "北京卫视",
+      "url": "http://107.150.60.122/live/bjwshd.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/北京卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广西卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GUANGXHD/index.m3u8?gMac=unknown&livodToken=a71e93bbbb5e737e3ca6045ab8958d7b1f6b03b2cfcc398439f6b9111e29a053_1720509270_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/广西卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "广西卫视",
+      "url": "http://221.7.175.154:8445/tsfile/live/0113_2.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广西卫视",
+      "url": "http://222.169.85.8:9901/tsfile/live/0113_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广西卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1029_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "广西卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0137_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "云南卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/YUNNHD/index.m3u8?gMac=unknown&livodToken=bd74183e409c86a54debf6f2452fcadd940a4b90a2e1f981832970d2f916a945_1720509300_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/云南卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "云南卫视",
+      "url": "http://222.169.85.8:9901/tsfile/live/0119_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/云南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "云南卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0117_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/云南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "东南卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/DONGNHD/index.m3u8?gMac=unknown&livodToken=5fc20660dbcb940d20412d743ece597d91c8b06af193d6a9b81ad2781b1b8a54_1720509176_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/东南卫视.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "东南卫视",
+      "url": "http://124.228.160.210:9901/tsfile/live/0137_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "东南卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0113_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "东南卫视",
+      "url": "http://live.zohi.tv/video/s10001-fztv-3/index.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东南卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
       "name": "贵州卫视",
       "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GUIZHD/index.m3u8?gMac=unknown&livodToken=c2389ebe3248f5e8bb2be6ba564202250815c1ffce8bf911a01e5e09705f6576_1720509315_604800&fromCDN=ws",
       "group": "卫视",
@@ -685,209 +838,92 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "广西卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/GUANGXHD/index.m3u8?gMac=unknown&livodToken=a71e93bbbb5e737e3ca6045ab8958d7b1f6b03b2cfcc398439f6b9111e29a053_1720509270_604800&fromCDN=ws",
+      "name": "四川卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/SICHD/index.m3u8?gMac=unknown&livodToken=539d7323a2cbb4240388051e285321f2684e79db2a7c484168b386d99dc393b3_1720509350_604800&fromCDN=ws",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/广西卫视.png",
+      "tvg_logo": "https://live.fanmingming.com/tv/四川卫视.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
     },
     {
-      "name": "广西卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1029_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "四川卫视",
+      "url": "http://221.7.175.154:8445/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "广西卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0113_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "四川卫视",
+      "url": "http://111.59.24.227:8181/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "广西卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0113_2.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "四川卫视",
+      "url": "http://222.169.85.8:9901/tsfile/live/0123_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "广西卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0137_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "name": "四川卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1031_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/广西卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "新疆卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/XJWS/index.m3u8?gMac=unknown&livodToken=3b0868c32bc314dfdd41bf46f20a8179d1494db60d9ce810bb8e7be0ca092c84_1720509373_604800&fromCDN=ws",
+      "name": "四川卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0139_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/新疆卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "四川卫视",
+      "url": "http://107.150.60.122/live/scwshd.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/四川卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "河北卫视",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/HAIBHD/index.m3u8?gMac=unknown&livodToken=e80bcd155eabf8e0dbe4c1fa52d05d048c86c1398334b5085f6c985eb88548ca_1720508762_604800&fromCDN=ws",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/河北卫视.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
     },
     {
-      "name": "新疆卫视",
-      "url": "http://112.27.5.218:9901/tsfile/live/0110_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "河北卫视",
+      "url": "http://event.pull.hebtv.com/jishi/weishi_tingyun.m3u8",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河北卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "新疆卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0110_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "河北卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0018_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "新疆卫视",
-      "url": "http://222.71.55.147:9901/tsfile/live/0110_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "新疆卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0143_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/新疆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "东南卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/DONGNHD/index.m3u8?gMac=unknown&livodToken=5fc20660dbcb940d20412d743ece597d91c8b06af193d6a9b81ad2781b1b8a54_1720509176_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/东南卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "东南卫视",
-      "url": "http://124.228.160.210:9901/tsfile/live/0137_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东南卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "东南卫视",
-      "url": "http://live.zohi.tv/video/s10001-fztv-3/index.m3u8",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东南卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "东南卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0113_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/东南卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "云南卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/YUNNHD/index.m3u8?gMac=unknown&livodToken=bd74183e409c86a54debf6f2452fcadd940a4b90a2e1f981832970d2f916a945_1720509300_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/云南卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "云南卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0117_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/云南卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "云南卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0119_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/云南卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "青海卫视",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/QHWS/index.m3u8?gMac=unknown&livodToken=495e44fa15aa6f066ed03ad059c8141856fd0591fd05036b71f202d50d2ee91f_1720508709_604800&fromCDN=ws",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/青海卫视.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "青海卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1043_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/青海卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "山西卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1039_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "山西卫视",
-      "url": "http://119.39.9.8:9901/tsfile/live/0118_1.m3u8",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "山西卫视",
-      "url": "http://153.0.171.163:9901/tsfile/live/0118_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "山西卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0120_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/河北卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -929,6 +965,15 @@
     },
     {
       "name": "浙江卫视",
+      "url": "http://ali-xwl.cztv.com/live/channel01720Plxw.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/浙江卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "浙江卫视",
       "url": "http://ali-m-l.cztv.com/channels/lantian/channel001/1080p.m3u8",
       "group": "卫视",
       "tvg_id": "浙江卫视",
@@ -956,15 +1001,6 @@
     },
     {
       "name": "浙江卫视",
-      "url": "http://ali-xwl.cztv.com/live/channel01720Plxw.m3u8",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/浙江卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "浙江卫视",
       "url": "http://112.123.243.37:50085/tsfile/live/0019_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
@@ -974,7 +1010,7 @@
     },
     {
       "name": "宁夏卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1046_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://222.169.85.8:9901/tsfile/live/0112_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/宁夏卫视.png",
@@ -983,7 +1019,7 @@
     },
     {
       "name": "宁夏卫视",
-      "url": "http://222.169.85.8:9901/tsfile/live/0112_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://222.71.55.147:9901/tsfile/live/0112_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/宁夏卫视.png",
@@ -1001,7 +1037,7 @@
     },
     {
       "name": "宁夏卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0125_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "url": "http://113.25.252.226:9901/tsfile/live/1046_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/宁夏卫视.png",
@@ -1010,10 +1046,82 @@
     },
     {
       "name": "宁夏卫视",
-      "url": "http://222.71.55.147:9901/tsfile/live/0112_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "url": "http://112.123.243.37:50085/tsfile/live/0125_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "卫视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/宁夏卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "重庆卫视",
+      "url": "http://221.7.175.154:8445/tsfile/live/0142_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "重庆卫视",
+      "url": "http://111.59.24.227:8181/tsfile/live/0142_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "重庆卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1030_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "重庆卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0131_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "山西卫视",
+      "url": "http://119.39.9.8:9901/tsfile/live/0118_1.m3u8",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "山西卫视",
+      "url": "http://153.0.171.163:9901/tsfile/live/0118_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "山西卫视",
+      "url": "http://113.25.252.226:9901/tsfile/live/1039_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "山西卫视",
+      "url": "http://112.123.243.37:50085/tsfile/live/0120_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "卫视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/山西卫视.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -1036,51 +1144,6 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "重庆卫视",
-      "url": "http://221.7.175.154:8445/tsfile/live/0142_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "重庆卫视",
-      "url": "http://113.25.252.226:9901/tsfile/live/1030_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "重庆卫视",
-      "url": "http://111.59.24.227:8181/tsfile/live/0142_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "重庆卫视",
-      "url": "http://112.123.243.37:50085/tsfile/live/0131_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/重庆卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "星空卫视",
-      "url": "http://122.224.58.42:85/tsfile/live/1024_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "卫视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/星空卫视.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
       "name": "延边卫视",
       "url": "https://srs.iyb983.cn/video/CYS/index.m3u8",
       "group": "卫视",
@@ -1099,13 +1162,13 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "BRTV 北京卫视 (1080p)",
-      "url": "http://go.bkpcp.top/mg/bjws",
+      "name": "星空卫视",
+      "url": "http://122.224.58.42:85/tsfile/live/1024_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "卫视",
-      "tvg_id": "BeijingSatelliteTV.cn@HD",
-      "tvg_logo": "https://i.imgur.com/vsktAez.png",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/星空卫视.png",
       "tvg_country": "",
-      "source": "iptv-org 中国频道"
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
       "name": "山东卫视",
@@ -1117,11 +1180,119 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
+      "name": "BRTV 北京卫视 (1080p)",
+      "url": "http://go.bkpcp.top/mg/bjws",
+      "group": "卫视",
+      "tvg_id": "BeijingSatelliteTV.cn@HD",
+      "tvg_logo": "https://i.imgur.com/vsktAez.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-12 社会与法",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV12HD/index.m3u8?gMac=unknown&livodToken=580c20b986086596a03afb85524d28a7b1255fd045cc29e549830abd92eab828_1720508158_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV12.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-13 新闻",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV13HD/index.m3u8?gMac=unknown&livodToken=f4be577234c226bfecf00f96b626bcca106a9d4eaeeaae331b860678bd3f60e7_1720508191_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV13.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-13 新闻",
+      "url": "http://113.25.252.226:9901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV13.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-11 戏曲",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV11HD/index.m3u8?gMac=unknown&livodToken=b7b4308467a66538e5a370fdfe90b3be8c54fa72c5cb958e5f43f4f56e036d2e_1720508128_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV11.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-14 少儿",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV14HD/index.m3u8?gMac=unknown&livodToken=c1f72c79ee7857898e80e822b3768418b14d710294fb16dc503997f9bce0adda_1720508238_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV14.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-5 体育",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV5_HD/index.m3u8?gMac=unknown&livodToken=0a8daf617d4530fe59311611a96dcccfd6a7c054c880e8d1cef242c8da5f0a32_1720507885_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV5.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-8 电视剧",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV8_HD/index.m3u8?gMac=unknown&livodToken=a262d6f91c91f1b3b9970ca0005377026a37645dbb4150a3131badc4e3a5ad2f_1720508010_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV8.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-15 音乐",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV15/index.m3u8?gMac=unknown&livodToken=bde6e809b30a2e9d5be77b50b95f7634e4524e2a06f94bbcec4356d0f5b54ae3_1720508275_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV15.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-3 综艺",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV3_HD/index.m3u8?gMac=unknown&livodToken=5c5d27dfa6b308e64237c7af856d43276f42c5fa0da49c14c8f267c3f853f277_1720507841_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV3.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
       "name": "CCTV-10 科教",
       "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV10HD/index.m3u8?gMac=unknown&livodToken=3372eeac7f52075d36d0edd66eab703b95c8eb3ddf8502186f235a1d890717d9_1720508080_604800&fromCDN=ws",
       "group": "央视",
       "tvg_id": "",
       "tvg_logo": "https://live.fanmingming.com/tv/CCTV10.png",
+      "tvg_country": "",
+      "source": "fanmingming 央视/卫视高清(IPv4)"
+    },
+    {
+      "name": "CCTV-4 中文国际",
+      "url": "https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1787814000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-0cb1f46f09c4ccccac0dd3f5482d7c5b&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c",
+      "group": "央视",
+      "tvg_id": "CCTV-4",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV4.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-4 中文国际",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV4HD/index.m3u8?gMac=unknown&livodToken=a2076a91d4ab3e3a8d96df561854b17563ddc027aec6e893eac3be4e11830fb7_1720507863_604800&fromCDN=ws",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV4.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
     },
@@ -1149,132 +1320,6 @@
       "group": "央视",
       "tvg_id": "CCTV-9",
       "tvg_logo": "https://live.fanmingming.com/tv/CCTV9.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-11 戏曲",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV11HD/index.m3u8?gMac=unknown&livodToken=b7b4308467a66538e5a370fdfe90b3be8c54fa72c5cb958e5f43f4f56e036d2e_1720508128_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV11.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-13 新闻",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV13HD/index.m3u8?gMac=unknown&livodToken=f4be577234c226bfecf00f96b626bcca106a9d4eaeeaae331b860678bd3f60e7_1720508191_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV13.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-13 新闻",
-      "url": "http://113.25.252.226:9901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV13.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-8 电视剧",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV8_HD/index.m3u8?gMac=unknown&livodToken=a262d6f91c91f1b3b9970ca0005377026a37645dbb4150a3131badc4e3a5ad2f_1720508010_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV8.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-14 少儿",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV14HD/index.m3u8?gMac=unknown&livodToken=c1f72c79ee7857898e80e822b3768418b14d710294fb16dc503997f9bce0adda_1720508238_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV14.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-15 音乐",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV15/index.m3u8?gMac=unknown&livodToken=bde6e809b30a2e9d5be77b50b95f7634e4524e2a06f94bbcec4356d0f5b54ae3_1720508275_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV15.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-12 社会与法",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV12HD/index.m3u8?gMac=unknown&livodToken=580c20b986086596a03afb85524d28a7b1255fd045cc29e549830abd92eab828_1720508158_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV12.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-3 (720p)",
-      "url": "http://112.30.73.119:9901/tsfile/live/0003_2.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-3 (720p)",
-      "url": "http://112.30.73.119:229/tsfile/live/0003_2.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-3 (720p)",
-      "url": "http://112.123.243.37:50085/tsfile/live/0003_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-3 (720p)",
-      "url": "http://74.91.26.218:82/live/cctv3hd.m3u8",
-      "group": "央视",
-      "tvg_id": "CCTV3.cn@SD",
-      "tvg_logo": "https://i.imgur.com/iFlkIuw.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-6",
-      "url": "http://112.30.73.119:9901/tsfile/live/0006_2.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-6",
-      "url": "http://182.140.125.47:808/hls/6/index.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-6",
-      "url": "http://124.228.160.210:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -1324,22 +1369,13 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-5 体育",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV5_HD/index.m3u8?gMac=unknown&livodToken=0a8daf617d4530fe59311611a96dcccfd6a7c054c880e8d1cef242c8da5f0a32_1720507885_604800&fromCDN=ws",
+      "name": "CCTV-1 综合",
+      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV1HD/index.m3u8?gMac=unknown&livodToken=bb800ae03c2a2601e027d128dbd1b82006eadafaf3c87df367dfbc39b38e217c_1720507748_604800&fromCDN=ws",
       "group": "央视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV5.png",
+      "tvg_logo": "https://live.fanmingming.com/tv/CCTV1.png",
       "tvg_country": "",
       "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-5",
-      "url": "http://112.30.73.119:9901/tsfile/live/0005_2.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
       "name": "CCTV-5",
@@ -1352,7 +1388,16 @@
     },
     {
       "name": "CCTV-5",
-      "url": "http://221.7.175.154:8445/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "url": "http://112.30.73.119:9901/tsfile/live/0005_2.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-5",
+      "url": "http://111.59.24.227:8181/tsfile/live/1011_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
@@ -1370,10 +1415,91 @@
     },
     {
       "name": "CCTV-5",
+      "url": "http://111.59.24.227:8181/tsfile/live/0016_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-5",
+      "url": "http://221.7.175.154:8445/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-5",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/cctv5hd.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-5",
       "url": "http://112.123.243.37:50085/tsfile/live/0005_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "央视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://112.30.73.119:9901/tsfile/live/0003_2.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://112.30.73.119:229/tsfile/live/0003_2.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://111.59.24.227:8181/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv3hd.m3u8",
+      "group": "央视",
+      "tvg_id": "CCTV3.cn@SD",
+      "tvg_logo": "https://i.imgur.com/iFlkIuw.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://112.123.243.37:50085/tsfile/live/0003_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-3 (720p)",
+      "url": "http://204.12.221.218:8181/3m1080p/cctv3.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV3.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -1396,25 +1522,7 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-4 中文国际",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV4HD/index.m3u8?gMac=unknown&livodToken=a2076a91d4ab3e3a8d96df561854b17563ddc027aec6e893eac3be4e11830fb7_1720507863_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV4.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-4 中文国际",
-      "url": "https://live-play-hls.cctvnews.cctv.com/CCTVChannel/channel_cctv4_mbd.m3u8?auth_key=1787814000-1-b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c-0cb1f46f09c4ccccac0dd3f5482d7c5b&yid=b59134a2ead43d7f783f943c8f535e7bb80c5169575b2e8efcd5b3ddea21b41c",
-      "group": "央视",
-      "tvg_id": "CCTV-4",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV4.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-1",
+      "name": "CCTV-1 (720p)",
       "url": "http://112.30.73.119:229/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
@@ -1423,7 +1531,7 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-1",
+      "name": "CCTV-1 (720p)",
       "url": "http://221.7.175.154:8445/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
@@ -1432,16 +1540,16 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-1",
-      "url": "http://204.12.221.218:8181/3m1080p/cctv1.m3u8",
+      "name": "CCTV-1 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv1hd.m3u8",
       "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV1.png",
+      "tvg_id": "CCTV1.cn@SD",
+      "tvg_logo": "https://i.imgur.com/TpA3cUl.png",
       "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+      "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-1",
+      "name": "CCTV-1 (720p)",
       "url": "http://198.204.228.26/live/cctv1hd.m3u8",
       "group": "央视",
       "tvg_id": "",
@@ -1450,7 +1558,52 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-12 (720p)",
+      "name": "CCTV-1 (720p)",
+      "url": "http://204.12.221.218:8181/3m1080p/cctv1.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV1.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-6",
+      "url": "http://112.30.73.119:9901/tsfile/live/0006_2.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-6",
+      "url": "http://124.228.160.210:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-6",
+      "url": "http://182.140.125.47:808/hls/6/index.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-6",
+      "url": "http://204.12.221.218:8181/3m1080p/cctv6.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV6.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-12",
       "url": "http://124.165.251.82:85/tsfile/live/0012_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
@@ -1459,7 +1612,7 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-12 (720p)",
+      "name": "CCTV-12",
       "url": "http://221.7.175.154:8445/tsfile/live/1010_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
@@ -1468,7 +1621,7 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-12 (720p)",
+      "name": "CCTV-12",
       "url": "http://38.75.136.137:98/gslb/dsdqbv/cctv12hd.m3u8?auth=test20251009",
       "group": "央视",
       "tvg_id": "",
@@ -1477,7 +1630,7 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-12 (720p)",
+      "name": "CCTV-12",
       "url": "http://112.123.243.37:50085/tsfile/live/0013_1.m3u8?key=txiptv&playlive=0&authid=0",
       "group": "央视",
       "tvg_id": "",
@@ -1486,65 +1639,146 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-12 (720p)",
-      "url": "http://74.91.26.218:82/live/cctv12hd.m3u8",
-      "group": "央视",
-      "tvg_id": "CCTV12.cn@SD",
-      "tvg_logo": "https://i.imgur.com/3yTuiOM.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV5+",
-      "url": "http://223.78.65.165:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "CCTV-15 (1080p)",
+      "url": "http://222.169.85.8:9901/tsfile/live/0015_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV15.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-3 综艺",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV3_HD/index.m3u8?gMac=unknown&livodToken=5c5d27dfa6b308e64237c7af856d43276f42c5fa0da49c14c8f267c3f853f277_1720507841_604800&fromCDN=ws",
+      "name": "CCTV-15 (1080p)",
+      "url": "https://xykt-fix.github.io/play/a02e/index.m3u8",
       "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV3.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-1 综合",
-      "url": "http://jxcbn.ws-cdn.gitv.tv/hls/CCTV1HD/index.m3u8?gMac=unknown&livodToken=bb800ae03c2a2601e027d128dbd1b82006eadafaf3c87df367dfbc39b38e217c_1720507748_604800&fromCDN=ws",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/CCTV1.png",
-      "tvg_country": "",
-      "source": "fanmingming 央视/卫视高清(IPv4)"
-    },
-    {
-      "name": "CCTV-17 (1080p)",
-      "url": "http://221.7.175.154:8445/tsfile/live/1009_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV17.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-17 (1080p)",
-      "url": "http://74.91.26.218:82/live/cctv17hd.m3u8",
-      "group": "央视",
-      "tvg_id": "CCTV17.cn@HD",
-      "tvg_logo": "https://i.imgur.com/jSQURxS.png",
+      "tvg_id": "CCTV15.cn@SD",
+      "tvg_logo": "https://i.imgur.com/CCV0eRG.png",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-9 (576i)",
-      "url": "http://219.147.245.238:25480/newlive/live/hls/10/live.m3u8",
+      "name": "CCTV-15 (1080p)",
+      "url": "http://219.147.245.238:25480/newlive/live/hls/16/live.m3u8",
       "group": "央视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV9.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV15.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-15 (1080p)",
+      "url": "http://112.123.243.37:50085/tsfile/live/0016_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV15.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://116.128.243.121:85/tsfile/live/0002_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://221.7.175.154:8445/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://173.208.212.130:8181/1080p/cctv2.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://204.12.221.218:8181/3m1080p/cctv2.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://173.208.212.130:8181/720p/cctv2.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://198.204.228.26/live/cctv2hd.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-2 (720p)",
+      "url": "http://74.91.26.218:82/live/cctv2hd.m3u8",
+      "group": "央视",
+      "tvg_id": "CCTV2.cn@SD",
+      "tvg_logo": "https://i.imgur.com/ILamhwU.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-4",
+      "url": "http://36.136.38.87:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-4",
+      "url": "http://221.7.175.154:8445/tsfile/live/1003_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-4",
+      "url": "http://207.56.13.146:81/cdnlive/cctv4.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-4",
+      "url": "http://112.123.243.37:50085/tsfile/live/0004_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-4",
+      "url": "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv4k",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -1577,6 +1811,24 @@
     },
     {
       "name": "CCTV-9 (576i)",
+      "url": "http://219.147.245.238:25480/newlive/live/hls/10/live.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV9.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-9 (576i)",
+      "url": "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv9hd",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV9.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-9 (576i)",
       "url": "http://74.91.26.218:82/live/cctv9hd.m3u8",
       "group": "央视",
       "tvg_id": "",
@@ -1585,38 +1837,29 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-4",
-      "url": "http://221.7.175.154:8445/tsfile/live/1003_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "CCTV-17 (1080p)",
+      "url": "http://221.7.175.154:8445/tsfile/live/1009_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV17.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
-      "name": "CCTV-4",
-      "url": "http://36.136.38.87:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "name": "CCTV-17 (1080p)",
+      "url": "http://74.91.26.218:82/live/cctv17hd.m3u8",
       "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_id": "CCTV17.cn@HD",
+      "tvg_logo": "https://i.imgur.com/jSQURxS.png",
       "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+      "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-4",
-      "url": "http://112.123.243.37:50085/tsfile/live/0004_1.m3u8?key=txiptv&playlive=0&authid=0",
+      "name": "CCTV-13 (1080p)",
+      "url": "http://111.59.24.227:8181/tsfile/live/0013_1.m3u8?key=txiptv&playlive=1&authid=0",
       "group": "央视",
       "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-4",
-      "url": "http://207.56.13.146:81/cdnlive/cctv4.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV4.png",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV13.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -1640,6 +1883,15 @@
     },
     {
       "name": "CCTV-13 (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqbv/cctv13hd.m3u8?auth=test20251009",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV13.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-13 (1080p)",
       "url": "http://go.bkpcp.top/mg/cctv13",
       "group": "央视",
       "tvg_id": "CCTV13.cn@HD",
@@ -1649,7 +1901,7 @@
     },
     {
       "name": "CCTV-13 (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqbv/cctv13hd.m3u8?auth=test20251009",
+      "url": "http://63.141.230.178:82/gslb/zbdq5.m3u8?id=cctv13hd",
       "group": "央视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV13.png",
@@ -1662,114 +1914,6 @@
       "group": "央视",
       "tvg_id": "",
       "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV13.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-2 (720p)",
-      "url": "http://221.7.175.154:8445/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-2 (720p)",
-      "url": "http://116.128.243.121:85/tsfile/live/0002_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-2 (720p)",
-      "url": "http://173.208.212.130:8181/1080p/cctv2.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-2 (720p)",
-      "url": "http://74.91.26.218:82/live/cctv2hd.m3u8",
-      "group": "央视",
-      "tvg_id": "CCTV2.cn@SD",
-      "tvg_logo": "https://i.imgur.com/ILamhwU.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-2 (720p)",
-      "url": "http://204.12.221.218:8181/3m1080p/cctv2.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV2.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-15 (1080p)",
-      "url": "http://219.147.245.238:25480/newlive/live/hls/16/live.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV15.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-15 (1080p)",
-      "url": "https://xykt-fix.github.io/play/a02e/index.m3u8",
-      "group": "央视",
-      "tvg_id": "CCTV15.cn@SD",
-      "tvg_logo": "https://i.imgur.com/CCV0eRG.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-15 (1080p)",
-      "url": "http://222.169.85.8:9901/tsfile/live/0015_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV15.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-15 (1080p)",
-      "url": "http://112.123.243.37:50085/tsfile/live/0016_1.m3u8?key=txiptv&playlive=0&authid=0",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV15.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-16 (1080p)",
-      "url": "http://219.147.245.238:25480/newlive/live/hls/17/live.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV16.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "CCTV-16 (1080p)",
-      "url": "http://74.91.26.218:82/live/cctv16hd.m3u8",
-      "group": "央视",
-      "tvg_id": "CCTV16.cn@HD",
-      "tvg_logo": "https://i.imgur.com/ZzV6JQp.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-16 (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqbv/cctv16hd.m3u8?auth=test20251009",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV16.png",
       "tvg_country": "",
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
@@ -1810,6 +1954,42 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
+      "name": "CCTV-16 (1080p)",
+      "url": "http://219.147.245.238:25480/newlive/live/hls/17/live.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV16.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV-16 (1080p)",
+      "url": "http://74.91.26.218:82/live/cctv16hd.m3u8",
+      "group": "央视",
+      "tvg_id": "CCTV16.cn@HD",
+      "tvg_logo": "https://i.imgur.com/ZzV6JQp.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-16 (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqbv/cctv16hd.m3u8?auth=test20251009",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV16.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "CCTV5+",
+      "url": "http://223.78.65.165:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/CCTV5.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
       "name": "CCTV-11 (720p)",
       "url": "http://219.147.245.238:25480/newlive/live/hls/12/live.m3u8",
       "group": "央视",
@@ -1837,6 +2017,24 @@
       "source": "best-fan 每日检测(央视/卫视/体育/付费)"
     },
     {
+      "name": "CGTN俄语",
+      "url": "https://0472.org/hls/cgtne.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN俄语.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "CCTV-Culture of Quality (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVCultureofQuality.cn@SD",
+      "tvg_logo": "https://i.imgur.com/Paig8gG.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
       "name": "CCTV-7 (720p)",
       "url": "http://219.147.245.238:25480/newlive/live/hls/8/live.m3u8",
       "group": "央视",
@@ -1855,11 +2053,11 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-Health (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/wsjk.m3u8?auth=testpub",
+      "name": "CCTV-Storm Football (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyzq.m3u8?auth=testpub",
       "group": "央视",
-      "tvg_id": "CCTVHealth.cn@HD",
-      "tvg_logo": "https://i.imgur.com/AzpRtCz.png",
+      "tvg_id": "CCTVStormFootball.cn@HD",
+      "tvg_logo": "https://i.imgur.com/Fy6HkX0.png",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -1873,96 +2071,6 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-Storm Theater (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyjc.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVStormTheater.cn@HD",
-      "tvg_logo": "https://i.imgur.com/rEttkKm.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-Culture of Quality (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/ysjp.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVCultureofQuality.cn@SD",
-      "tvg_logo": "https://i.imgur.com/Paig8gG.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-Weapon & Technology (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/gfjs.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVWeaponTechnology.cn@HD",
-      "tvg_logo": "https://i.imgur.com/QlF96eS.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-Billiards (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVBilliards.cn@HD",
-      "tvg_logo": "https://i.imgur.com/WK3keM9.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-Women's Fashion (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/nxss.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVWomensFashion.cn@SD",
-      "tvg_logo": "https://i.imgur.com/FVbP0aP.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CGTN英语",
-      "url": "https://0472.org/hls/cgtn.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "CGTN记录",
-      "url": "https://0472.org/hls/cgtnd.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN纪录.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "CCTV-Nostalgia Theater (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/hjjc.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVNostalgiaTheater.cn@HD",
-      "tvg_logo": "https://i.imgur.com/TVs9PBc.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CCTV-World Geography (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/sjdl.m3u8?auth=testpub",
-      "group": "央视",
-      "tvg_id": "CCTVWorldGeography.cn@SD",
-      "tvg_logo": "https://i.imgur.com/V2ncOXi.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CGTN阿语",
-      "url": "https://0472.org/hls/cgtna.m3u8",
-      "group": "央视",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN阿语.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
       "name": "CCTV-The First Theater (1080p)",
       "url": "http://38.75.136.137:98/gslb/dsdqpub/dyjc.m3u8?auth=testpub",
       "group": "央视",
@@ -1972,11 +2080,11 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "CCTV-Storm Football (1080p)",
-      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyzq.m3u8?auth=testpub",
+      "name": "CCTV-Billiards (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/ystq.m3u8?auth=testpub",
       "group": "央视",
-      "tvg_id": "CCTVStormFootball.cn@HD",
-      "tvg_logo": "https://i.imgur.com/Fy6HkX0.png",
+      "tvg_id": "CCTVBilliards.cn@HD",
+      "tvg_logo": "https://i.imgur.com/WK3keM9.png",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -1999,6 +2107,15 @@
       "source": "iptv-org 中国频道"
     },
     {
+      "name": "CGTN英语",
+      "url": "https://0472.org/hls/cgtn.m3u8",
+      "group": "央视",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
       "name": "CGTN法语",
       "url": "https://0472.org/hls/cgtnf.m3u8",
       "group": "央视",
@@ -2008,13 +2125,67 @@
       "source": "fanmingming IPv6专用(国内宽带流畅)"
     },
     {
-      "name": "CGTN俄语",
-      "url": "https://0472.org/hls/cgtne.m3u8",
+      "name": "CCTV-Nostalgia Theater (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/hjjc.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVNostalgiaTheater.cn@HD",
+      "tvg_logo": "https://i.imgur.com/TVs9PBc.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Health (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/wsjk.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVHealth.cn@HD",
+      "tvg_logo": "https://i.imgur.com/AzpRtCz.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-World Geography (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/sjdl.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVWorldGeography.cn@SD",
+      "tvg_logo": "https://i.imgur.com/V2ncOXi.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Storm Theater (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/fyjc.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVStormTheater.cn@HD",
+      "tvg_logo": "https://i.imgur.com/rEttkKm.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CCTV-Weapon & Technology (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/gfjs.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVWeaponTechnology.cn@HD",
+      "tvg_logo": "https://i.imgur.com/QlF96eS.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "CGTN阿语",
+      "url": "https://0472.org/hls/cgtna.m3u8",
       "group": "央视",
       "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN俄语.png",
+      "tvg_logo": "https://live.fanmingming.cn/tv/CGTN阿语.png",
       "tvg_country": "",
       "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "CCTV-Women's Fashion (1080p)",
+      "url": "http://38.75.136.137:98/gslb/dsdqpub/nxss.m3u8?auth=testpub",
+      "group": "央视",
+      "tvg_id": "CCTVWomensFashion.cn@SD",
+      "tvg_logo": "https://i.imgur.com/FVbP0aP.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
     },
     {
       "name": "CGTN西语",
@@ -2044,11 +2215,29 @@
       "source": "iptv-org 中国频道"
     },
     {
+      "name": "Anshun Comprehensive News Channel",
+      "url": "https://hplayer1.juyun.tv/camera/154379194.m3u8",
+      "group": "其他",
+      "tvg_id": "AnshunComprehensiveNewsChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/anshun.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
       "name": "Chifeng Comprehensive News Chanel",
       "url": "http://play1-qk.nmtv.cn/live/1735546697341033.m3u8",
       "group": "其他",
       "tvg_id": "ChifengComprehensiveNewsChanel.cn@SD",
       "tvg_logo": "https://www.tvchinese.net/uploads/tv/cfxwzhpd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Siping TV",
+      "url": "http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598",
+      "group": "其他",
+      "tvg_id": "SipingTV.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/sptv1.jpg",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2071,24 +2260,6 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "Siping TV",
-      "url": "http://stream2.jlntv.cn/sptv/sd/live.m3u8?_upt=f27750421743154598",
-      "group": "其他",
-      "tvg_id": "SipingTV.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/sptv1.jpg",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "QTV-1",
-      "url": "http://video10.qtv.com.cn/drm/qtv1at/manifest.m3u8",
-      "group": "其他",
-      "tvg_id": "QTV1.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv1.jpg",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
       "name": "QTV-5",
       "url": "http://video10.qtv.com.cn/drm/qtv5at/manifest.m3u8",
       "group": "其他",
@@ -2107,15 +2278,6 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "QTV-3",
-      "url": "http://video10.qtv.com.cn/drm/qtv3at/manifest.m3u8",
-      "group": "其他",
-      "tvg_id": "QTV3.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv3.jpg",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
       "name": "QTV-4",
       "url": "http://video10.qtv.com.cn/drm/qtv4at/manifest.m3u8",
       "group": "其他",
@@ -2125,11 +2287,20 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "Lanzhou Comprehensive News Channel",
-      "url": "https://liveplus.lzr.com.cn/xwzh/HD/live.m3u8",
+      "name": "QTV-1",
+      "url": "http://video10.qtv.com.cn/drm/qtv1at/manifest.m3u8",
       "group": "其他",
-      "tvg_id": "LanzhouComprehensiveNewsChannel.cn@SD",
-      "tvg_logo": "https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_c2a13a952c0111b21f081d672798c8ed~c5_300x300.jpeg?from=2956013662",
+      "tvg_id": "QTV1.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv1.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "QTV-3",
+      "url": "http://video10.qtv.com.cn/drm/qtv3at/manifest.m3u8",
+      "group": "其他",
+      "tvg_id": "QTV3.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv3.jpg",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2143,11 +2314,11 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "Anshun Comprehensive News Channel",
-      "url": "https://hplayer1.juyun.tv/camera/154379194.m3u8",
+      "name": "CND Film Middle School Channel",
+      "url": "http://live2.rxip.sc96655.com/live/zxs_4000.m3u8?A=&E=&K=&P=&S=&U=",
       "group": "其他",
-      "tvg_id": "AnshunComprehensiveNewsChannel.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/anshun.jpg",
+      "tvg_id": "CNDFilmMiddleSchoolChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/4uG8HsQ.png",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2161,20 +2332,20 @@
       "source": "iptv-org 中国频道"
     },
     {
+      "name": "Lanzhou Comprehensive News Channel",
+      "url": "https://liveplus.lzr.com.cn/xwzh/HD/live.m3u8",
+      "group": "其他",
+      "tvg_id": "LanzhouComprehensiveNewsChannel.cn@SD",
+      "tvg_logo": "https://p3-pc.douyinpic.com/img/aweme-avatar/tos-cn-avt-0015_c2a13a952c0111b21f081d672798c8ed~c5_300x300.jpeg?from=2956013662",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
       "name": "Angel TV Chinese (720p)",
       "url": "https://janya-digimix.akamaized.net/vglive-sk-999451/chinese/ngrp:angelchinese_all/playlist.m3u8",
       "group": "其他",
       "tvg_id": "AngelTV.in@Chinese",
       "tvg_logo": "https://i.imgur.com/qKLEGU7.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "CND Film Middle School Channel",
-      "url": "http://live2.rxip.sc96655.com/live/zxs_4000.m3u8?A=&E=&K=&P=&S=&U=",
-      "group": "其他",
-      "tvg_id": "CNDFilmMiddleSchoolChannel.cn@SD",
-      "tvg_logo": "https://i.imgur.com/4uG8HsQ.png",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2197,155 +2368,11 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "咪咕4K 2",
-      "url": "http://gslbserv.itv.cmvideo.cn/3000000010000015686/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000015686&livemode=1&stbId=3",
-      "group": "付费",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/咪咕视频.png",
-      "tvg_country": "",
-      "source": "fanmingming 综合源(央视/卫视/地方/付费)"
-    },
-    {
-      "name": "咪咕4K 1",
-      "url": "http://gslbserv.itv.cmvideo.cn/3000000010000005180/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000005180&livemode=1&stbId=3",
-      "group": "付费",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/咪咕视频.png",
-      "tvg_country": "",
-      "source": "fanmingming 综合源(央视/卫视/地方/付费)"
-    },
-    {
-      "name": "咪咕全民热练",
-      "url": "http://gslbserv.itv.cmvideo.cn/3000000020000031315/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000031315&livemode=1&stbId=3",
-      "group": "付费",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.com/tv/咪咕视频.png",
-      "tvg_country": "",
-      "source": "fanmingming 综合源(央视/卫视/地方/付费)"
-    },
-    {
-      "name": "凤凰资讯",
-      "url": "http://120.198.95.220:9901/tsfile/live/1037_1.m3u8?key=txiptv&playlive=1&down=1",
-      "group": "港澳台",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰资讯.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "凤凰资讯",
-      "url": "http://221.7.175.154:8445/tsfile/live/1021_1.m3u8?key=txiptv&playlive=1&authid=0",
-      "group": "港澳台",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰资讯.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "凤凰中文",
-      "url": "http://120.198.95.220:9901/tsfile/live/1036_1.m3u8?key=txiptv&playlive=1&down=1",
-      "group": "港澳台",
-      "tvg_id": "",
-      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰中文.png",
-      "tvg_country": "",
-      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
-    },
-    {
-      "name": "浙江新闻",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/浙江新闻.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "之江纪录",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel012/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/之江纪录.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "浙江教科",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel004/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/浙江教科影视.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "浙江钱江",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel002/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/钱江都市.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "浙江经济",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel003/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/浙江经济生活.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "浙江少儿",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/浙江少儿.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "浙江民生",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel006/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/浙江民生休闲.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "浙江国际",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel010/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "",
-      "tvg_logo": "https://live.fanmingming.cn/tv/浙江国际.png",
-      "tvg_country": "",
-      "source": "fanmingming IPv6专用(国内宽带流畅)"
-    },
-    {
-      "name": "Zhejiang TV International",
-      "url": "https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8",
-      "group": "浙江",
-      "tvg_id": "ZhejiangInternationalChannel.cn@SD",
-      "tvg_logo": "https://i.imgur.com/XOL1Hph.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "Kangba TV",
-      "url": "http://110.185.237.164:8888/hls/30/index.m3u8",
+      "name": "Jilin Rural Channel",
+      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/3ffc4824dce54b92be185555923ce382/index.m3u8",
       "group": "其他省市",
-      "tvg_id": "KangbaTV.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/kangbatv.jpg",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "Jilin Movie Channel",
-      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/906341e6f19b4c4bacdc89941eb85d12/index.m3u8",
-      "group": "其他省市",
-      "tvg_id": "JilinMovieChannel.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlyspd.jpg",
+      "tvg_id": "JilinRuralChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlxcpd.jpg",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2359,11 +2386,29 @@
       "source": "iptv-org 中国频道"
     },
     {
-      "name": "Jilin Rural Channel",
-      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/3ffc4824dce54b92be185555923ce382/index.m3u8",
+      "name": "Jilin Movie Channel",
+      "url": "https://lsfb.avap.jilintv.cn/zqvk7vpj/channel/906341e6f19b4c4bacdc89941eb85d12/index.m3u8",
       "group": "其他省市",
-      "tvg_id": "JilinRuralChannel.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlxcpd.jpg",
+      "tvg_id": "JilinMovieChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/jlyspd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Guangxi Variety & Travel Channel",
+      "url": "http://111.59.24.227:8181/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "其他省市",
+      "tvg_id": "GuangxiVarietyTravelChannel.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/gxzypd.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "Kangba TV",
+      "url": "http://110.185.237.164:8888/hls/30/index.m3u8",
+      "group": "其他省市",
+      "tvg_id": "KangbaTV.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/kangbatv.jpg",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2395,20 +2440,155 @@
       "source": "iptv-org 中国频道"
     },
     {
+      "name": "咪咕全民热练",
+      "url": "http://gslbserv.itv.cmvideo.cn/3000000020000031315/1.m3u8?channel-id=FifastbLive&Contentid=3000000020000031315&livemode=1&stbId=3",
+      "group": "付费",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/咪咕视频.png",
+      "tvg_country": "",
+      "source": "fanmingming 综合源(央视/卫视/地方/付费)"
+    },
+    {
+      "name": "咪咕4K 1",
+      "url": "http://gslbserv.itv.cmvideo.cn/3000000010000005180/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000005180&livemode=1&stbId=3",
+      "group": "付费",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/咪咕视频.png",
+      "tvg_country": "",
+      "source": "fanmingming 综合源(央视/卫视/地方/付费)"
+    },
+    {
+      "name": "咪咕4K 2",
+      "url": "http://gslbserv.itv.cmvideo.cn/3000000010000015686/1.m3u8?channel-id=FifastbLive&Contentid=3000000010000015686&livemode=1&stbId=3",
+      "group": "付费",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.com/tv/咪咕视频.png",
+      "tvg_country": "",
+      "source": "fanmingming 综合源(央视/卫视/地方/付费)"
+    },
+    {
+      "name": "凤凰中文",
+      "url": "http://120.198.95.220:9901/tsfile/live/1036_1.m3u8?key=txiptv&playlive=1&down=1",
+      "group": "港澳台",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰中文.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "凤凰资讯",
+      "url": "http://221.7.175.154:8445/tsfile/live/1021_1.m3u8?key=txiptv&playlive=1&authid=0",
+      "group": "港澳台",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰资讯.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "凤凰资讯",
+      "url": "http://120.198.95.220:9901/tsfile/live/1037_1.m3u8?key=txiptv&playlive=1&down=1",
+      "group": "港澳台",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰资讯.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "凤凰香港",
+      "url": "http://122.152.202.33/s/81a8a44f/index.m3u8?id=fhhk",
+      "group": "港澳台",
+      "tvg_id": "",
+      "tvg_logo": "https://gitee.com/mytv-android/myTVlogo/raw/main/img/凤凰香港.png",
+      "tvg_country": "",
+      "source": "best-fan 每日检测(央视/卫视/体育/付费)"
+    },
+    {
+      "name": "之江纪录",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel012/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/之江纪录.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "浙江新闻",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel007/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/浙江新闻.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "浙江教科",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel004/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/浙江教科影视.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "浙江民生",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel006/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/浙江民生休闲.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "浙江经济",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel003/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/浙江经济生活.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "浙江国际",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel010/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/浙江国际.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "浙江钱江",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel002/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/钱江都市.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
+      "name": "Zhejiang TV International",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel10/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "ZhejiangInternationalChannel.cn@SD",
+      "tvg_logo": "https://i.imgur.com/XOL1Hph.png",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
+      "name": "浙江少儿",
+      "url": "https://ali-m-l.cztv.com/channels/lantian/channel008/1080p.m3u8",
+      "group": "浙江",
+      "tvg_id": "",
+      "tvg_logo": "https://live.fanmingming.cn/tv/浙江少儿.png",
+      "tvg_country": "",
+      "source": "fanmingming IPv6专用(国内宽带流畅)"
+    },
+    {
       "name": "Hunan TV (2160p)",
       "url": "http://hlsal-ldvt.qing.mgtv.com/nn_live/nn_x64/dWlwPTEyNy4wLjAuMSZ1aWQ9cWluZy1jbXMmbm5fdGltZXpvbmU9OCZjZG5leF9pZD1hbF9obHNfbGR2dCZ1dWlkPTliODY4NmU5ZTM2YzYwMmMmZT02OTE0NjA0JnY9MSZpZD1ITldTWkdTVCZzPTcwN2RiYTc2YzJjNmJmMTQ4MmUyZGYzOWU2NWM3YWFi/HNWSZGST.m3u8",
       "group": "湖南",
       "tvg_id": "HunanTV.cn@SD",
       "tvg_logo": "https://parco-zh.github.io/demo/HNWS.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "QTV-6",
-      "url": "http://video10.qtv.com.cn/drm/qtv6at/manifest.m3u8",
-      "group": "少儿",
-      "tvg_id": "QTV6.cn@SD",
-      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv6.jpg",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     },
@@ -2422,20 +2602,20 @@
       "source": "iptv-org 中国频道"
     },
     {
+      "name": "QTV-6",
+      "url": "http://video10.qtv.com.cn/drm/qtv6at/manifest.m3u8",
+      "group": "少儿",
+      "tvg_id": "QTV6.cn@SD",
+      "tvg_logo": "https://www.tvchinese.net/uploads/tv/qdtv6.jpg",
+      "tvg_country": "",
+      "source": "iptv-org 中国频道"
+    },
+    {
       "name": "Guangzhou TV",
       "url": "https://tencentplaybusiness.gztv.com/live/zonghes.m3u8",
       "group": "广东",
       "tvg_id": "GuangzhouTV.cn@SD",
       "tvg_logo": "https://i.imgur.com/ff3KQXp.png",
-      "tvg_country": "",
-      "source": "iptv-org 中国频道"
-    },
-    {
-      "name": "风尚购物 (1080p)",
-      "url": "http://183.207.248.71/cntv/live1/fengshanggw/fengshanggw",
-      "group": "购物",
-      "tvg_id": "FengshangShoppingChannel.cn@SD",
-      "tvg_logo": "https://i.imgur.com/WNhfnUR.png",
       "tvg_country": "",
       "source": "iptv-org 中国频道"
     }

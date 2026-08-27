@@ -48,9 +48,9 @@ check:
   read_timeout: 8           # 首包读取超时（秒）
   ffprobe_timeout: 10       # ffprobe 媒体探测超时（秒）
   require_ffprobe: true     # 是否强制 ffprobe 验证可播放媒体流（Actions 已装 ffmpeg）
-  min_score: 40             # 最低通过分（0-100）：延迟60分+媒体有效性40分，低于则丢弃
+  min_score: 30             # 最低通过分（0-100）：延迟60分+媒体有效性40分，低于则丢弃
   max_per_group: 60         # 每个分组最多保留的频道数（0=不限）
-  max_urls_per_channel: 5   # 每个频道最多保留的可用地址数（多源冗余，播放失败自动切换）
+  max_urls_per_channel: 8   # 每个频道最多保留的可用地址数（多源冗余，播放失败自动切换）
 
 output:
   dir: "output"
