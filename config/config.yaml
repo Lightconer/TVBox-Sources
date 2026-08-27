@@ -5,25 +5,31 @@
 
 crawl:
   # ---------- 数据源列表（m3u / txt / json 均可，可随时增删，enabled=false 可临时停用） ----------
+  # 每个源优先用 GitHub raw 直连（Actions 海外环境稳定快速）；
+  # 若某源 raw 访问失败，脚本会自动降级到 jsdelivr CDN 镜像（国内可直连）。
+  # 本地在国内跑时，可设环境变量 LIVE_SOURCE_PREFER_MIRROR=1 让镜像优先。
   sources:
-    - name: "iptv-org 全球公开源"
-      url: "https://iptv-org.github.io/iptv/index.m3u"
-      enabled: false        # 全量源太大，默认关闭；需要时打开
     - name: "iptv-org 中国频道"
       url: "https://iptv-org.github.io/iptv/countries/cn.m3u"
       enabled: true
-    - name: "iptv-org 中国·中文频道"
-      url: "https://iptv-org.github.io/iptv/languages/zho.m3u"
-      enabled: false        # 与 cn 源高度重合，按需开启
-    # - name: "自建/其他公开源"
-    #   url: "https://example.com/live.txt"
-    #   enabled: true
+    - name: "fanmingming 央视/卫视高清(IPv4)"
+      url: "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/index.m3u"
+      enabled: true
+    - name: "fanmingming 综合源(央视/卫视/地方/付费)"
+      url: "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/itv.m3u"
+      enabled: true
+    - name: "fanmingming IPv6专用(国内宽带流畅)"
+      url: "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+      enabled: true   # 若你家宽带没有 IPv6，把这行改成 false 即可
+    - name: "best-fan 每日检测(央视/卫视/体育/付费)"
+      url: "https://raw.githubusercontent.com/best-fan/iptv-sources/main/cn_all.m3u8"
+      enabled: true
 
   # ---------- 请求参数 ----------
   request:
-    timeout: 15             # 单次请求超时（秒）
-    retries: 2              # 失败重试次数
-    max_size: 20            # 单源最大下载大小（MB），防止超大源拖慢任务
+    timeout: 12             # 单次请求超时（秒）
+    retries: 1              # 失败重试次数（配合镜像降级，重试多了会拖慢 fallback）
+    max_size: 20            # 单源最大下载大小（MB）
     user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 
   # ---------- 过滤规则 ----------
@@ -31,19 +37,19 @@ crawl:
     include_groups: []       # 仅保留这些分组（小写匹配；留空=全部）。例: ["央视", "卫视"]
     exclude_groups: []       # 排除的分组，支持正则。例: ["test", "境外"]
     include_keywords: []     # 频道名需包含的关键词（留空=全部）。例: ["CCTV"]
-    exclude_keywords: ["测试", "test", "广告", "演示"]  # 频道名含这些词则剔除
+    exclude_keywords: ["测试", "test", "广告", "演示", "预告"]  # 频道名含这些词则剔除
     country: ""              # 按 tvg-country 过滤（如 "CN"；留空=不过滤）
     allowed_schemes: ["http", "https"]   # 只保留这些协议开头的地址
 
 check:
   enabled: true
-  workers: 30               # 并发测速线程数（Actions 机器通常给 2 核，30 线程足够）
+  workers: 30               # 并发测速线程数
   connect_timeout: 5        # TCP 连接超时（秒）
   read_timeout: 8           # 首包读取超时（秒）
   ffprobe_timeout: 10       # ffprobe 媒体探测超时（秒）
-  require_ffprobe: true     # 是否强制 ffprobe 验证可播放媒体流（Actions 已装 ffmpeg；本地没装会自动降级为仅 HTTP 测速）
+  require_ffprobe: true     # 是否强制 ffprobe 验证可播放媒体流（Actions 已装 ffmpeg）
   min_score: 40             # 最低通过分（0-100）：延迟60分+媒体有效性40分，低于则丢弃
-  max_per_group: 50         # 每个分组最多保留的频道数（0=不限）
+  max_per_group: 60         # 每个分组最多保留的频道数（0=不限）
 
 output:
   dir: "output"
@@ -52,3 +58,34 @@ output:
     name: "自动更新直播源"
     url: "https://github.com/Lightconer/TVBox-Sources"
     desc: "由 GitHub Actions 自动爬取+测速生成"
+
+  # ---------- 中文分组映射：按频道名(含原分组名)归入统一中文分组 ----------
+  # 规则按顺序匹配，先命中先生效（正则）。可自由增删改。
+  group_map:
+    enabled: true
+    rules:
+      - { group: "央视", pattern: "CCTV|央视|CGTN|中央" }
+      - { group: "港澳台", pattern: "香港|澳门|台湾|凤凰|Phoenix|翡翠|TVB|HOY|中天|东森|民视|三立|明珠|无线|华娱" }
+      - { group: "卫视", pattern: "卫视|Satellite" }
+      - { group: "河北", pattern: "河北|Hebei|石家庄|唐山|秦皇岛|邯郸|邢台|保定|张家口|承德|沧州|廊坊|衡水" }
+      - { group: "北京", pattern: "北京|Beijing|BTV|BRTV|卡酷" }
+      - { group: "天津", pattern: "天津|Tianjin" }
+      - { group: "上海", pattern: "上海|Shanghai|上海东方" }
+      - { group: "广东", pattern: "广东|Guangdong|广州|Guangzhou|深圳|Shenzhen|南方|珠江|嘉佳" }
+      - { group: "浙江", pattern: "浙江|Zhejiang|杭州|宁波|温州" }
+      - { group: "江苏", pattern: "江苏|Jiangsu|南京|苏州|无锡" }
+      - { group: "湖南", pattern: "湖南|Hunan|长沙|金鹰|快乐" }
+      - { group: "山东", pattern: "山东|Shandong|济南|青岛" }
+      - { group: "其他省市", pattern: "福建|Fujian|厦门|安徽|Anhui|江西|Jiangxi|湖北|Hubei|河南|Henan|四川|Sichuan|成都|重庆|Chongqing|贵州|Guizhou|云南|Yunnan|广西|Guangxi|海南|Hainan|山西|Shanxi|陕西|Shaanxi|西安|甘肃|Gansu|青海|Qinghai|宁夏|Ningxia|新疆|Xinjiang|西藏|Xizang|Tibet|内蒙古|Inner Mongolia|Nei Monggol|辽宁|Liaoning|沈阳|吉林|Jilin|黑龙江|Heilongjiang|哈尔滨|大连|Dalian|Kangba|康巴" }
+      - { group: "体育", pattern: "体育|赛事|劲爆|台球|高尔夫|Golf|足球|篮球|英超|西甲|德甲|欧冠|搏击|五星体育" }
+      - { group: "电影", pattern: "电影|CHC|影院|影视|家庭剧场" }
+      - { group: "少儿", pattern: "少儿|卡通|动漫|Kids|Baby|优漫|炫动" }
+      - { group: "新闻", pattern: "新闻|资讯|新华|CNN|BBC|NHK|CNA|Bloomberg|半岛|国际台" }
+      - { group: "纪录", pattern: "纪录|纪实|探索|Discovery|国家地理|DOX|全纪实" }
+      - { group: "音乐", pattern: "音乐|MV|Hi-Res|风华|魅力" }
+      - { group: "戏曲", pattern: "戏曲|梨园" }
+      - { group: "财经", pattern: "财经|第一财经|CNBC|财富" }
+      - { group: "科教", pattern: "科教|教育|学堂|科技|法治" }
+      - { group: "购物", pattern: "购物|乐购|家有购物|东方购物" }
+      - { group: "付费", pattern: "iHOT|SiTV|NewTV|哈哈|都市剧场|精品|尊享|咪咕|Migu|Miguvideo" }
+      - { group: "其他", pattern: ".*" }

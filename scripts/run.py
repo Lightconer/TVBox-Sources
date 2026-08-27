@@ -17,6 +17,7 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import setup_logging, LOGGER  # noqa: E402
 from crawl import crawl_sources, apply_filters  # noqa: E402
+from group_map import apply_group_map  # noqa: E402
 from check import run_check, select_best  # noqa: E402
 from output import write_m3u, write_txt, write_json, write_badge  # noqa: E402
 
@@ -55,6 +56,15 @@ def main():
     if not channels:
         LOGGER.error("过滤后无可用频道，终止")
         sys.exit(1)
+
+    # 按频道名映射为统一中文分组（央视/卫视/各省/专题…）
+    channels = apply_group_map(channels, cfg)
+    group_counts = {}
+    for c in channels:
+        group_counts[c.group] = group_counts.get(c.group, 0) + 1
+    LOGGER.info("中文分组映射后分组数 %d：%s",
+                len(group_counts),
+                "、".join(f"{k}({v})" for k, v in sorted(group_counts.items(), key=lambda x: -x[1])[:12]))
 
     now = datetime.now()
     meta = {

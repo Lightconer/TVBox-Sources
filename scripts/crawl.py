@@ -122,31 +122,76 @@ def detect_parser(url, text):
     return "txt"
 
 
+def mirror_url(url):
+    """为 GitHub raw 链接生成 jsdelivr CDN 镜像（国内可直连），非 raw 链接返回 None"""
+    m = re.match(r"https://raw\.githubusercontent\.com/([^/]+)/([^/]+)/([^/]+)/(.+)", url)
+    if m:
+        owner, repo, branch, path = m.groups()
+        return f"https://cdn.jsdelivr.net/gh/{owner}/{repo}@{branch}/{path}"
+    return None
+
+
+def candidate_urls(src, prefer_mirror=False):
+    """返回该源的候选下载地址列表。
+    默认主地址(raw)优先、jsdelivr 镜像兜底；prefer_mirror=True 时镜像优先（国内本地跑更快）。
+    src['url'] 可传字符串或逗号分隔列表；'mirror' 可显式指定镜像（可选）。
+    """
+    raw = src.get("url", "")
+    if isinstance(raw, str):
+        raw = [u for u in raw.split(",") if u.strip()]
+    candidates = []
+    for u in raw:
+        m = mirror_url(u)
+        if prefer_mirror and m:
+            candidates.append(m)
+        candidates.append(u)
+        if not prefer_mirror and m:
+            candidates.append(m)
+    explicit = src.get("mirror")
+    if explicit and explicit not in candidates:
+        candidates.append(explicit)
+    return candidates
+
+
 def crawl_sources(cfg):
-    """遍历配置中的数据源并抓取解析，返回原始频道列表"""
+    """遍历配置中的数据源并抓取解析，返回原始频道列表。
+    每个源按候选地址依次尝试（raw 失败自动降级 jsdelivr）。
+    """
     crawl_cfg = cfg.get("crawl", {})
     req_cfg = crawl_cfg.get("request", {})
     session = make_session(req_cfg)
     sources = [s for s in crawl_cfg.get("sources", []) if s.get("enabled", True)]
 
     all_channels = []
+    # 国内本地跑可设 LIVE_SOURCE_PREFER_MIRROR=1 让 jsdelivr 镜像优先，避免 raw 超时等待
+    prefer_mirror = os.environ.get("LIVE_SOURCE_PREFER_MIRROR") == "1"
     for src in sources:
-        url = src.get("url", "")
-        name = src.get("name") or url
-        if not url:
-            LOGGER.warning("跳过空 URL 来源: %s", name)
+        name = src.get("name") or "未命名源"
+        urls = candidate_urls(src, prefer_mirror)
+        if not urls:
+            LOGGER.warning("跳过无 URL 来源: %s", name)
             continue
-        LOGGER.info("爬取来源: %s (%s)", name, url)
-        text = download_text(
-            session,
-            url,
-            max_size_mb=req_cfg.get("max_size", 20),
-            timeout=req_cfg.get("timeout", 15),
-            retries=req_cfg.get("retries", 2),
-        )
+
+        text = None
+        used = None
+        for url in urls:
+            LOGGER.info("爬取来源: %s (%s)", name, url)
+            text = download_text(
+                session,
+                url,
+                max_size_mb=req_cfg.get("max_size", 20),
+                timeout=req_cfg.get("timeout", 15),
+                retries=req_cfg.get("retries", 2),
+            )
+            if text is not None:
+                used = url
+                break
+            LOGGER.info("  该地址不可用，尝试下一个候选地址…")
         if text is None:
+            LOGGER.warning("来源 %s 的所有地址均失败，跳过", name)
             continue
-        parser = detect_parser(url, text)
+
+        parser = detect_parser(used, text)
         channels = PARSERS[parser](text, name)
         LOGGER.info("  [%s] 解析到 %d 个频道", parser, len(channels))
         all_channels.extend(channels)
