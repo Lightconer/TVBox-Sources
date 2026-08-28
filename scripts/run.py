@@ -16,7 +16,7 @@ import yaml
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import setup_logging, LOGGER  # noqa: E402
-from crawl import crawl_sources, apply_filters  # noqa: E402
+from crawl import Channel, crawl_sources, apply_filters  # noqa: E402
 from group_map import apply_group_map  # noqa: E402
 from check import run_check, select_best, normalize_name  # noqa: E402
 from output import write_m3u, write_txt, write_badge, write_tvbox_config  # noqa: E402
@@ -148,7 +148,18 @@ def main():
         "redundant_channels": audit["redundant_channels"],
     })
 
-    # ---------- 4. 生成输出 ----------
+    # ---------- 4. 按分组规则顺序排序 + 首部更新时间分组（分类方式与 iptv-api 一致）----------
+    gm = cfg.get("output", {}).get("group_map", {})
+    order = [r.get("group") for r in gm.get("rules", []) if r.get("group")]
+    idx = {g: i for i, g in enumerate(order)}
+    selected.sort(key=lambda c: idx.get(c.group, len(order)))
+    if selected:
+        selected.insert(0, Channel(
+            name=meta["update_time"], group="🕘️更新时间",
+            url=selected[0].url, source="auto"))
+    LOGGER.info("分组排序完成，共 %d 个分组", len({c.group for c in selected}))
+
+    # ---------- 5. 生成输出 ----------
     LOGGER.info("==> 步骤3/3 生成输出（%d 个频道）", len(selected))
     header = out_cfg.get("header", {})
     for fmt in out_cfg.get("formats", ["m3u", "txt"]):

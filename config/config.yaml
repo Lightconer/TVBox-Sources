@@ -61,33 +61,62 @@ output:
     url: "https://github.com/Lightconer/TVBox-Sources"
     desc: "由 GitHub Actions 自动爬取+测速生成"
 
-  # ---------- 中文分组映射：按频道名(含原分组名)归入统一中文分组 ----------
-  # 规则按顺序匹配，先命中先生效（正则）。可自由增删改。
+  # ---------- 频道分类：采用 iptv-api 分类方式（央视→卫视→港澳台→各省→专题） ----------
+  # 规则按顺序匹配，先命中先生效；规则顺序即输出分组顺序。
   group_map:
     enabled: true
     rules:
-      - { group: "央视", pattern: "CCTV|央视|CGTN|中央" }
-      - { group: "港澳台", pattern: "香港|澳门|台湾|凤凰|Phoenix|翡翠|TVB|HOY|中天|东森|民视|三立|明珠|无线|华娱" }
-      - { group: "卫视", pattern: "卫视|Satellite" }
-      - { group: "河北", pattern: "河北|Hebei|石家庄|唐山|秦皇岛|邯郸|邢台|保定|张家口|承德|沧州|廊坊|衡水" }
-      - { group: "北京", pattern: "北京|Beijing|BTV|BRTV|卡酷" }
-      - { group: "天津", pattern: "天津|Tianjin" }
-      - { group: "上海", pattern: "上海|Shanghai|上海东方" }
-      - { group: "广东", pattern: "广东|Guangdong|广州|Guangzhou|深圳|Shenzhen|南方|珠江|嘉佳" }
-      - { group: "浙江", pattern: "浙江|Zhejiang|杭州|宁波|温州" }
-      - { group: "江苏", pattern: "江苏|Jiangsu|南京|苏州|无锡" }
-      - { group: "湖南", pattern: "湖南|Hunan|长沙|金鹰|快乐" }
-      - { group: "山东", pattern: "山东|Shandong|济南|青岛" }
-      - { group: "其他省市", pattern: "福建|Fujian|厦门|安徽|Anhui|江西|Jiangxi|湖北|Hubei|河南|Henan|四川|Sichuan|成都|重庆|Chongqing|贵州|Guizhou|云南|Yunnan|广西|Guangxi|海南|Hainan|山西|Shanxi|陕西|Shaanxi|西安|甘肃|Gansu|青海|Qinghai|宁夏|Ningxia|新疆|Xinjiang|西藏|Xizang|Tibet|内蒙古|Inner Mongolia|Nei Monggol|辽宁|Liaoning|沈阳|吉林|Jilin|黑龙江|Heilongjiang|哈尔滨|大连|Dalian|Kangba|康巴" }
-      - { group: "体育", pattern: "体育|赛事|劲爆|台球|高尔夫|Golf|足球|篮球|英超|西甲|德甲|欧冠|搏击|五星体育" }
-      - { group: "电影", pattern: "电影|CHC|影院|影视|家庭剧场" }
-      - { group: "少儿", pattern: "少儿|卡通|动漫|Kids|Baby|优漫|炫动" }
-      - { group: "新闻", pattern: "新闻|资讯|新华|CNN|BBC|NHK|CNA|Bloomberg|半岛|国际台" }
-      - { group: "纪录", pattern: "纪录|纪实|探索|Discovery|国家地理|DOX|全纪实" }
-      - { group: "音乐", pattern: "音乐|MV|Hi-Res|风华|魅力" }
-      - { group: "戏曲", pattern: "戏曲|梨园" }
-      - { group: "财经", pattern: "财经|第一财经|CNBC|财富" }
-      - { group: "科教", pattern: "科教|教育|学堂|科技|法治" }
-      - { group: "购物", pattern: "购物|乐购|家有购物|东方购物" }
-      - { group: "付费", pattern: "iHOT|SiTV|NewTV|哈哈|都市剧场|精品|尊享|咪咕|Migu|Miguvideo" }
-      - { group: "其他", pattern: ".*" }
+      # 中央
+      - { group: "📺央视频道", pattern: "CCTV|央视|CGTN|中央" }
+      # 卫视
+      - { group: "📡卫视频道", pattern: "卫视|Satellite" }
+      # 港澳台
+      - { group: "🌊港·澳·台", pattern: "香港|澳门|台湾|凤凰|Phoenix|翡翠|TVB|HOY|中天|东森|民视|三立|明珠|无线|华娱|本港台" }
+      # 各省（每省独立分组，顺序即输出顺序）
+      - { group: "☘️北京频道", pattern: "北京|Beijing|BTV|BRTV|卡酷" }
+      - { group: "☘️天津频道", pattern: "天津|Tianjin" }
+      - { group: "☘️上海频道", pattern: "上海|Shanghai|上海东方" }
+      - { group: "☘️重庆频道", pattern: "重庆|Chongqing" }
+      - { group: "☘️河北频道", pattern: "河北|Hebei|石家庄|唐山|秦皇岛|邯郸|邢台|保定|张家口|承德|沧州|廊坊|衡水" }
+      - { group: "☘️山西频道", pattern: "山西|Shanxi" }
+      - { group: "☘️内蒙古频道", pattern: "内蒙古|Inner Mongolia|Nei Monggol|Chifeng|赤峰" }
+      - { group: "☘️辽宁频道", pattern: "辽宁|Liaoning|沈阳|大连" }
+      - { group: "☘️吉林频道", pattern: "吉林|Jilin|Siping|四平" }
+      - { group: "☘️黑龙江频道", pattern: "黑龙江|Heilongjiang|哈尔滨|Harbin" }
+      - { group: "☘️江苏频道", pattern: "江苏|Jiangsu|南京|苏州|无锡" }
+      - { group: "☘️浙江频道", pattern: "浙江|Zhejiang|杭州|宁波|温州" }
+      - { group: "☘️安徽频道", pattern: "安徽|Anhui" }
+      - { group: "☘️福建频道", pattern: "福建|Fujian|厦门" }
+      - { group: "☘️江西频道", pattern: "江西|Jiangxi" }
+      - { group: "☘️山东频道", pattern: "山东|Shandong|济南|青岛|QTV" }
+      - { group: "☘️河南频道", pattern: "河南|Henan" }
+      - { group: "☘️湖北频道", pattern: "湖北|Hubei" }
+      - { group: "☘️湖南频道", pattern: "湖南|Hunan|长沙|金鹰|快乐" }
+      - { group: "☘️广东频道", pattern: "广东|Guangdong|广州|Guangzhou|深圳|Shenzhen|南方|珠江|嘉佳" }
+      - { group: "☘️广西频道", pattern: "广西|Guangxi" }
+      - { group: "☘️海南频道", pattern: "海南|Hainan" }
+      - { group: "☘️四川频道", pattern: "四川|Sichuan|成都|Kangba|康巴" }
+      - { group: "☘️贵州频道", pattern: "贵州|Guizhou" }
+      - { group: "☘️云南频道", pattern: "云南|Yunnan" }
+      - { group: "☘️陕西频道", pattern: "陕西|Shaanxi|西安" }
+      - { group: "☘️甘肃频道", pattern: "甘肃|Gansu|兰州|Lanzhou" }
+      - { group: "☘️青海频道", pattern: "青海|Qinghai" }
+      - { group: "☘️宁夏频道", pattern: "宁夏|Ningxia" }
+      - { group: "☘️新疆频道", pattern: "新疆|Xinjiang" }
+      - { group: "☘️西藏频道", pattern: "西藏|Xizang|Tibet|拉萨" }
+      # 专题
+      - { group: "🏀体育频道", pattern: "体育|赛事|劲爆|台球|高尔夫|Golf|足球|篮球|英超|西甲|德甲|欧冠|搏击|五星体育|竞技" }
+      - { group: "🎬电影频道", pattern: "电影|CHC|影院|影视|家庭剧场|First Theater|Nostalgia" }
+      - { group: "🎵音乐频道", pattern: "音乐|MV|Hi-Res|风华|魅力" }
+      - { group: "🪁动画频道", pattern: "少儿|卡通|动漫|Kids|Baby|优漫|炫动|动画" }
+      - { group: "🎮游戏频道", pattern: "游戏|Gaming" }
+      - { group: "💰央视付费频道", pattern: "iHOT|SiTV|NewTV|哈哈|都市剧场|精品|尊享|付费" }
+      - { group: "🎥咪咕直播", pattern: "咪咕|Migu|Miguvideo" }
+      - { group: "🏛经典剧场", pattern: "剧场|经典|怀旧" }
+      - { group: "📰新闻频道", pattern: "新闻|资讯|新华|CNN|BBC|NHK|CNA|Bloomberg|半岛|国际台" }
+      - { group: "📖纪录频道", pattern: "纪录|纪实|探索|Discovery|国家地理|DOX|全纪实|World Geography" }
+      - { group: "📈财经频道", pattern: "财经|第一财经|CNBC|财富" }
+      - { group: "🎓科教频道", pattern: "科教|教育|学堂|科技|法治|戏曲|梨园" }
+      - { group: "🛒购物频道", pattern: "购物|乐购|家有购物|东方购物" }
+      # 兜底
+      - { group: "📺其他频道", pattern: ".*" }
