@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-09-20 15:02:43",
+  "update_time": "2026-09-20 19:55:54",
   "sources": [
     "iptv-org 中国频道",
     "fanmingming 央视/卫视高清(IPv4)",
@@ -9,13 +9,13 @@
   ],
   "crawled": 711,
   "dedup": 653,
-  "http_ok": 178,
-  "passed": 178,
-  "dead": 475,
-  "groups": 15,
-  "avg_latency_ms": 691,
+  "http_ok": 181,
+  "passed": 181,
+  "dead": 472,
+  "groups": 16,
+  "avg_latency_ms": 527,
   "keyword_blocked": 0,
   "dup_urls": 0,
-  "channels": 85,
+  "channels": 88,
   "redundant_channels": 93
 }
