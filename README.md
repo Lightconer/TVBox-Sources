@@ -6,7 +6,7 @@
 
 所有生成的文件都在 [output 目录](https://github.com/Lightconer/TVBox-Sources/tree/main/output)。下面的地址复制粘贴就行，播放器端不用改别的。
 
-**电视 / 盒子：TVBox、影视仓、天剑等空壳类**
+**电视 / 盒子：TVBox、影视仓等空壳类**
 
 在「设置 → 配置地址」里填：
 
