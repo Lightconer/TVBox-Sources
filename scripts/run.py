@@ -13,6 +13,7 @@
   - 不再插入带真实 URL 的「更新时间」伪频道（避免重复 URL / badge 计数 +1），
     改为在输出文件头部写入时间注释，status.json / badge.json 仍保留更新时间
   - final_audit 真正去重（原来只统计不删除）
+  - 输出排序：组内按 CCTV-1/2/3... 数字升序，同频道多线路按画质+速度
 
 时效性优化新增：
   - check_upstream()：用 GitHub API 查询上游最新 commit，写入 status.json.upstream，
@@ -30,7 +31,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import setup_logging, LOGGER  # noqa: E402
 from crawl import Channel, crawl_sources, apply_filters  # noqa: E402
 from group_map import apply_group_map, expand_groups  # noqa: E402
-from check import run_check, select_best, normalize_name  # noqa: E402
+from check import run_check, select_best, normalize_name, natural_sort_key  # noqa: E402
 from output import (write_m3u, write_txt, write_badge, write_tvbox_config)  # noqa: E402
 
 
@@ -296,8 +297,10 @@ def main():
     seen_order = set()
     order = [g for g in order if not (g in seen_order or seen_order.add(g))]
     idx = {g: i for i, g in enumerate(order)}
-    selected.sort(key=lambda c: idx.get(c.group, len(order)))
-    LOGGER.info("分组排序完成，共 %d 个分组", len({c.group for c in selected}))
+    # 分组顺序在前；同组内按频道名数字升序（CCTV-1 → CCTV-2 → CCTV-10），
+    # 同一频道的多条线路保持 select_best 已排好的「画质优先、同档看速度」顺序。
+    selected.sort(key=lambda c: (idx.get(c.group, len(order)), natural_sort_key(c.name)))
+    LOGGER.info("分组与频道排序完成，共 %d 个分组", len({c.group for c in selected}))
 
     LOGGER.info("==> 步骤3/4 生成输出（%d 个频道，%d 个地址）",
                 audit["channels"], len(selected))

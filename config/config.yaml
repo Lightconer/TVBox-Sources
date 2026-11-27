@@ -1,7 +1,7 @@
 # ============================================================
-# TVBox-Sources · 直播源自动更新配置（优化版）
-# 在原流水线基础上扩充多个公开直播源，优化时效性与稳定性
-# 输出文件结构保持不变：output/live.txt / live.m3u / tvbox.json
+# IPTV-Optimized · 直播源自动更新配置
+# 基于 TVBox-Sources 流水线，接入多个公开可用源
+# 输出文件与 TVBox-Sources 完全一致：output/live.txt / live.m3u / tvbox.json
 # ============================================================
 
 # ------------------------------------------------------------
@@ -215,6 +215,9 @@ check:
   min_score: 30
   max_per_group: 60
   max_urls_per_channel: 8
+  # 同频道多线路：先按画质档位、再按速度排序；无 1080p+ 时自动降级用低画质源
+  quality_first: true       # true=画质优先  false=纯速度优先
+  preferred_min_tier: 4     # 期望最低档位 4=1080p；仅用于降级提示，不过滤源
 
 output:
   dir: "output"
