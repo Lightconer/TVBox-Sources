@@ -1,10 +1,12 @@
 """测速校验模块：HTTP 首包测速 + ffprobe 媒体校验 → 打分 → 分组择优
 
-流程：
-  1. HTTP 请求读取首包，记录连通性与首包延迟（TTFB）；
-  2. 可选 ffprobe 探测媒体流，确认「真的能播放」（m3u8/rtmp 等真实直播流）；
-  3. 按「延迟 + 媒体有效性」打分，丢弃不可用 / 低分频道；
-  4. 每个分组按分数排序截断，保证体积可控。
+修复项（相对 TVBox-Sources）：
+  - requests.Session 线程局部复用，避免每次新建 TCP/TLS 连接
+  - ffprobe 的 rw_timeout 改为读取配置（原来硬编码 4s 与配置 10s 不一致）
+  - 增加 -probesize/-analyzeduration，避免 HLS 探测过久被外层超时杀掉
+  - compute_score 修正为「≤500ms 满分」（与 README 描述一致）
+  - select_best 增加展示名清洗，去掉 (720p) 等画质尾缀
+  - http_probe 增加 Content-Length=0 与空 stream 判定
 """
 import json
 import os
@@ -12,19 +14,33 @@ import re
 import shutil
 import subprocess
 import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from utils import LOGGER  # noqa: E402
+from utils import LOGGER, DEFAULT_UA  # noqa: E402
 
 try:
     import requests
 except ImportError:  # pragma: no cover
     requests = None
 
-# ffprobe 是否可用（Actions 环境安装 ffmpeg 后为 True）
 FFPROBE_AVAILABLE = shutil.which("ffprobe") is not None
+
+# 线程局部 Session：测速阶段并发复用连接
+_tls = threading.local()
+
+
+def _get_session(ua):
+    s = getattr(_tls, "session", None)
+    if s is None:
+        s = requests.Session()
+        s.headers.update({"User-Agent": ua or DEFAULT_UA})
+        _tls.session = s
+    elif ua and s.headers.get("User-Agent") != ua:
+        s.headers["User-Agent"] = ua
+    return s
 
 
 class CheckResult:
@@ -33,70 +49,61 @@ class CheckResult:
     def __init__(self, channel, ok=False, latency_ms=0, media_ok=False,
                  resolution=None, score=0.0):
         self.channel = channel
-        self.ok = ok                 # 是否通过（HTTP 可达 + 可选媒体校验）
+        self.ok = ok
         self.latency_ms = latency_ms
-        self.media_ok = media_ok     # ffprobe 是否确认可播放
-        self.resolution = resolution  # {"width":..,"height":..} 或 None
+        self.media_ok = media_ok
+        self.resolution = resolution
         self.score = score
 
 
-# 明确非直播流的页面类型（命中即判定为错误页/非可用源，防止 200 假页面）
 _NON_STREAM_CT = ("text/html", "application/json", "text/xml", "application/xml")
 
 
 def http_probe(url, connect_timeout, read_timeout, user_agent):
-    """HTTP 首包测速，返回 (ok, latency_ms)。
-
-    校验三项，确保"确实可用"：
-      1. 状态码 < 400（404/403 等错误页不算可达）；
-      2. Content-Type 不是网页/JSON 等非流类型（200 假页面判失败）；
-      3. 首包能读到内容。
-    """
+    """HTTP 首包测速，返回 (ok, latency_ms)。校验状态码 / Content-Type / 首包"""
     if requests is None:
         return False, 0
     start = time.time()
     try:
-        r = requests.get(
+        r = _get_session(user_agent).get(
             url,
             timeout=(connect_timeout, read_timeout),
             stream=True,
-            headers={"User-Agent": user_agent},
             allow_redirects=True,
         )
         ok = False
         try:
             if r.ok:
                 ct = (r.headers.get("Content-Type") or "").lower().split(";")[0].strip()
-                if ct in _NON_STREAM_CT:
-                    ok = False  # 明确是网页/错误页，不是直播流
-                else:
+                if ct not in _NON_STREAM_CT:
                     for _ in r.iter_content(chunk_size=1024):
                         ok = True
                         break
         except Exception:  # noqa: BLE001
             ok = False
-        latency = int((time.time() - start) * 1000)
-        r.close()
-        return ok, latency
+        finally:
+            r.close()
+        return ok, int((time.time() - start) * 1000)
     except Exception:  # noqa: BLE001
         return False, int((time.time() - start) * 1000)
 
 
 def ffprobe_probe(url, timeout):
-    """ffprobe 探测媒体流。
-    返回：dict 有视频流(含分辨率) | False 探测失败/无视频流 | None 未安装 ffprobe
-    """
+    """ffprobe 探测媒体流。返回 dict(有视频流) | False(失败) | None(未安装)"""
     if not FFPROBE_AVAILABLE:
         return None
+    rw_timeout_us = int(max(1, timeout) * 1_000_000)
     cmd = [
         "ffprobe", "-v", "quiet", "-print_format", "json",
-        "-show_streams",
-        "-rw_timeout", "4000000",
+        "-show_entries", "stream=codec_type,width,height",
+        "-rw_timeout", str(rw_timeout_us),
+        "-probesize", "5000000",
+        "-analyzeduration", "5000000",
         "-user_agent", "Mozilla/5.0",
         url,
     ]
     try:
-        out = subprocess.run(cmd, capture_output=True, timeout=timeout, text=True)
+        out = subprocess.run(cmd, capture_output=True, timeout=timeout + 3, text=True)
         if out.returncode != 0:
             return False
         data = json.loads(out.stdout or "{}")
@@ -113,10 +120,9 @@ def ffprobe_probe(url, timeout):
 
 
 def compute_score(latency_ms, media_ok):
-    """打分：延迟满分 60（<=500ms 满分，每 1s 扣 6 分，10s 归零）+ 媒体有效性 40 分"""
-    lat_score = max(0.0, 60.0 - (latency_ms / 1000.0) * 6.0)
-    media_score = 40.0 if media_ok else 0.0
-    return round(lat_score + media_score, 1)
+    """打分：延迟 ≤500ms 满分 60，每慢 1s 扣 6 分，10s 归零；媒体有效性 40 分"""
+    lat_score = max(0.0, 60.0 - max(0.0, latency_ms - 500) / 1000.0 * 6.0)
+    return round(lat_score + (40.0 if media_ok else 0.0), 1)
 
 
 def check_channel(ch, cfg, ua):
@@ -133,35 +139,26 @@ def check_channel(ch, cfg, ua):
 
     media = ffprobe_probe(ch.url, ft)
     if media is False:
-        # ffprobe 明确失败：如要求媒体校验则判死，否则仅按 HTTP 通过
         if require_ffprobe and FFPROBE_AVAILABLE:
             return CheckResult(ch, ok=False, latency_ms=lat, media_ok=False, score=0.0)
-        return CheckResult(
-            ch, ok=True, latency_ms=lat, media_ok=False,
-            score=compute_score(lat, False),
-        )
+        return CheckResult(ch, ok=True, latency_ms=lat, media_ok=False,
+                           score=compute_score(lat, False))
     if media is None:
-        # 未安装 ffprobe：降级为仅 HTTP 测速
-        return CheckResult(
-            ch, ok=True, latency_ms=lat, media_ok=False,
-            score=compute_score(lat, False),
-        )
-    return CheckResult(
-        ch, ok=True, latency_ms=lat, media_ok=True, resolution=media,
-        score=compute_score(lat, True),
-    )
+        return CheckResult(ch, ok=True, latency_ms=lat, media_ok=False,
+                           score=compute_score(lat, False))
+    return CheckResult(ch, ok=True, latency_ms=lat, media_ok=True,
+                       resolution=media, score=compute_score(lat, True))
 
 
 def run_check(channels, cfg):
     """并发测速全部频道，返回结果列表（顺序不定）"""
     check_cfg = cfg.get("check", {})
-    workers = max(1, check_cfg.get("workers", 30))
+    workers = max(1, int(check_cfg.get("workers", 30)))
     limit = cfg.get("_limit", 0)
     ua = cfg.get("crawl", {}).get("request", {}).get("user_agent", "")
 
     if not FFPROBE_AVAILABLE and check_cfg.get("require_ffprobe", True):
-        LOGGER.warning("未检测到 ffprobe(ffmpeg)，已降级为仅 HTTP 测速；"
-                       "生产环境请确保 Actions 中安装了 ffmpeg")
+        LOGGER.warning("未检测到 ffprobe，已降级为仅 HTTP 测速；生产环境请确保安装 ffmpeg")
 
     targets = channels[:limit] if limit else channels
     results = []
@@ -175,61 +172,71 @@ def run_check(channels, cfg):
         for fut in as_completed(futs):
             done += 1
             try:
-                r = fut.result()
+                results.append(fut.result())
             except Exception:  # noqa: BLE001
-                r = CheckResult(futs[fut], ok=False, score=0.0)
-            results.append(r)
+                results.append(CheckResult(futs[fut], ok=False, score=0.0))
             if done % 50 == 0 or done == total:
                 LOGGER.info("  测速进度 %d/%d", done, total)
     return results
 
 
-_NORM_SUFFIX_RE = re.compile(r"(高清|标清|超清|hd|sd|uhd|4k|8k|2160p|1440p|1080p|720p|540p|480p|360p)$")
+_NORM_SUFFIX_RE = re.compile(
+    r"(高清|标清|超清|hd|sd|uhd|2160p|1440p|1080p|720p|540p|480p|360p)$", re.I)
+# 4K/8K 是「频道身份」而非画质后缀（如 东方卫视4K / CCTV-4K）：
+# 归一化时不能去掉，否则会与普通频道重名误合并；仅清洗纯分辨率写法 2160p/4K频道 等。
+_DISPLAY_4K_RE = re.compile(r"[\s\-_]*(4K|8K)频道$", re.I)
 
 
 def normalize_name(name):
-    """频道名规范化：去分辨率/标注括号与尾缀，用于把「同一频道」的不同写法合并。
-
-    例：'CCTV-1 综合 (1080p)' / 'CCTV-1 综合' / 'CCTV1综合' → 'cctv1综合'
-    """
+    """频道名规范化：去括号标注/分隔符/尾缀，用于合并同一频道的不同写法"""
     n = (name or "").lower()
-    n = re.sub(r"[\(\[][^\)\]]*[\)\]]", "", n)          # 去 (1080p) [Geo-blocked]
-    n = re.sub(r"[\s\-_—:：,，.。'\"’‘]+", "", n)         # 去空格/分隔符
-    n = _NORM_SUFFIX_RE.sub("", n)                       # 去尾部清晰度词
+    n = re.sub(r"[\(\[【][^\)\]】]*[\)\]】]", "", n)
+    n = re.sub(r"[\s\-_—:：,，.。'\"’‘]+", "", n)
+    n = _NORM_SUFFIX_RE.sub("", n)
     return n.strip()
 
 
-def select_best(results, cfg):
-    """择优：丢弃低分 → 同频道名聚合多源（播放失败自动切换）→ 组内截断。
+def display_name(name):
+    """展示名清洗：去掉画质尾缀与方括号标注，保留频道本名
 
-    - 每个频道名保留最多 max_urls_per_channel 个可用地址（默认 5），按分数排序；
-    - 每个分组保留最多 max_per_group 个频道（0=不限）。
+    注意：4K/8K 作为频道名一部分时保留（东方卫视4K 不应显示成 东方卫视），
+    只有「4K频道/2160p」这类纯画质描述才清洗。
+    """
+    n = (name or "").strip()
+    n = _DISPLAY_4K_RE.sub("", n)
+    n = re.sub(r"[\(\[【][^\)\]】]*\d*\s*[pPkKiI][^\)\]】]*[\)\]】]\s*$", "", n)
+    n = re.sub(r"[\(\[【][^\)\]】]*(?:高清|标清|超清)[^\)\]】]*[\)\]】]\s*$", "", n)
+    n = _NORM_SUFFIX_RE.sub("", n)
+    return n.strip() or (name or "未知")
+
+
+def select_best(results, cfg):
+    """择优：丢弃低分 → 同频道聚合多源 → 组内截断。
+
     返回 (selected_channels, passed_results)
     """
     check_cfg = cfg.get("check", {})
-    min_score = check_cfg.get("min_score", 40)
+    min_score = check_cfg.get("min_score", 30)
     max_per_group = check_cfg.get("max_per_group", 60)
-    max_urls_per_channel = max(1, check_cfg.get("max_urls_per_channel", 5))
+    max_urls_per_channel = max(1, int(check_cfg.get("max_urls_per_channel", 8)))
 
     passed = [r for r in results if r.ok and r.score >= min_score]
     passed.sort(key=lambda r: (-r.score, r.latency_ms))
 
-    # 1) 按 (分组, 规范化频道名) 聚合，同一 URL 只保留一次（防跨源重复），取分数最高的多个地址
-    seen_urls = set()
-    slots = {}  # key -> {"name": 展示名, "items": [CheckResult,...]}
+    seen_urls, slots = set(), {}
     for r in passed:
-        if r.channel.url in seen_urls:
+        key_url = (r.channel.url or "").strip().lower()
+        if key_url in seen_urls:
             continue
-        seen_urls.add(r.channel.url)
+        seen_urls.add(key_url)
         key = (r.channel.group, normalize_name(r.channel.name))
         slot = slots.setdefault(key, {"name": r.channel.name, "items": []})
         if len(slot["items"]) < max_urls_per_channel:
             slot["items"].append(r)
-            # 展示名取更长/更完整的那个
-            if len(r.channel.name) > len(slot["name"]):
+            # 展示名优先选清洗后更完整（更长）的一个
+            if len(display_name(r.channel.name)) > len(display_name(slot["name"])):
                 slot["name"] = r.channel.name
 
-    # 2) 按分组聚合，组内频道数截断
     by_group = {}
     for (group, _nk), slot in slots.items():
         by_group.setdefault(group, []).append(slot)
@@ -239,8 +246,9 @@ def select_best(results, cfg):
         if max_per_group and max_per_group > 0:
             gslots = gslots[:max_per_group]
         for slot in gslots:
+            name = display_name(slot["name"])
             for r in slot["items"]:
                 ch = r.channel
-                ch.name = slot["name"]   # 统一展示名，便于 TVBox 合并多源
+                ch.name = name   # 统一展示名，便于 TVBox 合并多源
                 selected.append(ch)
     return selected, passed

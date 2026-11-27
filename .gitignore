@@ -4,11 +4,14 @@ __pycache__/
 .venv/
 venv/
 
-# 调试缓存（raw 数据）
+# 调试缓存
 cache/
+
+# 诊断报告
+diag-report.json
 
 # 系统文件
 .DS_Store
 Thumbs.db
 
-# 注意：output/ 目录需要提交到仓库（TVBox 通过 raw 链接读取），不要 ignore
+# 注意：output/ 需要提交到仓库（TVBox/影视仓 通过 raw 链接读取），不要 ignore

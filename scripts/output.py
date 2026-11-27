@@ -1,19 +1,30 @@
-"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt 与配置接口"""
+"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt 与配置接口
+
+修复项（相对 TVBox-Sources）：
+  - derive_links 兼容 main/master 分支与 .git 后缀，并支持配置显式指定 repo
+  - write_tvbox_config 支持 EPG 地址配置（默认留空，保持兼容）
+  - m3u 属性做引号转义，防止 group/tvg-logo 中的引号破坏格式
+  - 统一 UTF-8 + LF
+"""
 import json
 import os
 import re
 
 
 def _open(path):
-    """统一以 UTF-8 + LF 换行写出（跨平台稳定，Linux 上跑无影响）"""
+    """统一以 UTF-8 + LF 换行写出"""
     return open(path, "w", encoding="utf-8", newline="\n")
 
 
+def _esc(v):
+    return str(v or "").replace('"', "&quot;")
+
+
 def write_m3u(channels, path, header=None):
-    """标准 #EXTM3U 格式（TVBox/影视仓/IP-TV 播放器通用）"""
+    """标准 #EXTM3U 格式"""
     lines = ["#EXTM3U"]
     if header:
-        lines.append(f"#EXTENC:UTF-8")
+        lines.append("#EXTENC:UTF-8")
         lines.append(f"#PLAYLIST:{header.get('name', '')}")
     current_group = None
     for ch in channels:
@@ -22,10 +33,10 @@ def write_m3u(channels, path, header=None):
             current_group = ch.group
         attrs = []
         if ch.tvg_id:
-            attrs.append(f'tvg-id="{ch.tvg_id}"')
-        attrs.append(f'group-title="{ch.group}"')
+            attrs.append(f'tvg-id="{_esc(ch.tvg_id)}"')
+        attrs.append(f'group-title="{_esc(ch.group)}"')
         if ch.tvg_logo:
-            attrs.append(f'tvg-logo="{ch.tvg_logo}"')
+            attrs.append(f'tvg-logo="{_esc(ch.tvg_logo)}"')
         lines.append(f"#EXTINF:-1 {' '.join(attrs)},{ch.name}")
         lines.append(ch.url)
     with _open(path) as f:
@@ -46,7 +57,7 @@ def write_txt(channels, path):
 
 
 def write_badge(path, text, color="brightgreen"):
-    """生成 shields.io 兼容的 badge 数据，用于 README 展示"""
+    """生成 shields.io 兼容的 badge 数据"""
     badge = {
         "schemaVersion": 1,
         "label": "直播源",
@@ -59,26 +70,35 @@ def write_badge(path, text, color="brightgreen"):
 
 
 def derive_links(cfg):
-    """根据 output.header.url 推导 raw 与 jsdelivr 直链基地址（用于生成配置接口）"""
-    url = (cfg.get("output") or {}).get("header", {}).get("url", "")
-    m = re.search(r"github\.com/([^/]+)/([^/]+)", url or "")
-    if not m:
+    """根据 output.header.url 推导 raw 与 jsdelivr 直链基地址"""
+    out = cfg.get("output") or {}
+    header = out.get("header") or {}
+    url = header.get("url", "") or ""
+    repo = (out.get("repo") or "").strip().strip("/")
+    if not repo:
+        m = re.search(r"github\.com/([^/]+)/([^/#?]+)", url)
+        if m:
+            repo = f"{m.group(1)}/{m.group(2)}"
+    repo = re.sub(r"\.git$", "", repo)
+    if not repo or "/" not in repo:
         return None, None
-    owner, repo = m.group(1), m.group(2)
-    raw_base = f"https://raw.githubusercontent.com/{owner}/{repo}/main/output"
-    jsd_base = f"https://cdn.jsdelivr.net/gh/{owner}/{repo}@main/output"
-    return raw_base, jsd_base
+    branch = (out.get("branch") or "main").strip() or "main"
+    return (
+        f"https://raw.githubusercontent.com/{repo}/{branch}/output",
+        f"https://cdn.jsdelivr.net/gh/{repo}@{branch}/output",
+    )
 
 
 def write_tvbox_config(path, cfg):
-    """生成 TVBox/影视仓「配置接口」json：填入配置地址即可一键导入直播源"""
+    """生成 TVBox/影视仓「配置接口」json：填入配置地址即可一键导入"""
     raw_base, jsd_base = derive_links(cfg)
     live_url = f"{jsd_base}/live.txt" if jsd_base else ""
     m3u_url = f"{jsd_base}/live.m3u" if jsd_base else ""
+    epg = ((cfg.get("output") or {}).get("epg") or "").strip()
     data = {
         "lives": [
-            {"name": "自动更新直播源 (TXT)", "url": live_url, "epg": ""},
-            {"name": "自动更新直播源 (M3U)", "url": m3u_url, "epg": ""},
+            {"name": "自动更新直播源 (TXT)", "url": live_url, "epg": epg},
+            {"name": "自动更新直播源 (M3U)", "url": m3u_url, "epg": epg},
         ],
         "sites": [],
         "spider": "",

@@ -1,247 +1,241 @@
-# TVBox / 影视仓 直播源自动更新方案
+# TVBox-Sources · 直播源自动更新（优化版）
 
-基于 **GitHub Actions** 的直播源自动更新仓库：**定时爬取**公开直播源 → **测速校验**（HTTP 首包 + ffprobe 媒体探测）→ **自动择优** → **自动提交**，最终产出可直接填入 TVBox / 影视仓 / 各 IPTV 播放器的 `txt` / `m3u` 直播源文件。
+> 在本仓库原自动化流水线基础上，
+> 整合 [dongyubin/IPTV](https://github.com/dongyubin/IPTV) 收录的直播源，
+> 接入 [vbskycn/iptv](https://github.com/vbskycn/iptv) 作为上游主源（国内直连、每 4 小时自动更新、带台标/EPG），
+> 分组按用户模板重组为 9 组并支持**跨组复用**，
+> 并修复了原流水线中发现的多处正确性与健壮性问题。
 
-> 仓库地址：`https://github.com/Lightconer/TVBox-Sources`
-
-![更新状态](https://img.shields.io/endpoint?url=https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/badge.json)
+**目标**：定时爬取 → 测速校验 → 中文分组择优 → 自动生成 `live.txt` / `live.m3u` / `tvbox.json`，
+输出文件保持原有结构，TVBox / 影视仓 **无需更改任何配置**即可继续使用原来的订阅地址。
 
 ---
 
-## 📺 直播源地址（直接复制 / 一键导入）
+## 一、和原项目相比改了什么
 
-> 地址由 GitHub Actions 自动更新（每 6 小时 + 代码/配置变更即时触发），每个频道都保留了多个可用源，**播放失败会自动切换**，无需手动维护。
->
-> ⚠️ **缓存说明**：jsdelivr 是 CDN 加速（国内快），但对 GitHub **分支（`@main`）采用约 12 小时缓存策略**——刚更新后 jsdelivr 链接可能仍返回旧版，最长约 12 小时自动更新。**需要立即拿到最新版，请用下面的 raw 直链（GitHub 实时，无 CDN 缓存）**；国内网络若 raw 打不开，可用 jsdelivr 链接并稍后重试。
+### ★ 上游主源：vbskycn/iptv（及时更新）
 
-### 📲 一键导入（TVBox / 影视仓，推荐）
+[vbskycn/iptv](https://github.com/vbskycn/iptv) 由部署在服务器上的扫描程序**每 4 小时**自动推送一次最新可用源
+（实测 UTC 0/4/8/12/16/20 的 `:10` 左右，即北京 08/12/16/20/00/04）。其 `iptv4.m3u` 含 668 条地址、
+329 个唯一频道、11 个分组，并带 `tvg-logo` 台标与 EPG 节目单，质量很高。已作为**首位数据源**接入（去重时优先保留）。
 
-把下面的**配置接口地址**粘贴到 TVBox / 影视仓的 **配置地址** 栏 → 确定，即可自动导入全部直播源：
+**「及时更新」三道机制**：
+
+| 机制 | 实现 | 作用 |
+|---|---|---|
+| ① 定时错峰 | Actions 在 UTC `1/5/9/13/17/21` 的 `:50` 运行（北京 09/13/17/21/01/05 的 `:50`） | 上游推送后约 40 分钟再跑，既能拿到新版本，又避开缓存窗口 |
+| ② 缓存绕过 | 上游源配置 `no_mirror: true` + `cache_bust: true` | 禁用 jsdelivr（缓存 12h 会拿到旧版本）；下载 URL 加时间戳并带 `Cache-Control: no-cache`，强制回源 |
+| ③ 状态可观测 | `run.py` 用 GitHub API 查上游最新 commit，写入 `status.json.upstream` | 每次运行都能看到用的上游版本、提交时间和滞后分钟数；超 6h 未更新会告警 |
+
+**准实时触发（可选）**：除了定时，工作流支持 `repository_dispatch`，上游一更新即可立刻触发。
+在 vbskycn/iptv 或其镜像仓库添加 Webhook，或在任意地方调用：
+
+```bash
+curl -X POST \
+  -H "Authorization: Bearer <你的 GitHub Token>" \
+  -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/<你的用户名>/<你的仓库>/dispatches \
+  -d '{"event_type":"upstream-push"}'
+```
+
+这样可把更新延迟从「最多 4 小时」缩短到「分钟级」。Token 需 `repo` 权限（细粒度 token 需 Contents: write）。
+`status.json.upstream` 字段示例：
+
+```json
+"upstream": {
+  "enabled": true, "repo": "vbskycn/iptv", "file": "tv/iptv4.m3u",
+  "ok": true, "sha": "0d0e7b94ee36",
+  "commit_time": "2026-11-27T08:14:50Z", "lag_minutes": 25, "stale": false
+}
+```
+
+### 数据源（来自 dongyubin/IPTV）
+在原有 5 个源基础上，新增 9 个 README 中**未标记失效**的源：
+
+| 新增源 | 说明 |
+|---|---|
+| myernestlu zby.txt | 国内直播源 |
+| zbefine iptv.m3u | GitHub 源 |
+| 茶客源 (vamoschuck/TV) | 综合源 |
+| YueChan / Live | 带 jsdelivr 镜像兜底 |
+| BigBigGrandG Gather.m3u | 部分 IPv6 |
+| Kimentanm aptv | 部分 IPv6 |
+| YanG-1989 Gather.m3u | 部分 IPv6 |
+| iptv-org 中国台湾频道 | 港澳台区补充 |
+| gitee xxy002 直播源 | 央视频道/卫视/港澳台/动漫 |
+
+README 中已用 `~~删除线~~` 标记的 10 个源（Ftindy 系列、xxy.free.hr、iptv.228088.xyz、whpsky、fanmingming v6、zhanghongguang）默认 `enabled: false`；
+Docker 教程里的 `127.0.0.1` / `你的服务器IP` 等占位地址通过 `exclude_url_patterns` 过滤。
+
+### 代码修复（详见各文件顶部注释）
+
+| # | 原问题 | 修复 |
+|---|---|---|
+| 1 | `datetime.now()` 在 UTC runner 上写出 UTC 时间 | 改用 `ZoneInfo("Asia/Shanghai")` 北京时间 |
+| 2 | `check.enabled: true` 配置项无人读取 | 主流程真正生效，另有 `--skip-check` 覆盖 |
+| 3 | ffprobe 内部 `rw_timeout` 硬编码 4s 与配置 10s 冲突 | 由配置驱动，并加 `-probesize` / `-analyzeduration` |
+| 4 | 每频道 `requests.get` 新建 Session，无连接复用 | 线程局部 Session 复用连接池 |
+| 5 | 5 个数据源串行下载 | `ThreadPoolExecutor` 并发（可配 `crawl.workers`） |
+| 6 | `#EXTINF` 名字含逗号时被截断 | 正则匹配引号外的第一个逗号 |
+| 7 | `parse_json` 不识别 `urls` 数组 | 支持字符串/数组/嵌套 dict |
+| 8 | 「更新时间」伪频道复用首个 URL，计入重复与徽章数 | 改为文件首行注释，统计与徽章用真实频道数 |
+| 9 | `final_audit` 只统计重复 URL 不删除 | 真正按 URL 去重 |
+| 10 | `diag.py` 用 `r.content[:300000]` 无界读直播流 | 改为 `iter_content` 有界读取，默认开启 TLS 校验 |
+| 11 | 打分规则文档称「≤500ms 满分」但代码是 0ms 才满分 | 修正公式，与文档一致 |
+| 12 | 展示名保留 `(720p)` 等尾缀，同频道显示不一致 | `display_name()` 统一清洗 |
+| 13 | 重试/异常时响应未关闭，连接池泄漏 | `finally` 中 close |
+| 14 | 仅 UTF-8 解码，GBK 源乱码 | 按 Content-Type charset + BOM + gb18030 回退 |
+| 15 | m3u 属性值不转义 | `_esc()` 转义引号 |
+| 16 | 数据源走 jsdelivr 缓存 12h，上游更新后仍拿旧版本 | 上游源 `no_mirror: true` + `cache_bust: true`（时间戳 + no-cache 头） |
+| 17 | 无法得知用的是上游哪个版本、是否滞后 | GitHub API 查最新 commit 写入 `status.json.upstream`，超 6h 告警 |
+| 18 | 一频道只能归一组，无法按模板跨组复用 | `multi_group` + `theme_groups` + 跨组展开，按 (组,URL) 去重 |
+| 19 | 展示名清洗把「东方卫视4K」误删成「东方卫视」 | 4K/8K 作为频道身份保留，仅清洗纯画质标注 |
+
+---
+
+## 二、零配置变更接入（推荐）
+
+如果你已经在 TVBox / 影视仓里填的是：
 
 ```
 https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/tvbox.json
-```
-
-➡️ [点击打开配置接口](https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/tvbox.json)　·　备用直链：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/tvbox.json`
-
-> 部分 TVBox 版本支持 `tvbox://json/` 深链跳转（格式随版本而异）；若深链不生效，请直接粘贴上面的配置接口地址。
-
-### 直接订阅地址
-
-**① TXT 格式（影视仓 / TVBox 通用，推荐）**，点击或复制：
-
-```
+# 或
 https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt
-```
-
-➡️ [点击打开 live.txt](https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt)　·　备用直链：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.txt`
-
-**② M3U 格式（带台标 / EPG）**，点击或复制：
-
-```
 https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u
 ```
 
-➡️ [点击打开 live.m3u](https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u)　·　备用直链：`https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.m3u`
+那么：**把本项目的 `scripts/`、`config/`、`requirements.txt`、`.github/workflows/update.yml` 覆盖到你现有的那个仓库**（即订阅地址指向的仓库），
+输出文件名、目录结构、`tvbox.json` 结构全部保持不变，播放器端**什么都不用改**。
 
-**使用方法**：影视仓 → 设置 → 直播 → 添加直播源 → 粘贴 TXT 地址；TVBox → 配置地址 → 填入接口/TXT 链接。国内网络若 `raw` 打不开，优先用 **jsdelivr** 链接。
+`config/config.yaml` 中默认：
+
+```yaml
+output:
+  header:
+    url: "https://github.com/Lightconer/TVBox-Sources"   # 生成的 tvbox.json 订阅地址由此推导
+```
+
+保持该值与你的订阅地址所在仓库一致即可。若部署到自己的新仓库，只需把它改成你自己的仓库地址，
+然后**一次性**把播放器配置地址改成新仓库的 `tvbox.json`（之后就不用再动了）。
+
+> 提交策略：只有 `live.m3u` / `live.txt` / `tvbox.json` 有实质变化时才 commit，避免空提交噪音；
+> 若爬取为 0 频道或择优后全空则终止，不覆盖上次有效输出。
 
 ---
 
-## 一、工作流程（架构）
-
-```
-┌──────────────┐   每6小时/手动   ┌──────────────────────────────┐
-│ GitHub Actions│ ──────────────▶ │  checkout → 装ffmpeg/python   │
-└──────────────┘                  └──────────────┬───────────────┘
-                                                 ▼
-                              ┌───────────────────────────────────┐
-                              │ ① 爬取：多源 m3u/txt/json → 解析   │
-                              │ ② 过滤：分组/关键词/协议/国家 → 去重 │
-                              │ ③ 中文分组：按频道名归入央视/卫视/    │
-                              │    各省/港澳台/专题等统一分组        │
-                              │ ④ 测速：HTTP首包(TTFB) + ffprobe   │
-                              │ ⑤ 择优：打分→组内排序→截断         │
-                              │ ⑥ 输出：live.m3u / live.txt / json │
-                              └──────────────────┬────────────────┘
-                                                 ▼
-                              ┌───────────────────────────────────┐
-                              │ ⑥ 有变化才提交并推送（无空提交噪音） │
-                              └───────────────────────────────────┘
-                                                 ▼
-                           TVBox/影视仓 填入 raw 链接即可自动更新
-```
-
-**打分规则**：延迟满分 60（≤500ms 满分，每慢 1s 扣 6 分，10s 归零）+ 媒体有效性 40 分（ffprobe 确认能解出视频流才给）。低于 `min_score` 的频道直接丢弃。
-
----
-
-## 二、目录结构
+## 三、目录结构
 
 ```
 TVBox-Sources/
-├── .github/workflows/update.yml   # GitHub Actions 工作流（定时+手动触发+自动提交）
-├── config/config.yaml             # 数据源 / 过滤 / 测速 / 中文分组映射 / 输出配置
+├── .github/workflows/update.yml   # 定时+手动+变更触发，自动提交，CDN 刷新
+├── config/config.yaml             # 数据源 / 过滤 / 测速 / 分组 / 输出
 ├── scripts/
-│   ├── run.py                     # 主流程入口（爬取→分组→测速→生成）
-│   ├── crawl.py                   # 爬取解析：m3u/txt/json、过滤、去重、镜像降级
-│   ├── group_map.py               # 按频道名映射中文分组（央视/卫视/各省/专题）
-│   ├── check.py                   # 测速校验：HTTP 首包 + ffprobe + 打分择优
-│   ├── output.py                  # 输出：m3u / txt / json / badge
-│   └── utils.py                   # 日志与 HTTP 请求公共工具
-├── output/                        # 生成的直播源（提交到仓库供 raw 链接读取）
-│   ├── live.txt                   # ★ TVBox/影视仓 txt 格式（推荐）
-│   ├── live.m3u                   # ★ 标准 m3u 格式
-│   ├── tvbox.json                 # ★ TVBox 配置接口（配置地址一键导入）
-│   ├── status.json                # 本次运行统计
-│   └── badge.json                 # README 徽章数据
+│   ├── run.py                     # 主流程（4 步）+ --verify-only 校验
+│   ├── crawl.py                   # 并发爬取：m3u/m3u8/txt/json 解析、过滤去重
+│   ├── group_map.py               # 中文分组映射（央视/卫视/各省/专题）
+│   ├── check.py                   # HTTP 首包 + ffprobe 测速、打分、多源择优
+│   ├── output.py                  # m3u / txt / tvbox.json / badge 输出
+│   ├── utils.py                   # 日志、Session、重试下载、编码探测
+│   └── diag.py                    # 分片级严格诊断（国内视角）
+├── output/                        # 生成物（需提交进仓库供 raw 链接读取）
+│   ├── live.txt
+│   ├── live.m3u
+│   ├── tvbox.json
+│   ├── status.json
+│   └── badge.json
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 三、快速开始（部署到 GitHub，约 3 分钟）
-
-1. **新建仓库**（建议 public，private 也能用但需在 TVBox 端做认证），把本项目所有文件推上去：
-
-   ```bash
-   git init && git add . && git commit -m "init: tvbox live sync"
-   git remote add origin https://github.com/<你>/<仓库>.git
-   git push -u origin main
-   ```
-
-2. **修改配置**：编辑 `config/config.yaml`
-   - 在 `crawl.sources` 里增删直播源（支持 m3u / txt / json）；
-   - 按需调整 `filters`（分组、关键词、国家）、`check`（并发数、超时、每个分组保留数）；
-   - 把 `output.header.url` 改成你的仓库地址。
-
-3. **开启 Actions**：仓库页面 **Actions** 标签 → 首次会自动运行；也可以直接点 **Run workflow** 手动触发一次。
-
-4. **验证**：Actions 跑完后，`output/` 下会更新出 `live.txt` / `live.m3u`，点进 commit 可看到「自动更新直播源」提交记录。
-
-> 默认使用 `GITHUB_TOKEN` 自动提交到本仓库，无需任何密钥配置。若仓库开了分支保护导致推送失败，见「常见问题」。
-
----
-
-## 四、在 TVBox / 影视仓 中使用
-
-拿到生成文件的 raw 链接（任选其一），填入播放器的 **直播源地址 / 订阅地址**：
-
-| 文件 | 直链（raw） | CDN 加速（jsdelivr，推荐国内使用） |
-|---|---|---|
-| TXT | `https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.txt` | `https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt` |
-| M3U | `https://raw.githubusercontent.com/Lightconer/TVBox-Sources/main/output/live.m3u` | `https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u` |
-
-- **影视仓**：设置 → 直播 → 添加直播源 → 粘贴 TXT 直链；
-- **TVBox**：配置接口里把直播地址指向该 TXT/M3U 链接。
-
----
-
-## 五、数据源与中文分组
-
-**内置 5 个数据源**（`config/config.yaml` → `crawl.sources`，可随时增删、`enabled: false` 停用）：
-
-| 源 | 内容 | 特点 |
-|---|---|---|
-| iptv-org 中国频道 | 143 频道，央视/各省/国际中文 | 全球最大开源库，频道全 |
-| fanmingming 央视/卫视高清 (IPv4) | 94 频道 | 国内直连，央视+卫视高清 |
-| fanmingming 综合源 | 189 频道 | 央视/卫视/地方/付费全覆盖 |
-| fanmingming IPv6 专用 | 82 频道 | 国内宽带 IPv6 流畅（无 IPv6 可停用） |
-| best-fan 每日检测 | 250 频道 | 每日自动检测有效性，央视/卫视/体育/付费 |
-
-> 每个源 GitHub raw 直连失败时，脚本**自动降级到 jsdelivr CDN 镜像**（国内可直连），无需额外配置。
-
-**频道分类方式**（`output.group_map`）：采用 **iptv-api 风格分类**——爬取后按「频道名 + 原分组名」正则归入统一中文分组，输出顺序即规则顺序：
-
-> 📺央视频道 → 📡卫视频道 → 🌊港·澳·台 → ☘️各省频道（北京/天津/上海/河北/…每省独立）→ 🏀体育 / 🎬电影 / 🎵音乐 / 🪁动画 / 🎮游戏 / 💰央视付费 / 🎥咪咕直播 / 🏛经典剧场 / 📰新闻 / 📖纪录 / 📈财经 / 🎓科教 / 🛒购物 → 📺其他
-
-- 每条规则是「分组名 + 正则」，按顺序匹配、**先命中先生效**（如「江苏卫视」先命中卫视→归卫视频道，「江苏新闻」归江苏频道）；
-- 首部带 **🕘️更新时间** 分组（显示列表更新时间）；
-- 可自由增删改规则，详见 `config/config.yaml`。
-
----
-
-## 六、本地运行（可选）
-
-不依赖 GitHub 也能在本地跑通全流程，方便调试配置：
+## 四、本地运行
 
 ```bash
-# 安装依赖（已装可跳过）
 pip install -r requirements.txt
 
-# 完整流程（会自动检测 ffmpeg；本地未安装时自动降级为仅 HTTP 测速）
-python scripts/run.py
+# 完整流程（自动检测 ffmpeg；未安装则降级为仅 HTTP 测速）
+python scripts/run.py --config config/config.yaml
 
-# 国内网络下，让 jsdelivr 镜像优先（避免 raw 超时等待）
-$env:LIVE_SOURCE_PREFER_MIRROR = "1"   # PowerShell
-export LIVE_SOURCE_PREFER_MIRROR=1     # bash
+# 国内网络：让 jsdelivr 镜像优先，避免 raw 超时
+export LIVE_SOURCE_PREFER_MIRROR=1        # bash
+$env:LIVE_SOURCE_PREFER_MIRROR = "1"      # PowerShell
 
-# 本地调试：只测速前 50 个，快速看效果
+# 快速调试：只测速前 50 个 / 跳过测速
 python scripts/run.py --limit 50
-
-# 只爬取生成、跳过测速
 python scripts/run.py --skip-check
 
-# 国内可用性自查：用本机网络对生成的 live.txt 做「分片级」严格校验，
-# 找出会显示"播放失败"的频道（Actions 在海外测速，本机更能代表国内视角）
-python scripts/diag.py output/live.txt
+# 仅校验现有输出文件结构（CI 中也会跑）
+python scripts/run.py --verify-only
+
+# 国内视角严格诊断：找出会显示「播放失败」的频道
+python scripts/diag.py output/live.txt --workers 24 --json-out diag-report.json
 ```
 
-> 建议本地装一下 ffmpeg（`winget install ffmpeg` / `brew install ffmpeg` / `apt install ffmpeg`），测速更严格——会真正探测流是否可播放。
+> 建议安装 ffmpeg（`winget install ffmpeg` / `brew install ffmpeg` / `apt install ffmpeg`），
+> 测速会真正探测视频流是否可播放，而不是只看 HTTP 200。
 
 ---
 
-## 七、配置项速查（config/config.yaml）
+## 五、分组规则（按模板重组）
 
-| 配置 | 说明 | 默认 |
+按用户模板重组为 **9 个分组** + 1 个兜底组，**支持同一频道跨组出现**：
+
+| 分组 | 匹配规则 | 说明 |
 |---|---|---|
-| `crawl.sources` | 数据源列表（5 个内置），`enabled: false` 可停用 | - |
-| `crawl.request.timeout / retries / max_size` | 请求超时、重试、单源最大下载 MB | 12 / 1 / 20 |
-| `crawl.filters.include_groups` | 只保留的分组（小写） | 空=全部 |
-| `crawl.filters.exclude_groups` | 排除的分组（支持正则） | 空 |
-| `crawl.filters.include_keywords / exclude_keywords` | 频道名关键词过滤 | 空 / 测试、广告等 |
-| `crawl.filters.country` | 按 tvg-country 过滤（如 `CN`） | 空=不过滤 |
-| `crawl.filters.allowed_schemes` | 允许的协议 | http, https |
-| `output.group_map.enabled` | 是否启用中文分组映射 | true |
-| `output.group_map.rules` | 中文分组映射规则（顺序匹配） | 央视/卫视/各省/专题… |
+| 央视频道 | CCTV / CGTN / 央视 / 中央 | 央视全系列 |
+| 卫视频道 | 卫视（排除河北卫视） | 省级卫视 |
+| 地方频道 | 河北卫视 / 城市台 / 市县频道 | 地方频道 |
+| 港澳国际 | 凤凰 / TVB / 翡翠 / 星空 / 港澳台 | 港澳台及国际 |
+| 其他频道 | `.*` 兜底 | 未命中以上规则的频道 |
+| 体育专区 *专题* | CCTV-5/5+/16、五星体育、广东体育… | 从央视频道等**跨组**复用 |
+| 少儿动画 *专题* | CCTV-14、金鹰卡通、卡酷少儿… | 跨组复用 |
+| 电影剧场 *专题* | CCTV-6、CHC、第一剧场… | 跨组复用 |
+| 戏曲音乐 *专题* | CCTV-11/15、梨园频道… | 跨组复用 |
+| 4K超高清 *专题* | CCTV-4K/8K、东方卫视4K、苏州4K… | 跨组复用 |
+
+**跨组原理**（`group_map.multi_group: true`）：
+- `rules` 定**主组**（唯一），`theme_groups` 命中就**追加**到 `groups`
+- 输出前 `expand_groups()` 把频道展开成「每组一条」，例：CCTV-5 同时出现在
+  `央视频道` 和 `体育专区`；东方卫视4K 同时出现在 `卫视频道` 和 `4K超高清`
+- 只命中兜底组却命中专题组的（如「五星体育」），专题组自动升为主组，避免冗余
+- 去重改为按 `(分组, URL)`，跨组副本不会被误删
+- `4K/8K` 作为频道名一部分时保留（东方卫视4K 不再被清洗成 东方卫视）
+
+> 想改回「一频道一组」：设 `group_map.multi_group: false` 即可，无需改代码。
+
+---
+
+## 六、配置速查
+
+| 配置项 | 说明 | 默认 |
+|---|---|---|
+| `upstream.check / cache_bust` | 查询上游 commit / 加时间戳绕过 CDN | true / true |
+| `upstream.stale_warn_minutes` | 上游超多久未更新则告警 | 360（6h） |
+| `crawl.sources[].no_mirror` | 源级禁用 jsdelivr 镜像（时效性高的源必开） | false（vbskycn 源为 true） |
+| `crawl.sources[].cache_bust` | 源级加时间戳强制回源 | false（vbskycn 源为 true） |
+| `crawl.workers` | 并发爬取源数量 | 6 |
+| `crawl.request.timeout / retries / max_size` | 单源请求超时 / 重试 / 最大 MB | 12 / 1 / 20 |
+| `crawl.request.exclude_url_patterns` | URL 黑名单正则（过滤占位符） | 127.0.0.1 等 |
+| `crawl.filters.exclude_keywords` | 频道名关键词黑名单（含失效标注） | 测试/失效/offline… |
+| `crawl.filters.exclude_channels` | 精确黑名单（子串匹配） | iptv-org 海外子台等 |
+| `check.enabled` | 是否测速（**本次修复为真正生效**） | true |
 | `check.workers` | 并发测速线程数 | 30 |
-| `check.connect_timeout / read_timeout / ffprobe_timeout` | 连接 / 首包 / 探测超时（秒） | 5 / 8 / 10 |
-| `check.require_ffprobe` | 是否强制 ffprobe 媒体校验 | true |
-| `check.min_score` | 最低通过分，低于丢弃 | 30 |
-| `check.max_per_group` | 每分组最多保留频道数（0=不限） | 60 |
-| `check.max_urls_per_channel` | 每频道最多保留地址数（多源冗余，失败自动切换） | 8 |
-| `output.formats` | 输出的格式 | m3u, txt, json |
+| `check.connect_timeout / read_timeout / ffprobe_timeout` | 连接 / 首包 / 探测超时 | 5 / 8 / 10 |
+| `check.min_score` | 最低通过分（≤500ms 延迟满分 60 + 媒体 40） | 30 |
+| `check.max_per_group` | 每分组最多频道数（0=不限） | 60 |
+| `check.max_urls_per_channel` | 每频道最多保留地址数（冗余自动切换） | 8 |
+| `output.epg` | EPG 订阅地址（留空保持兼容） | "" |
+| `output.group_map.rules` | 主分组规则（唯一归属，顺序匹配） | 央视→港澳国际→卫视→地方→其他 |
+| `output.group_map.theme_groups` | 专题组规则（命中即追加，跨组复用） | 体育/少儿/电影/戏曲/4K |
+| `output.group_map.multi_group` | 是否开启跨组复用 | true |
+| `output.group_map.max_per_group` | 专题组每组上限（0=不限） | 0 |
 
 ---
 
-## 八、定时节奏与提交策略
+## 七、注意事项
 
-- **cron**：`0 0,6,12,18 * * *`（UTC）→ 北京时间 **02:00 / 08:00 / 14:00 / 20:00** 各跑一次。GitHub 对免费仓库定时任务可能有分钟级延迟，属正常。
-- **空提交保护**：工作流先暂存 `live.*` 三个文件，`git diff --cached` 为空则跳过提交——频道没变就不会产生无意义 commit；只有内容变化才连 `status.json` / `badge.json` 一起提交。
-- **失败保护**：若某次爬取 0 频道或全部失效，脚本 `sys.exit(1)` 终止，**不会用空文件覆盖**上次有效输出。
-
----
-
-## 九、常见问题
-
-1. **Actions 推不上去？**
-   默认 `GITHUB_TOKEN` 只能推本仓库、且不能通过需要 status check 的分支保护。若失败：仓库 Settings → Secrets → 新建 `GH_TOKEN`（fine-grained PAT，勾选仓库 `Contents: Read and write`），并把工作流里 `git push` 改为
-   `git push "https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF##*/}`
-
-2. **播放失败 / 请更换频道？**
-   已内置四重保障，保证「每个频道确实可用、不重复」：① 测速校验会剔除死链与**200 假页面**（非 4xx/5xx 且 Content-Type 非网页/JSON 才判可用，Actions 端再经 ffprobe 验证真实可播）；② 频道名带 `Geo-blocked` / `Not 24/7` / `Offline` / `失效` 等标注的自动过滤；③ **每个频道保留多个可用地址**（`check.max_urls_per_channel`，默认 8），单个地址失效时 TVBox 自动切换下一个；④ **每次更新内置最终审计**：拦截残留失效标注频道、校验重复地址为 0、统计唯一频道数与冗余数，结果写入 `output/status.json`。若仍偏少，可放宽 `min_score`、调大 `max_urls_per_channel` 或增加数据源。
-
-3. **要不要 commit 输出文件？**
-   要。TVBox 通过 raw 链接读 `output/` 文件，文件必须提交进仓库才能被访问；`cache/`、`__pycache__` 等已 gitignore。
-
-4. **国内看直播卡 / 打不开？**
-   - 播放入口优先用 **jsdelivr CDN** 链接（见「四」）；`raw.githubusercontent.com` 在国内常不稳定。
-   - 本方案的频道地址多为国内可直连源（移动/联通 IPTV、fanmingming 等）。若家里宽带**没有 IPv6**，把 `config.yaml` 里 `fanmingming IPv6专用` 的 `enabled` 改为 `false`，否则会混入一批播不了的 IPv6 频道。
-   - 测速在 GitHub Actions（海外）执行，反映的是海外到源的连通性；国内实际体验以播放测试为准。
-
----
-
-## 十、免责声明
-
-本项目仅用于技术学习与个人收藏，直播源来自公开网络，版权归原权利人所有；请遵守所在地法律法规，勿用于商业传播。
+- **测速视角**：GitHub Actions 在海外执行，反映的是海外到源的连通性；国内实际体验以本地 `diag.py` 为准。
+- **IPv6**：没有 IPv6 宽带就把 `fanmingming IPv6专用` 和 BigBigGrandG / Kimentanm / YanG 源设为 `enabled: false`。
+- **失效源**：`config.yaml` 中已标注 `[已失效]` 的源默认关闭；如要重新启用，先确认其可用性。
+- **版权**：直播源来自公开网络，仅供技术学习与个人收藏，请遵守所在地法律法规，勿用于商业传播。

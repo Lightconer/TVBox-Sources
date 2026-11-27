@@ -1,7 +1,9 @@
-* text=auto
+* text=auto eol=lf
+*.md text eol=lf
 *.py text eol=lf
 *.yaml text eol=lf
 *.yml text eol=lf
-*.txt text eol=lf
 *.m3u text eol=lf
+*.txt text eol=lf
 *.json text eol=lf
+*.webp binary
