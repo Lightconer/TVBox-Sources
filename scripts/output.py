@@ -30,7 +30,9 @@ def _notice_entry(notice):
 
 def write_m3u(channels, path, header=None, notice=None):
     """标准 #EXTM3U 格式"""
-    lines = ["#EXTM3U"]
+    epg = str((header or {}).get("epg") or "").strip()
+    # url-tvg / x-tvg-url 是各家播放器认的 EPG 地址写法，两个都写一份最保险
+    lines = [f'#EXTM3U url-tvg="{epg}" x-tvg-url="{epg}"' if epg else "#EXTM3U"]
     if header:
         lines.append("#EXTENC:UTF-8")
         lines.append(f"#PLAYLIST:{header.get('name', '')}")

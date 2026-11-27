@@ -76,6 +76,39 @@ Actions 在海外跑，测速结果跟国内实际观感会有出入，播放有
 
 分组规则写在 `config/config.yaml`，想恢复成「一个频道只在一个组」把 `output.group_map.multi_group` 改成 `false` 就行；想调组的先后顺序改 `output.group_order`。
 
+### 频道别名
+
+同一个台在不同源里有好几种写法：`CCTV1`、`CCTV-1`、`CCTV 1 50 FPS`、`中央一台`、`央视一套`、`中央电视台综合频道`。`config/alias.yaml` 把它们归到同一个名字上，最终只出现一条 `CCTV-1`，多条线路挂在它下面。
+
+```yaml
+cctv_normalize: true          # 央视台号自动归一，覆盖 CCTV1/中央一台/央视一套 这类
+aliases:                      # 规律吃不掉的写法手工补
+  CCTV-1: ["中央电视台综合频道", "央视综合频道"]
+```
+
+归一规则只认「前缀 + 台号 + 尾巴」这种结构，所以 `CCTV-4K`、`CCTV-4 美洲`、`CCTV-1 香港` 不会被误并。
+
+## EPG 节目单
+
+`output.epg` 填的是 fanmingming 仓库里的 `e.xml`（123 个频道、3.6 万条节目）。填了之后：
+
+- `live.m3u` 头部会带 `url-tvg` / `x-tvg-url`
+- `tvbox.json` 里带上 epg 地址
+- 频道的 `tvg-id` 会换成 EPG 用的写法（`CCTV-1` → `CCTV1`），播放器才能把节目单挂上
+
+每轮还会探一遍 `output.epg_candidates` 里的地址，结果写在 `status.json` 的 `epg` 字段，换源前先看那里哪个是 `ok: true`。
+
+## 国内节点（可选）
+
+Actions 跑在海外，测速出来的「快」和家里的实际体验不是一回事。`update-cn.yml` 是给自托管 runner 用的：在 NAS / 软路由 / 小主机上装个 runner、打个 `iptv-cn` 标签，就能用国内线路测速。
+
+```bash
+# 在 runner 机器上
+./config.sh --url https://github.com/Lightconer/TVBox-Sources --token <TOKEN> --labels iptv-cn
+```
+
+装好后到 Actions 里手动跑一次「直播源更新（国内节点）」验证；确认没问题再去掉工作流里 `schedule` 的注释，让它定时跑。没装 runner 之前别开定时，否则任务会一直排队。
+
 ## 数据源
 
 源列表在 `config/config.yaml` 的 `crawl.sources`，`enabled: false` 可以临时关掉某个。抓取走 raw 并带时间戳，避免拿到几小时前的旧内容。
@@ -91,6 +124,8 @@ Actions 在海外跑，测速结果跟国内实际观感会有出入，播放有
 ```
 
 `include_name` / `include_id` / `include_country` 之间是「或」，`exclude_name` 是排除，`limit` 可以硬性截断条数。
+
+zbefine、茶客源、BigBigGrandG 这三个源最后更新停在 2023 年，已经标成 `[停更]` 并 `enabled: false`，地址留着方便以后复查。
 
 想让上游一更新就立刻触发，可以配 `repository_dispatch`：
 

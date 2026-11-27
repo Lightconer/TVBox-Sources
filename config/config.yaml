@@ -78,18 +78,22 @@ crawl:
     - name: "myernestlu 国内直播源"
       url: "https://myernestlu.github.io/zby.txt"
       enabled: true
-    - name: "zbefine 直播源"
+    # 以下三个源最后更新停在 2023 年，每轮白爬，已停用（保留地址方便以后复查）
+    - name: "[停更] zbefine 直播源"
       url: "https://raw.githubusercontent.com/zbefine/iptv/main/iptv.m3u"
-      enabled: true
-    - name: "茶客源"
+      enabled: false
+    - name: "[停更] 茶客源"
       url: "https://raw.githubusercontent.com/vamoschuck/TV/main/M3U"
-      enabled: true
+      enabled: false
+    - name: "[停更] BigBigGrandG 集合源"
+      url: "https://raw.githubusercontent.com/BigBigGrandG/IPTV-URL/release/Gather.m3u"
+      enabled: false
     - name: "YueChan 直播源"
       url: "https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u"
       mirror: "https://testingcf.jsdelivr.net/gh/YueChan/Live@main/IPTV.m3u"
       enabled: true
-    - name: "BigBigGrandG 集合源(部分IPv6)"
-      url: "https://raw.githubusercontent.com/BigBigGrandG/IPTV-URL/release/Gather.m3u"
+    - name: "wwb521 直播源"
+      url: "https://raw.githubusercontent.com/wwb521/live/main/tv.m3u"
       enabled: true
     - name: "Kimentanm 集合源(部分IPv6)"
       url: "https://raw.githubusercontent.com/Kimentanm/aptv/master/m3u/iptv.m3u"
@@ -243,7 +247,19 @@ output:
     # 保持本仓库地址，生成的 tvbox.json 订阅地址不变
     url: "https://github.com/Lightconer/TVBox-Sources"
     desc: "由 GitHub Actions 自动爬取+测速生成"
-  epg: ""                   # 可选：EPG 订阅地址，默认留空以完全兼容原配置
+  # EPG 节目单：填了才会写进 tvbox.json 和 m3u 头部
+  # 用的是 fanmingming 仓库里的 e.xml（123 个频道 / 3.6 万条节目，只覆盖常见台）
+  epg: "https://raw.githubusercontent.com/fanmingming/live/main/e.xml"
+  # 每轮探一遍这些地址（只读前 4KB），结果写进 status.json.epg，方便判断换哪个
+  epg_candidates:
+    - "https://raw.githubusercontent.com/fanmingming/live/main/e.xml"
+    - "https://live.fanmingming.com/e.xml"
+    - "https://epg.112114.xyz/pp.xml"
+  # EPG 里的频道 id 是 CCTV1 这种没横线的写法，导出时把 tvg-id 对齐过去
+  epg_id_fill: true
+
+  # 频道别名表：CCTV1 / CCTV-1 / 央视一套 归一成同一个频道
+  alias_file: "config/alias.yaml"
 
   # 频道列表顶部的「更新时间」分组：播放器里打开直播就能看到这次更新到几点
   # url 只是个占位（点开不播），用来让某些播放器愿意显示这一条

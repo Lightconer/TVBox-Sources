@@ -11,6 +11,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import LOGGER, DEFAULT_UA  # noqa: E402
+from alias import resolve as resolve_alias  # noqa: E402
 
 try:
     import requests
@@ -306,8 +307,10 @@ def select_best(results, cfg):
         if key_url in seen_urls:
             continue
         seen_urls.add(key_url)
-        key = (r.channel.group, normalize_name(r.channel.name))
-        slot = slots.setdefault(key, {"name": r.channel.name, "items": []})
+        # 先过别名表：CCTV1 / CCTV-1 / 央视一套 会归到同一个 key，聚合到同一个频道
+        canon = resolve_alias(r.channel.name)
+        key = (r.channel.group, normalize_name(canon))
+        slot = slots.setdefault(key, {"name": canon, "items": []})
         if len(slot["items"]) < max_urls_per_channel:
             slot["items"].append(r)
             # 展示名选「最干净」的：优先无画质标注、其次更完整的名字，
@@ -341,7 +344,8 @@ def select_best(results, cfg):
         # 组内频道按 CCTV-1/2/3... 数字升序（自然排序），无数字的排在后面
         gslots.sort(key=lambda s: natural_sort_key(display_name(s["name"])))
         for slot in gslots:
-            name = display_name(slot["name"])
+            # 展示名再过一次别名：源里叫「CCTV1」「央视一套」的统一显示成 CCTV-1
+            name = resolve_alias(display_name(slot["name"]))
             for r in slot["items"]:
                 ch = r.channel
                 ch.name = name   # 统一展示名，便于 TVBox 合并多源

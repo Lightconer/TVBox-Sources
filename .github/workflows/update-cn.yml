@@ -1,0 +1,98 @@
+# 国内节点更新（自托管 runner）
+#
+# 为什么单独一个工作流：GitHub 的托管 runner 在海外，测速出来的「快」跟国内
+# 家里的实际体验对不上；想让结果贴近实际，就在自己的机器上跑一遍。
+#
+# 用法：
+#   1. 在一台长期开机的机器上装 self-hosted runner（NAS / 软路由 / 小主机都行），
+#      仓库 Settings → Actions → Runners → New self-hosted runner，按提示执行；
+#      装的时候给个标签：./config.sh --labels iptv-cn
+#   2. 机器上要有 python3 + ffmpeg（ffprobe 用来读分辨率，没有会退化成只看 HTTP）
+#   3. 想让它定时跑，把下面 schedule 的注释去掉；定时任务只在国内节点跑，
+#      和云端那个 update.yml 错开 20 分钟，避免两边同时改 output 打架。
+#
+# 没装 runner 之前别放开 schedule：任务会一直排队等 runner，白占队列。
+
+name: 直播源更新（国内节点）
+
+on:
+  workflow_dispatch:
+    inputs:
+      skip_check:
+        description: '跳过测速（快速生成）'
+        type: boolean
+        default: false
+  # schedule:
+  #   - cron: '10 3,7,11,15,19,23 * * *'
+
+concurrency:
+  group: tvbox-sources-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: [self-hosted, iptv-cn]
+    timeout-minutes: 40
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: 检查运行环境
+        run: |
+          python3 --version
+          if ! command -v ffprobe >/dev/null 2>&1; then
+            echo "::warning::没装 ffmpeg/ffprobe，本次只能按 HTTP 首包打分，分辨率会缺失"
+          fi
+
+      - name: 安装 Python 依赖
+        run: python3 -m pip install -r requirements.txt --quiet
+
+      - name: 爬取 + 测速 + 生成直播源
+        run: |
+          ARGS=""
+          if [ "${{ inputs.skip_check }}" = "true" ]; then ARGS="--skip-check"; fi
+          python3 scripts/run.py --config config/config.yaml $ARGS
+
+      - name: 校验输出文件结构
+        run: python3 scripts/run.py --config config/config.yaml --verify-only
+
+      - name: 提交变更（无变化则不提交）
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          FILES="output/live.m3u output/live.txt output/tvbox.json output/status.json output/badge.json"
+          git add $FILES
+          if git diff --cached --quiet; then
+            echo "::notice::直播源无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "chore: 国内节点更新 $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M')"
+          for i in 1 2 3; do
+            if git push origin "HEAD:${GITHUB_REF_NAME:-main}"; then
+              echo "推送完成"
+              exit 0
+            fi
+            echo "::warning::远端有新提交，rebase 后重试（$i/3）"
+            git fetch origin "${GITHUB_REF_NAME:-main}"
+            git rebase "origin/${GITHUB_REF_NAME:-main}" || {
+              git rebase --abort 2>/dev/null || true
+              echo "::error::rebase 冲突，请手工处理"
+              exit 1
+            }
+          done
+          exit 1
+
+      - name: 刷新 jsdelivr CDN 缓存
+        if: always()
+        continue-on-error: true
+        run: |
+          for f in live.txt live.m3u tvbox.json badge.json; do
+            CODE=$(curl -s --max-time 30 -o /dev/null -w "%{http_code}" \
+              "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/output/$f")
+            echo "purge $f -> http $CODE"
+          done

@@ -18,8 +18,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from utils import setup_logging, LOGGER  # noqa: E402
 from crawl import Channel, crawl_sources, apply_filters  # noqa: E402
 from group_map import apply_group_map, expand_groups  # noqa: E402
-from check import run_check, select_best, normalize_name, natural_sort_key  # noqa: E402
+from check import (run_check, select_best, normalize_name, natural_sort_key,  # noqa: E402
+                   display_name)
 from output import (write_m3u, write_txt, write_badge, write_tvbox_config)  # noqa: E402
+import alias as alias_mod  # noqa: E402
 
 
 def now_beijing():
@@ -102,6 +104,60 @@ def check_upstream(cfg):
     return result
 
 
+def probe_epg(cfg):
+    """逐个探测 EPG 地址，返回可写进 status.json 的结果
+
+    只读前 4KB 判断是不是 XMLTV，避免把几 MB 的节目单整个拉下来。
+    """
+    out = cfg.get("output") or {}
+    urls = []
+    if (out.get("epg") or "").strip():
+        urls.append(out["epg"].strip())
+    urls += [str(u) for u in (out.get("epg_candidates") or []) if u]
+    seen, results = set(), []
+    if not urls:
+        return results
+
+    from utils import make_session
+    s = make_session((cfg.get("crawl") or {}).get("request") or {})
+    verify = os.environ.get("IPTV_INSECURE_SSL") != "1"
+    try:
+        for u in urls:
+            if u in seen:
+                continue
+            seen.add(u)
+            item = {"url": u, "ok": False}
+            try:
+                r = s.get(u, timeout=20, stream=True, verify=verify)
+                item["status"] = r.status_code
+                item["type"] = (r.headers.get("content-type") or "")[:40]
+                head = b""
+                for chunk in r.iter_content(4096):
+                    head += chunk
+                    if len(head) >= 4096:
+                        break
+                r.close()
+                txt = head.decode("utf-8", "ignore").lower()
+                item["xml"] = ("<tv" in txt) or ("<?xml" in txt)
+                item["ok"] = r.status_code == 200 and item["xml"]
+            except Exception as e:  # noqa: BLE001
+                item["error"] = str(e)[:100]
+            results.append(item)
+            LOGGER.info("EPG 探测 %s → %s", u, "可用" if item["ok"] else
+                        f"不可用 ({item.get('error') or item.get('status')})")
+    finally:
+        s.close()
+    return results
+
+
+def epg_channel_id(name):
+    """EPG 里的频道 id 是 CCTV1 / CCTV5+ / CCTV4K 这种写法，去掉 CCTV- 里的横线"""
+    n = (name or "").strip()
+    if n.upper().startswith("CCTV-"):
+        return "CCTV" + n[5:]
+    return n
+
+
 def final_audit(selected, cfg):
     """输出前最终质量审计 + 去重：
     - 关键词双保险：命中失效标注关键词的强制剔除
@@ -145,7 +201,7 @@ def verify_outputs(out_dir):
     txt = os.path.join(out_dir, "live.txt")
     if os.path.exists(m3u):
         head = open(m3u, encoding="utf-8").readline().strip()
-        if head != "#EXTM3U":
+        if not head.startswith("#EXTM3U"):
             problems.append(f"live.m3u 首行不是 #EXTM3U: {head!r}")
     if os.path.exists(txt):
         n_genre = sum(1 for l in open(txt, encoding="utf-8") if l.rstrip().endswith("#genre#"))
@@ -181,6 +237,11 @@ def main():
     cfg = load_config(args.config)
 
     out_cfg = cfg.get("output", {})
+    # 频道别名：CCTV1 / CCTV-1 / 央视一套 归一
+    alias_stats = alias_mod.load(path=out_cfg.get("alias_file") or "config/alias.yaml")
+    if alias_stats.get("enabled"):
+        LOGGER.info("频道别名表已载入：%d 个别名 / %d 个规范名",
+                    alias_stats["aliases"], alias_stats["channels"])
     out_dir = out_cfg.get("dir", "output")
     os.makedirs(out_dir, exist_ok=True)
 
@@ -224,6 +285,8 @@ def main():
         "crawled": len(raw),
         "dedup": len(channels),
         "upstream": check_upstream(cfg),
+        "alias": alias_stats,
+        "epg": probe_epg(cfg),
     }
     if meta["upstream"].get("ok"):
         LOGGER.info("上游 %s 最新提交 %s（%s，滞后 %s 分钟）",
@@ -301,13 +364,27 @@ def main():
                 break
         return (idx.get(c.group, len(order)), pos, natural_sort_key(c.name))
 
+    # 展示名统一过一次别名表：CCTV1 / CCTV 1 / 央视一套 都显示成 CCTV-1
+    # （跳测速跑的时候 select_best 不参与，这一层保证名字也一致）
+    for c in selected:
+        c.name = alias_mod.resolve(display_name(c.name))
+
     selected.sort(key=_sort_key)
     LOGGER.info("分组与频道排序完成，共 %d 个分组", len({c.group for c in selected}))
+
+    # tvg-id 对齐 EPG：CCTV-1 → CCTV1，播放器才能把节目单挂上去
+    epg_url = (out_cfg.get("epg") or "").strip()
+    if epg_url and out_cfg.get("epg_id_fill", True):
+        for c in selected:
+            c.tvg_id = epg_channel_id(c.name)
+        LOGGER.info("tvg-id 已按 EPG 频道 id 对齐（如 CCTV-1 → CCTV1）")
 
     LOGGER.info("==> 步骤3/4 生成输出（%d 个频道，%d 个地址）",
                 audit["channels"], len(selected))
     header = dict(out_cfg.get("header", {}) or {})
     header["name"] = f"{header.get('name', '自动更新直播源')} (更新于 {date_str})"
+    if epg_url:
+        header["epg"] = epg_url
 
     # 列表顶部的「更新时间」条目：让使用者在播放器里一眼看到数据是几点抓的
     notice_cfg = dict(out_cfg.get("notice") or {})
