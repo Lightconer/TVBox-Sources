@@ -13,13 +13,34 @@ def _esc(v):
     return str(v or "").replace('"', "&quot;")
 
 
-def write_m3u(channels, path, header=None):
+def _notice_entry(notice):
+    """把配置里的 notice 转成 (组名, 显示名, 占位地址)；未启用返回 None
+
+    频道列表顶部放一条「更新时间」，播放器打开直播即可确认数据新鲜度。
+    """
+    if not notice or not notice.get("enabled", True):
+        return None
+    group = str(notice.get("group") or "更新时间").strip()
+    name = str(notice.get("name") or "").strip()
+    url = str(notice.get("url") or "http://127.0.0.1/").strip()
+    if not name:
+        return None
+    return group, name, url
+
+
+def write_m3u(channels, path, header=None, notice=None):
     """标准 #EXTM3U 格式"""
     lines = ["#EXTM3U"]
     if header:
         lines.append("#EXTENC:UTF-8")
         lines.append(f"#PLAYLIST:{header.get('name', '')}")
-    current_group = None
+    entry = _notice_entry(notice)
+    if entry:
+        g, n, u = entry
+        lines.append(f"#EXTGRP:{g}")
+        lines.append(f'#EXTINF:-1 group-title="{_esc(g)}",{n}')
+        lines.append(u)
+    current_group = entry[0] if entry else None
     for ch in channels:
         if ch.group != current_group:
             lines.append(f"#EXTGRP:{ch.group}")
@@ -36,10 +57,15 @@ def write_m3u(channels, path, header=None):
         f.write("\n".join(lines) + "\n")
 
 
-def write_txt(channels, path):
+def write_txt(channels, path, notice=None):
     """TVBox/影视仓 txt 格式：#genre# 分组头 + 「频道名,url」"""
     lines = []
-    current_group = None
+    entry = _notice_entry(notice)
+    if entry:
+        g, n, u = entry
+        lines.append(f"{g},#genre#")
+        lines.append(f"{n},{u}")
+    current_group = entry[0] if entry else None
     for ch in channels:
         if ch.group != current_group:
             lines.append(f"{ch.group},#genre#")

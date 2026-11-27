@@ -45,19 +45,28 @@ def apply_group_map(channels, cfg):
         fallback_group = str(rules_raw[-1].get("group", "")).strip() or None
 
     for ch in channels:
-        # 同时匹配频道名与源自带分组，命中率更高
-        haystack = f"{ch.name} {ch.group}"
+        # 先只看频道名匹配主分组，命中就定下来；
+        # 频道名信息量不足时（如「1套」「综合」），再带上源自带分组合并匹配。
+        # 这样「河北卫视」不会因为源分组叫「卫视频道」而被卫视规则抢走。
+        name_only = ch.name or ""
+        haystack = f"{name_only} {ch.group}"
 
         # 1) 主分组：唯一
         main_group = None
         for group, pat in primary:
-            if pat.search(haystack):
+            if group == fallback_group:
+                continue
+            if pat.search(name_only):
                 main_group = group
                 break
+        if not main_group:
+            for group, pat in primary:
+                if pat.search(haystack):
+                    main_group = group
+                    break
 
         # 2) 专题组命中列表：只匹配频道名，不用源自带分组
         #    （某些源把 group-title 标成「4K频道/体育」等，会导致东方卫视被误分到 4K 组）
-        name_only = ch.name or ""
         hit_themes = [group for group, pat in themes if pat.search(name_only)]
 
         # 兜底组让位：只命中兜底且有专题命中 → 首个专题组升为主组

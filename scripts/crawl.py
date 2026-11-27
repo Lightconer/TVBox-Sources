@@ -205,6 +205,63 @@ def _cache_busted(url, enabled):
     return f"{url}{sep}t={int(time.time())}"
 
 
+def _apply_source_filters(channels, src):
+    """按单个源的 filters 二次筛选（不影响全局 filters）
+
+    配置示例（iptv-org 全量索引这种上万条的源必须先筛，否则测速跑不完）：
+      filters:
+        include_country: ["CN", "HK", "TW", "MO"]
+        include_id: ["\\.(cn|hk|tw|mo)@"]     # 正则匹配 tvg-id，如 CCTV1.cn@SD
+        include_name: ["[\\u4e00-\\u9fa5]"]   # 正则，命中任一即保留
+        exclude_name: ["购物", "测试"]
+        limit: 500
+    多个 include_* 之间是「或」：命中任一条件就保留。
+    """
+    f = src.get("filters") or {}
+    if not f:
+        return channels
+    inc_name = [re.compile(p, re.IGNORECASE) for p in (f.get("include_name") or [])]
+    inc_id = [re.compile(p, re.IGNORECASE) for p in (f.get("include_id") or [])]
+    exc_name = [re.compile(p, re.IGNORECASE) for p in (f.get("exclude_name") or [])]
+    inc_country = {str(c).upper() for c in (f.get("include_country") or [])}
+    inc_group = {str(g).lower() for g in (f.get("include_group") or [])}
+    if not (inc_name or inc_id or exc_name or inc_country or inc_group):
+        return channels
+
+    out = []
+    for ch in channels:
+        name = ch.name or ""
+        if exc_name and any(p.search(name) for p in exc_name):
+            continue
+        if inc_name or inc_id or inc_country or inc_group:
+            hit = False
+            if inc_name and any(p.search(name) for p in inc_name):
+                hit = True
+            if inc_id and any(p.search(ch.tvg_id or "") for p in inc_id):
+                hit = True
+            if inc_country and (ch.tvg_country or "").strip().upper() in inc_country:
+                hit = True
+            if inc_group and (ch.group or "").strip().lower() in inc_group:
+                hit = True
+            if not hit:
+                continue
+        out.append(ch)
+
+    limit = int(f.get("limit", 0) or 0)
+    if limit > 0:
+        out = out[:limit]
+
+    # country_group: 按 tvg-id 里的国家码把源自带分组改写成中文地区名
+    # （iptv-org 的 group-title 是 Movies/News 这类分类，不写这一步港澳台会掉进其他频道）
+    cg = src.get("country_group") or {}
+    if cg:
+        for ch in out:
+            m = re.search(r"\.([a-z]{2})@", (ch.tvg_id or "").lower())
+            if m and m.group(1) in cg:
+                ch.group = str(cg[m.group(1)])
+    return out
+
+
 def _fetch_source(src, req_cfg, prefer_mirror):
     """抓取并解析单个源，返回 (source_name, channels)"""
     name = src.get("name") or "未命名源"
@@ -215,6 +272,8 @@ def _fetch_source(src, req_cfg, prefer_mirror):
 
     session = make_session(req_cfg)
     cache_bust = bool(src.get("cache_bust", False))
+    max_size = int(src.get("max_size") or req_cfg.get("max_size", 20))
+    timeout = int(src.get("timeout") or req_cfg.get("timeout", 12))
     try:
         text, used = None, None
         for url in urls:
@@ -223,8 +282,8 @@ def _fetch_source(src, req_cfg, prefer_mirror):
                         " [cache-bust]" if cache_bust else "")
             text = download_text(
                 session, fetch_url,
-                max_size_mb=req_cfg.get("max_size", 20),
-                timeout=req_cfg.get("timeout", 12),
+                max_size_mb=max_size,
+                timeout=timeout,
                 retries=req_cfg.get("retries", 1),
                 no_cache=cache_bust,
             )
@@ -239,7 +298,11 @@ def _fetch_source(src, req_cfg, prefer_mirror):
         parser = detect_parser(used, text)
         channels = PARSERS[parser](text, name)
         LOGGER.info("  [%s] 解析到 %d 个频道", parser, len(channels))
-        return name, channels
+        kept = _apply_source_filters(channels, src)
+        if len(kept) != len(channels):
+            LOGGER.info("  按本源的 filters 筛掉 %d 条，保留 %d 条",
+                        len(channels) - len(kept), len(kept))
+        return name, kept
     finally:
         session.close()
 

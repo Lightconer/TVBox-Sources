@@ -278,28 +278,57 @@ def main():
 
     # ---------- 4. 排序 + 输出 ----------
     gm = (cfg.get("output") or {}).get("group_map", {})
-    # 排序顺序：主分组在前，专题组在后（与模板展示顺序一致）
-    order = [r.get("group") for r in gm.get("rules", []) if r.get("group")]
-    order += [r.get("group") for r in gm.get("theme_groups", []) if r.get("group")]
+    # 展示顺序：优先用 output.group_order；没列到的分组按 rules + theme_groups 顺序补齐
+    base_order = [r.get("group") for r in gm.get("rules", []) if r.get("group")]
+    base_order += [r.get("group") for r in gm.get("theme_groups", []) if r.get("group")]
+    configured = [str(g) for g in (out_cfg.get("group_order") or []) if g]
+    order = configured + [g for g in base_order if g not in configured]
     seen_order = set()
     order = [g for g in order if not (g in seen_order or seen_order.add(g))]
     idx = {g: i for i, g in enumerate(order)}
     # 分组顺序在前；同组内按频道名数字升序（CCTV-1 → CCTV-2 → CCTV-10），
     # 同一频道的多条线路保持 select_best 已排好的「画质优先、同档看速度」顺序。
-    selected.sort(key=lambda c: (idx.get(c.group, len(order)), natural_sort_key(c.name)))
+    # output.group_sort 可给指定分组固定排序（如河北：河北卫视 → 省级 → 各市台）。
+    group_sort = {k: [str(p) for p in v] for k, v in
+                  ((out_cfg.get("group_sort") or {}).items())}
+
+    def _sort_key(c):
+        prefixes = group_sort.get(c.group) or []
+        pos = len(prefixes)
+        for i, p in enumerate(prefixes):
+            if p and (c.name or "").startswith(p):
+                pos = i
+                break
+        return (idx.get(c.group, len(order)), pos, natural_sort_key(c.name))
+
+    selected.sort(key=_sort_key)
     LOGGER.info("分组与频道排序完成，共 %d 个分组", len({c.group for c in selected}))
 
     LOGGER.info("==> 步骤3/4 生成输出（%d 个频道，%d 个地址）",
                 audit["channels"], len(selected))
     header = dict(out_cfg.get("header", {}) or {})
     header["name"] = f"{header.get('name', '自动更新直播源')} (更新于 {date_str})"
+
+    # 列表顶部的「更新时间」条目：让使用者在播放器里一眼看到数据是几点抓的
+    notice_cfg = dict(out_cfg.get("notice") or {})
+    notice = None
+    if notice_cfg.get("enabled", True):
+        tpl = str(notice_cfg.get("text") or "{time} 更新 · {channels} 个频道")
+        notice = {
+            "enabled": True,
+            "group": notice_cfg.get("group") or "更新时间",
+            "name": tpl.format(time=date_str[:16], channels=audit["channels"],
+                               lines=len(selected)),
+            "url": notice_cfg.get("url") or "http://127.0.0.1/",
+        }
+
     for fmt in out_cfg.get("formats", ["m3u", "txt"]):
         path = os.path.join(out_dir, f"live.{fmt}")
         if fmt == "m3u":
-            write_m3u(selected, path, header)
+            write_m3u(selected, path, header, notice)
         elif fmt == "txt":
             # 时间信息以注释形式写在首行，TVBox/影视仓会忽略 # 开头的非 genre 行
-            write_txt(selected, path)
+            write_txt(selected, path, notice)
             with open(path, "r+", encoding="utf-8", newline="\n") as f:
                 body = f.read()
                 f.seek(0)

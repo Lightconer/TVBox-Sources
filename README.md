@@ -68,15 +68,29 @@ Actions 在海外跑，测速结果跟国内实际观感会有出入，播放有
 
 ## 分组
 
-央视 / 卫视 / 地方 / 港澳国际 / 其他，另有体育、少儿、电影、戏曲、4K 几个专题组。同一个频道可以同时在多个组里，比如 CCTV-5 既在「央视频道」也在「体育专区」，CCTV-6 既在「央视频道」也在「电影剧场」。
+顺序固定为：央视 → 卫视 → 河北 → 地方 → 体育 → 少儿 → 电影 → 戏曲 → 4K → 港澳国际 → 其他。同一个频道可以同时在多个组里，比如 CCTV-5 既在「央视频道」也在「体育专区」，CCTV-6 既在「央视频道」也在「电影剧场」，河北卫视既在「河北频道」也在「卫视频道」。
 
-组内按频道号排（CCTV-1、CCTV-2 …… CCTV-10），同一频道的几条线路按画质从高到低排，同画质再按速度。没有 1080p 及以上的线路时就往下用低清晰度，不会因为找不到高清源就把频道丢掉。
+组内按频道号排（CCTV-1、CCTV-2 …… CCTV-10），河北组再按「省级台 → 各地市台」排。同一频道的几条线路按画质从高到低排，同画质再按速度。没有 1080p 及以上的线路时就往下用低清晰度，不会因为找不到高清源就把频道丢掉。
 
-分组规则写在 `config/config.yaml`，想恢复成「一个频道只在一个组」把 `output.group_map.multi_group` 改成 `false` 就行。
+列表最上面有个「更新时间」组，里面写着本次抓取的时间和频道数，打开直播就能确认数据新不新；不想要就把 `output.notice.enabled` 改成 `false`。
+
+分组规则写在 `config/config.yaml`，想恢复成「一个频道只在一个组」把 `output.group_map.multi_group` 改成 `false` 就行；想调组的先后顺序改 `output.group_order`。
 
 ## 数据源
 
 源列表在 `config/config.yaml` 的 `crawl.sources`，`enabled: false` 可以临时关掉某个。抓取走 raw 并带时间戳，避免拿到几小时前的旧内容。
+
+单个源还能配 `filters` 做二次筛选，比如 iptv-org 的全球总索引有一万多条，只挑中国大陆和港澳台的：
+
+```yaml
+- name: "iptv-org 全球索引(港澳台+大陆)"
+  url: "https://raw.githubusercontent.com/iptv-org/iptv/gh-pages/index.m3u"
+  filters:
+    include_id: ["\\.(cn|hk|tw|mo)@"]   # 按 tvg-id 里的国家码筛
+  country_group: { cn: "中国大陆", hk: "香港", tw: "台湾", mo: "澳门" }
+```
+
+`include_name` / `include_id` / `include_country` 之间是「或」，`exclude_name` 是排除，`limit` 可以硬性截断条数。
 
 想让上游一更新就立刻触发，可以配 `repository_dispatch`：
 
