@@ -101,14 +101,47 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add output/live.m3u output/live.txt output/tvbox.json
+          MAIN="output/live.m3u output/live.txt output/tvbox.json"
+          META="output/status.json output/badge.json"
+          BRANCH="${GITHUB_REF_NAME:-main}"
+
+          # 只有直播源内容变了才提交，避免仅时间戳变化也产生 commit
+          git add $MAIN
           if git diff --cached --quiet; then
             echo "::notice::直播源无变化，跳过提交"
-          else
-            git add output/status.json output/badge.json
-            git commit -m "chore: 自动更新直播源 $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M') (上游 ${UPSTREAM_SHA:-unknown})"
-            git push
+            exit 0
           fi
+          git add $META
+          MSG="chore: 自动更新直播源 $(TZ=Asia/Shanghai date +'%Y-%m-%d %H:%M') (上游 ${UPSTREAM_SHA:-unknown})"
+          git commit -m "$MSG"
+
+          # 测速要十几分钟，期间可能有人推送或别的任务先提交；先 rebase 再推，最多重试 5 次
+          BACKUP=$(mktemp -d)
+          cp $MAIN $META "$BACKUP/"
+          for i in 1 2 3 4 5; do
+            if git push origin "HEAD:$BRANCH"; then
+              echo "推送完成"
+              exit 0
+            fi
+            echo "::warning::远端有新提交，rebase 后重试（$i/5）"
+            git fetch origin "$BRANCH"
+            if ! git rebase "origin/$BRANCH"; then
+              # 两边都动了 output 时 rebase 会冲突，直播源是整份覆盖生成的，以本次结果为准
+              git rebase --abort 2>/dev/null || true
+              git reset --hard "origin/$BRANCH"
+              cp "$BACKUP"/* output/
+              git add $MAIN
+              if git diff --cached --quiet; then
+                echo "远端已包含相同输出，无需再提交"
+                exit 0
+              fi
+              git add $META
+              git commit -m "$MSG"
+            fi
+            sleep 3
+          done
+          echo "::error::多次重试后仍无法推送"
+          exit 1
 
       - name: 刷新 jsdelivr CDN 缓存
         if: always()
