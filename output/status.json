@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-11-27 21:57:18",
+  "update_time": "2026-11-27 22:12:10",
   "sources": [
     "IPTV4 主源(带台标EPG)",
     "IPTV4 TXT(备份)",
@@ -29,17 +29,17 @@
     "sha": "68a4f52a41c1",
     "commit_time": "2026-11-27T12:11:40Z",
     "message": "更新IPTV4/IPTV6最新可用直播源by198(iptvfind) 2026-11-27 20:11:40",
-    "lag_minutes": 105
+    "lag_minutes": 120
   },
-  "http_ok": 1381,
-  "passed": 609,
-  "dead": 4475,
+  "http_ok": 1355,
+  "passed": 578,
+  "dead": 4501,
   "groups": 11,
-  "avg_latency_ms": 773,
+  "avg_latency_ms": 761,
   "keyword_blocked": 0,
   "dup_urls": 0,
-  "channels": 294,
-  "redundant_channels": 379,
-  "cross_group_copies": 64,
+  "channels": 289,
+  "redundant_channels": 351,
+  "cross_group_copies": 62,
   "multi_group": true
 }
