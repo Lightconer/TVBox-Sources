@@ -10,7 +10,7 @@ import time
 
 import requests
 
-LOGGER = logging.getLogger("iptv-optimized")
+LOGGER = logging.getLogger("tvbox-sources")
 
 DEFAULT_UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "

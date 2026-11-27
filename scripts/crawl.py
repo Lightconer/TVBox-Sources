@@ -7,7 +7,7 @@
   - 增加 exclude_url_patterns，过滤占位符地址
   - 去重时统一 URL strip + 大小写规范化协议/主机
 
-接入 vbskycn 上游新增：
+时效性优化新增：
   - no_mirror：源级开关，禁用 jsdelivr 自动镜像（其 12h 缓存会拿到上游旧版本）
   - cache_bust：源级开关，给下载 URL 加 ?t=<epoch> 绕过 CDN 旧副本
   - download_text 支持 no_cache 参数，逐请求禁用响应的缓存复用
@@ -182,7 +182,7 @@ def mirror_url(url):
 def candidate_urls(src, prefer_mirror=False):
     """返回该源的候选下载地址列表：raw 优先、镜像兜底（可反转）
 
-    vbskycn 上游源设置 no_mirror=true，避免 jsdelivr 的 s-maxage=43200（12h）
+    上游主源设置 no_mirror=true，避免 jsdelivr 的 s-maxage=43200（12h）
     缓存导致拿到数小时前的旧版本；上游对时效性要求高，必须以 raw 为准。
     显式配置的 mirror 仍保留（可指向不带缓存的备用直链）。
     """
@@ -211,7 +211,7 @@ def candidate_urls(src, prefer_mirror=False):
 
 
 def _cache_busted(url, enabled):
-    """给 URL 追加时间戳参数，强制 CDN 回源拿最新版本（vbskycn 上游用）"""
+    """给 URL 追加时间戳参数，强制 CDN 回源拿最新版本（上游主源用）"""
     if not enabled:
         return url
     sep = "&" if "?" in url else "?"

@@ -14,7 +14,7 @@
     改为在输出文件头部写入时间注释，status.json / badge.json 仍保留更新时间
   - final_audit 真正去重（原来只统计不删除）
 
-接入 vbskycn 上游新增：
+时效性优化新增：
   - check_upstream()：用 GitHub API 查询上游最新 commit，写入 status.json.upstream，
     使「源有多新」可观测；超过阈值未更新则告警（不阻断产出）
 """
@@ -50,7 +50,7 @@ def load_config(path):
 
 
 def check_upstream(cfg):
-    """查询上游（vbskycn/iptv）最新 commit，返回可写入 status.json 的字典
+    """查询上游最新 commit，返回可写入 status.json 的字典
 
     保证「及时更新」的可观测性：记录上游 commit sha / 推送时间 / 距离现在的滞后分钟数。
     GitHub API 未认证额度 60 次/小时，本项目每 4h 跑一次，完全够用；失败不影响主流程。

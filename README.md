@@ -1,10 +1,9 @@
 # TVBox-Sources · 直播源自动更新（优化版）
 
-> 在本仓库原自动化流水线基础上，
-> 整合 [dongyubin/IPTV](https://github.com/dongyubin/IPTV) 收录的直播源，
-> 接入 [vbskycn/iptv](https://github.com/vbskycn/iptv) 作为上游主源（国内直连、每 4 小时自动更新、带台标/EPG），
+> 在本仓库原自动化流水线基础上，接入多个公开直播源，
+> 并接入一个国内可直连、每 4 小时自动更新的高质量上游源（带台标 / EPG），
 > 分组按用户模板重组为 9 组并支持**跨组复用**，
-> 并修复了原流水线中发现的多处正确性与健壮性问题。
+> 同时修复了原流水线中发现的多处正确性与健壮性问题。
 
 **目标**：定时爬取 → 测速校验 → 中文分组择优 → 自动生成 `live.txt` / `live.m3u` / `tvbox.json`，
 输出文件保持原有结构，TVBox / 影视仓 **无需更改任何配置**即可继续使用原来的订阅地址。
@@ -13,10 +12,10 @@
 
 ## 一、和原项目相比改了什么
 
-### ★ 上游主源：vbskycn/iptv（及时更新）
+### ★ 上游主源（及时更新）
 
-[vbskycn/iptv](https://github.com/vbskycn/iptv) 由部署在服务器上的扫描程序**每 4 小时**自动推送一次最新可用源
-（实测 UTC 0/4/8/12/16/20 的 `:10` 左右，即北京 08/12/16/20/00/04）。其 `iptv4.m3u` 含 668 条地址、
+上游主源由部署在服务器上的扫描程序**每 4 小时**自动推送一次最新可用源
+（实测 UTC 0/4/8/12/16/20 的 `:10` 左右，即北京 08/12/16/20/00/04）。其主 M3U 含 668 条地址、
 329 个唯一频道、11 个分组，并带 `tvg-logo` 台标与 EPG 节目单，质量很高。已作为**首位数据源**接入（去重时优先保留）。
 
 **「及时更新」三道机制**：
@@ -28,7 +27,7 @@
 | ③ 状态可观测 | `run.py` 用 GitHub API 查上游最新 commit，写入 `status.json.upstream` | 每次运行都能看到用的上游版本、提交时间和滞后分钟数；超 6h 未更新会告警 |
 
 **准实时触发（可选）**：除了定时，工作流支持 `repository_dispatch`，上游一更新即可立刻触发。
-在 vbskycn/iptv 或其镜像仓库添加 Webhook，或在任意地方调用：
+在上游仓库添加 Webhook，或在任意地方调用：
 
 ```bash
 curl -X POST \
@@ -43,29 +42,18 @@ curl -X POST \
 
 ```json
 "upstream": {
-  "enabled": true, "repo": "vbskycn/iptv", "file": "tv/iptv4.m3u",
+  "enabled": true, "repo": "<上游仓库>", "file": "tv/iptv4.m3u",
   "ok": true, "sha": "0d0e7b94ee36",
   "commit_time": "2026-11-27T08:14:50Z", "lag_minutes": 25, "stale": false
 }
 ```
 
-### 数据源（来自 dongyubin/IPTV）
-在原有 5 个源基础上，新增 9 个 README 中**未标记失效**的源：
+### 其他公开数据源
+在基础源之外，还接入了 9 个公开可用的补充源（覆盖综合、IPv6、港澳台等），
+统一在 `config/config.yaml` 的 `crawl.sources` 中维护，可按需 `enabled: true/false` 开关。
 
-| 新增源 | 说明 |
-|---|---|
-| myernestlu zby.txt | 国内直播源 |
-| zbefine iptv.m3u | GitHub 源 |
-| 茶客源 (vamoschuck/TV) | 综合源 |
-| YueChan / Live | 带 jsdelivr 镜像兜底 |
-| BigBigGrandG Gather.m3u | 部分 IPv6 |
-| Kimentanm aptv | 部分 IPv6 |
-| YanG-1989 Gather.m3u | 部分 IPv6 |
-| iptv-org 中国台湾频道 | 港澳台区补充 |
-| gitee xxy002 直播源 | 央视频道/卫视/港澳台/动漫 |
-
-README 中已用 `~~删除线~~` 标记的 10 个源（Ftindy 系列、xxy.free.hr、iptv.228088.xyz、whpsky、fanmingming v6、zhanghongguang）默认 `enabled: false`；
-Docker 教程里的 `127.0.0.1` / `你的服务器IP` 等占位地址通过 `exclude_url_patterns` 过滤。
+无效源（已停更、失效或需本地环境）默认 `enabled: false`；
+`127.0.0.1` / `你的服务器IP` 等占位地址通过 `exclude_url_patterns` 自动过滤。
 
 ### 代码修复（详见各文件顶部注释）
 
@@ -212,8 +200,8 @@ python scripts/diag.py output/live.txt --workers 24 --json-out diag-report.json
 |---|---|---|
 | `upstream.check / cache_bust` | 查询上游 commit / 加时间戳绕过 CDN | true / true |
 | `upstream.stale_warn_minutes` | 上游超多久未更新则告警 | 360（6h） |
-| `crawl.sources[].no_mirror` | 源级禁用 jsdelivr 镜像（时效性高的源必开） | false（vbskycn 源为 true） |
-| `crawl.sources[].cache_bust` | 源级加时间戳强制回源 | false（vbskycn 源为 true） |
+| `crawl.sources[].no_mirror` | 源级禁用 jsdelivr 镜像（时效性高的源必开） | false（上游主源为 true） |
+| `crawl.sources[].cache_bust` | 源级加时间戳强制回源 | false（上游主源为 true） |
 | `crawl.workers` | 并发爬取源数量 | 6 |
 | `crawl.request.timeout / retries / max_size` | 单源请求超时 / 重试 / 最大 MB | 12 / 1 / 20 |
 | `crawl.request.exclude_url_patterns` | URL 黑名单正则（过滤占位符） | 127.0.0.1 等 |

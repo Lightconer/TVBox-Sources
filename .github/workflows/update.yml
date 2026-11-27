@@ -1,7 +1,7 @@
 # ============================================================
 # TVBox-Sources · 直播源自动更新工作流（优化版）
 #   · 定时触发：每 4 小时错峰运行（UTC 1/5/9/13/17/21 = 北京 09/13/17/21/01/05）
-#     上游 vbskycn/iptv 在 UTC 0/4/8/12/16/20 的 :10 左右推送，这里晚约 50 分钟，
+#     上游在 UTC 0/4/8/12/16/20 的 :10 左右推送，这里晚约 50 分钟，
 #     既避开 CDN 缓存窗口，又保证每次都用上上游最新版本。
 #   · Webhook 触发：repository_dispatch，上游更新可立即触发（准实时，见 README）
 #   · 手动触发：Actions 页面 Run workflow（可临时关闭测速 / 限制数量）
@@ -35,7 +35,7 @@ on:
       - '.github/workflows/**'
 
 concurrency:
-  group: iptv-optimized-update
+  group: tvbox-sources-update
   cancel-in-progress: false
 
 permissions:

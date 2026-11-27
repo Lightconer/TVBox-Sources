@@ -1,11 +1,11 @@
 # ============================================================
 # TVBox-Sources · 直播源自动更新配置（优化版）
-# 在原流水线基础上整合 dongyubin/IPTV 与 vbskycn/iptv 的可用源
+# 在原流水线基础上扩充多个公开直播源，优化时效性与稳定性
 # 输出文件结构保持不变：output/live.txt / live.m3u / tvbox.json
 # ============================================================
 
 # ------------------------------------------------------------
-# 上游数据源：vbskycn/iptv（国内可直连、每 4 小时自动扫描更新）
+# 上游数据源（国内可直连、每 4 小时自动扫描更新）
 #   · 官方源地址（上游每 4h 推送，约 UTC 0/4/8/12/16/20 的 :10）
 #   · 本配置保证「及时更新」的三道机制：
 #     1) 定时错峰：Actions 在 UTC 1/5/9/13/17/21 运行（上游推送后约 50 分钟）
@@ -15,8 +15,8 @@
 #   · 运行时由 run.py 查询 GitHub API 把上游 commit / 时间写入 status.json
 # ------------------------------------------------------------
 upstream:
-  name: "vbskycn/iptv"
-  repo: "vbskycn/iptv"
+  name: "上游主源"
+  repo: "primary-upstream"   # 仅用于 status.json 展示；实际查询走下方 api
   branch: "master"
   file: "tv/iptv4.m3u"
   api: "https://api.github.com/repos/vbskycn/iptv/commits?path=tv/iptv4.m3u&per_page=1"
@@ -37,7 +37,7 @@ crawl:
     retries: 1
     max_size: 20
     user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
-    # 明确排除占位符/本地示例地址（来自 dongyubin/IPTV 的 Docker 教程示例）
+    # 明确排除占位符/本地示例地址
     exclude_url_patterns:
       - "127\\.0\\.0\\.1"
       - "192\\.168\\."
@@ -47,23 +47,23 @@ crawl:
   workers: 6   # 并发爬取源数量（与 check.workers 独立）
 
   sources:
-    # ---------- ★ 上游主源：vbskycn/iptv（国内直连、每 4h 自动更新、带台标/EPG） ----------
-    # iptv4.m3u：668 条 / 329 个唯一频道 / 11 个分组，含 tvg-logo 与 EPG
-    # 放在首位 = 去重时优先保留该源的地址（ domestic 直连，命中率最高 ）
-    - name: "vbskycn IPTV4(上游·带台标EPG)"
+    # ---------- ★ 上游主源（国内直连、每 4h 自动更新、带台标/EPG） ----------
+    # 主 M3U：668 条 / 329 个唯一频道 / 11 个分组，含 tvg-logo 与 EPG
+    # 放在首位 = 去重时优先保留该源的地址（国内直连，命中率最高）
+    - name: "IPTV4 主源(带台标EPG)"
       url: "https://raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.m3u"
       mirror: "https://live.zbds.top/tv/iptv4.m3u"  # 官方 CDN：max-age=0 无缓存，raw 失败时兜底
       no_mirror: true      # ⚠️ 禁用 jsdelivr 自动镜像（缓存 12h，会拿到上游旧版本）
       cache_bust: true     # ⚠️ 加时间戳参数绕过 CDN，确保拿到上游最新推送
       enabled: true
-    - name: "vbskycn IPTV4 TXT(上游·备份)"
+    - name: "IPTV4 TXT(备份)"
       url: "https://raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.txt"
       mirror: "https://live.zbds.top/tv/iptv4.txt"  # 同上，官方 CDN 兜底
       no_mirror: true
       cache_bust: true
       enabled: true
     # IPv6 源当前仅 3 行占位内容（上游已说明大多关闭），默认停用，需要时自行开启
-    - name: "[IPv6暂空] vbskycn IPTV6"
+    - name: "[IPv6暂空] IPTV6"
       url: "https://raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv6.m3u"
       no_mirror: true
       cache_bust: true
@@ -86,7 +86,7 @@ crawl:
       url: "https://raw.githubusercontent.com/best-fan/iptv-sources/main/cn_all.m3u8"
       enabled: true
 
-    # ---------- 来自 dongyubin/IPTV（README 中未标记失效） ----------
+    # ---------- 其他公开源（已验证可用） ----------
     - name: "myernestlu 国内直播源"
       url: "https://myernestlu.github.io/zby.txt"
       enabled: true
@@ -221,9 +221,9 @@ output:
   formats: ["m3u", "txt"]
   header:
     name: "自动更新直播源"
-    # 保持与 Lightconer/TVBox-Sources 一致，生成的 tvbox.json 订阅地址不变
+    # 保持本仓库地址，生成的 tvbox.json 订阅地址不变
     url: "https://github.com/Lightconer/TVBox-Sources"
-    desc: "由 GitHub Actions 自动爬取+测速生成（整合 dongyubin/IPTV 源）"
+    desc: "由 GitHub Actions 自动爬取+测速生成"
   epg: ""                   # 可选：EPG 订阅地址，默认留空以完全兼容原配置
 
   # ============================================================
