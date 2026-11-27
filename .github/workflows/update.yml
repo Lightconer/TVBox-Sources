@@ -147,6 +147,10 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          curl -s \
-            "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/output/live.txt&gh/${GITHUB_REPOSITORY}@main/output/live.m3u&gh/${GITHUB_REPOSITORY}@main/output/tvbox.json&gh/${GITHUB_REPOSITORY}@main/output/badge.json" \
-            -o /dev/null -w "purge http_code=%{http_code}\n"
+          # jsdelivr 一次只认一个路径，用 & 拼接只会清掉第一个，必须逐个来
+          for f in live.txt live.m3u tvbox.json badge.json; do
+            CODE=$(curl -s --max-time 30 -o /dev/null -w "%{http_code}" \
+              "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/output/$f")
+            echo "purge $f -> http $CODE"
+            [ "$CODE" = "200" ] || echo "::warning::$f 缓存刷新失败（http $CODE）"
+          done
