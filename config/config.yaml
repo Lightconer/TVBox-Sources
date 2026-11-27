@@ -285,7 +285,7 @@ output:
       - { group: "央视频道", pattern: "CCTV|CGTN|央视|中央|央广" }
       # 港澳国际放在卫视频道之前，避免「凤凰卫视/星空卫视」被「卫视」抢走
       # 后半段是 iptv-org 用的英文台名（Jade/ViuTV/TDM…），不收就会掉进其他频道
-      - { group: "港澳国际", pattern: "凤凰|Phoenix|翡翠|TVB|星空|香港|澳门|台湾|HOY|中天|东森|民视|三立|明珠|无线|华娱|本港台|亚洲台|国际台|ViuTV|Jade|TDM|Lotus|Macau|Macao|Celestial|NewsWorld|KIX|Thrill" }
+      - { group: "港澳国际", pattern: "凤凰卫视|凤凰资讯|Phoenix|翡翠|TVB|星空|香港|澳门|台湾|HOY|中天|东森|民视|三立|明珠|无线|华娱|本港台|亚洲台|国际台|ViuTV|Jade|TDM|Lotus|Macau|Macao|Celestial|NewsWorld|KIX|Thrill" }
       # 其余卫视（河北卫视由下一行的「河北频道」接手，这里用否定回顾让位）
       - { group: "卫视频道", pattern: "(?<!河北)卫视|Satellite" }
       # 河北单列一组，与央视/卫视同级：省级频道 + 各地市台（顺序在卫视之后、地方频道之前）
