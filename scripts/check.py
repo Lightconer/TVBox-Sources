@@ -1,16 +1,4 @@
-"""测速校验模块：HTTP 首包测速 + ffprobe 媒体校验 → 打分 → 分组择优
-
-修复项（相对 TVBox-Sources）：
-  - requests.Session 线程局部复用，避免每次新建 TCP/TLS 连接
-  - ffprobe 的 rw_timeout 改为读取配置（原来硬编码 4s 与配置 10s 不一致）
-  - 增加 -probesize/-analyzeduration，避免 HLS 探测过久被外层超时杀掉
-  - compute_score 修正为「≤500ms 满分」（与 README 描述一致）
-  - select_best 增加展示名清洗，去掉 (720p) 等画质尾缀
-  - http_probe 增加 Content-Length=0 与空 stream 判定
-  - 画质优先择优：按分辨率档位（4K/1080p/720p/SD）排序，同档再看速度；
-    无 1080p 及以上时自动降级使用低清晰度源，不会因高画质缺失而丢频道
-  - 频道自然排序：CCTV-1/2/10 按数字升序，不再字典序排成 1/10/2
-"""
+"""测速校验：HTTP 首包 + ffprobe 探测，打分后按画质和速度择优。"""
 import json
 import os
 import re

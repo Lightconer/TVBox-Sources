@@ -1,18 +1,8 @@
-# ============================================================
-# IPTV-Optimized · 直播源自动更新配置
-# 基于 TVBox-Sources 流水线，接入多个公开可用源
-# 输出文件与 TVBox-Sources 完全一致：output/live.txt / live.m3u / tvbox.json
-# ============================================================
+# 直播源自动更新配置
 
 # ------------------------------------------------------------
-# 上游数据源（国内可直连、每 4 小时自动扫描更新）
-#   · 官方源地址（上游每 4h 推送，约 UTC 0/4/8/12/16/20 的 :10）
-#   · 本配置保证「及时更新」的三道机制：
-#     1) 定时错峰：Actions 在 UTC 1/5/9/13/17/21 运行（上游推送后约 50 分钟）
-#     2) 缓存绕过：upstream.cache_bust=true 给 raw 链接加时间戳，避开 CDN 旧副本
-#     3) 镜像禁用：上游源 no_mirror=true，绝不走 jsdelivr（其缓存 12h 会拿到旧版本）
-#   · 可选 Webhook：上游更新后立即触发（见 README「及时更新」章节）
-#   · 运行时由 run.py 查询 GitHub API 把上游 commit / 时间写入 status.json
+# 上游数据源：每 4 小时更新（UTC 0/4/8/12/16/20 的 :10 左右）
+# raw 链接带时间戳绕过缓存；Actions 错峰在 :50 跑
 # ------------------------------------------------------------
 upstream:
   name: "上游主源"
@@ -31,7 +21,7 @@ upstream:
 crawl:
   # 数据源（m3u / m3u8 / txt / json）
   # 规则：优先 GitHub raw，失败自动降级 jsdelivr；显式 mirror 作为最后兜底
-  # enabled: false 表示 README 中已标记失效（~~删除线~~）或按需停用的源
+  # enabled: false 表示已失效或按需停用的源
   request:
     timeout: 12
     retries: 1
@@ -47,14 +37,12 @@ crawl:
   workers: 6   # 并发爬取源数量（与 check.workers 独立）
 
   sources:
-    # ---------- ★ 上游主源（国内直连、每 4h 自动更新、带台标/EPG） ----------
-    # 主 M3U：668 条 / 329 个唯一频道 / 11 个分组，含 tvg-logo 与 EPG
-    # 放在首位 = 去重时优先保留该源的地址（国内直连，命中率最高）
+    # 上游主源，带台标和 EPG；放首位，去重时优先保留
     - name: "IPTV4 主源(带台标EPG)"
       url: "https://raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.m3u"
       mirror: "https://live.zbds.top/tv/iptv4.m3u"  # 官方 CDN：max-age=0 无缓存，raw 失败时兜底
-      no_mirror: true      # ⚠️ 禁用 jsdelivr 自动镜像（缓存 12h，会拿到上游旧版本）
-      cache_bust: true     # ⚠️ 加时间戳参数绕过 CDN，确保拿到上游最新推送
+      no_mirror: true      # 不用 jsdelivr 镜像（缓存 12h）
+      cache_bust: true     # 加时间戳绕过 CDN 缓存
       enabled: true
     - name: "IPTV4 TXT(备份)"
       url: "https://raw.githubusercontent.com/vbskycn/iptv/refs/heads/master/tv/iptv4.txt"
@@ -116,7 +104,7 @@ crawl:
       url: "https://gitee.com/xxy002/zhiboyuan/raw/master/dsy"
       enabled: true
 
-    # ---------- README 中已标记失效（~~删除线~~），默认停用 ----------
+    # ---------- 已失效的源，默认停用 ----------
     - name: "[已失效] Ftindy 百视通"
       url: "https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/bestv.m3u"
       enabled: false
@@ -206,7 +194,7 @@ crawl:
     allowed_schemes: ["http", "https"]
 
 check:
-  enabled: true             # ✅ 新增：真正生效的开关（原项目此项无效）
+  enabled: true             # 是否测速
   workers: 30
   connect_timeout: 5
   read_timeout: 8
@@ -230,7 +218,7 @@ output:
   epg: ""                   # 可选：EPG 订阅地址，默认留空以完全兼容原配置
 
   # ============================================================
-  # 分组：按用户模板重组为 9 个组，支持「同一频道跨组出现」
+  # 分组：9 个组，支持同一频道跨组出现
   #   · rules        = 主分组，按顺序先命中先生效，每个频道唯一主组
   #   · theme_groups = 专题组，命中即追加到 groups，实现跨组复用
   #     例：CCTV-5 主组=央视频道，同时进「体育专区」；

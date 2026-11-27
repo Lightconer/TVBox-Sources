@@ -1,12 +1,5 @@
 # -*- coding: utf-8 -*-
-"""诊断脚本：用本地(国内)网络对 live.txt 做分片级严格校验，找出"播放失败"频道。
-
-修复项（相对 TVBox-Sources）：
-  - 不再用 r.content[:300000] 无界读取直播流（会挂死/吃满内存），改为 iter_content 有界读取
-  - 不再全局关闭 TLS 校验（S.verify=False），默认校验；可用 --insecure 显式开启
-  - 除法零保护；非 playlist 的直流不被误判为失败
-  - 支持本地文件或远程 URL；输出可保存为 JSON 报告
-"""
+"""用本地网络诊断 live.txt，找出实际播放不了的频道。"""
 import argparse
 import concurrent.futures as cf
 import json

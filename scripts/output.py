@@ -1,11 +1,4 @@
-"""输出模块：把择优后的频道写成 TVBox/影视仓兼容的 m3u、txt 与配置接口
-
-修复项（相对 TVBox-Sources）：
-  - derive_links 兼容 main/master 分支与 .git 后缀，并支持配置显式指定 repo
-  - write_tvbox_config 支持 EPG 地址配置（默认留空，保持兼容）
-  - m3u 属性做引号转义，防止 group/tvg-logo 中的引号破坏格式
-  - 统一 UTF-8 + LF
-"""
+"""写出 TVBox / 影视仓兼容的 m3u、txt 和配置接口。"""
 import json
 import os
 import re

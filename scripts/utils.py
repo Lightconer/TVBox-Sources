@@ -1,10 +1,4 @@
-"""公共工具：日志、HTTP 请求（带重试、大小上限、连接复用）
-
-修复项（相对 TVBox-Sources）：
-  - 重试/出错时正确关闭响应，避免连接池泄漏
-  - 按 Content-Type charset / BOM 解码，避免 GBK 源乱码
-  - download_text 可选指定编码，默认 utf-8
-"""
+"""公共工具：日志、HTTP 请求（重试、大小上限、连接复用）。"""
 import logging
 import time
 

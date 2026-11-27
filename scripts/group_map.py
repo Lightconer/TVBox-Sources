@@ -1,16 +1,4 @@
-"""中文分组映射：按频道名（含原分组名）将频道归入统一中文分组
-
-修复项（相对 TVBox-Sources）：
-  - 规则编译加 re.IGNORECASE，兼容大小写混写的英文频道名
-  - 非法规则记录 warning，便于排查配置错误（原来静默跳过）
-
-按模板重组新增：
-  - multi_group：支持「主分组 + 专题组」跨组归属。同一频道可同时出现在
-    央视频道 / 体育专区 / 电影剧场 等（与用户模板一致：CCTV-5 两处都出现）。
-  - rules：主分组，按顺序匹配、先命中先生效（每个频道唯一主组）
-  - theme_groups：专题组，命中即「追加」到 groups，不影响主组；用于跨组复用。
-  - expand_groups()：把跨组频道展开成「每组一条」供输出，同时按组限流。
-"""
+"""按频道名归入中文分组，支持一个频道同时属于多个专题组。"""
 import re
 from copy import copy
 
@@ -50,7 +38,7 @@ def apply_group_map(channels, cfg):
 
     # 识别兜底主组（最后一条 pattern=".*" 的规则）：
     # 若频道只命中兜底组却命中了专题组，则把专题组提升为主组，
-    # 避免出现「五星体育 → 其他频道 + 体育专区」这种冗余（与模板不符）。
+    # 避免出现「五星体育 → 其他频道 + 体育专区」这种冗余。
     rules_raw = gm.get("rules", []) or []
     fallback_group = None
     if rules_raw and str(rules_raw[-1].get("pattern", "")).strip() in (".*", ".+"):

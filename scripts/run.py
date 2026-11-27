@@ -1,23 +1,10 @@
-"""主流程：爬取 → 过滤去重 → 中文分组 → 测速校验 → 择优 → 生成输出 + 状态/徽章
+"""主流程：爬取 → 分组 → 测速 → 择优 → 生成输出。
 
 用法：
-  python scripts/run.py                          # 完整流程
-  python scripts/run.py --config config/config.yaml
-  python scripts/run.py --limit 50               # 本地调试：只测速前 50 个
-  python scripts/run.py --skip-check             # 跳过测速（等价于 check.enabled: false）
-  python scripts/run.py --verify-only            # 仅校验现有输出文件的结构
-
-修复项（相对 TVBox-Sources）：
-  - 北京时间：用 zoneinfo(ZoneInfo('Asia/Shanghai'))，不再受 runner UTC 影响
-  - check.enabled 配置项真正生效
-  - 不再插入带真实 URL 的「更新时间」伪频道（避免重复 URL / badge 计数 +1），
-    改为在输出文件头部写入时间注释，status.json / badge.json 仍保留更新时间
-  - final_audit 真正去重（原来只统计不删除）
-  - 输出排序：组内按 CCTV-1/2/3... 数字升序，同频道多线路按画质+速度
-
-时效性优化新增：
-  - check_upstream()：用 GitHub API 查询上游最新 commit，写入 status.json.upstream，
-    使「源有多新」可观测；超过阈值未更新则告警（不阻断产出）
+  python scripts/run.py                 # 完整流程
+  python scripts/run.py --limit 50      # 只测前 50 个频道
+  python scripts/run.py --skip-check    # 跳过测速
+  python scripts/run.py --verify-only   # 校验现有输出
 """
 import argparse
 import json
@@ -183,7 +170,7 @@ def verify_outputs(out_dir):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="IPTV 直播源自动更新（优化版）")
+    parser = argparse.ArgumentParser(description="直播源自动更新")
     parser.add_argument("--config", default="config/config.yaml")
     parser.add_argument("--limit", type=int, default=0, help="仅测速前 N 个频道（本地调试）")
     parser.add_argument("--skip-check", action="store_true", help="跳过测速（覆盖配置）")
@@ -331,7 +318,7 @@ def main():
     if rc:
         sys.exit(rc)
     LOGGER.info("状态与徽章已写入 %s", out_dir)
-    LOGGER.info("==> 全部完成 ✔")
+    LOGGER.info("==> 全部完成")
 
 
 if __name__ == "__main__":

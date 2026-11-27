@@ -1,17 +1,4 @@
-"""爬取模块：拉取多个直播源 → 解析（m3u/txt/json）→ 过滤 → 去重
-
-修复项（相对 TVBox-Sources）：
-  - parse_m3u 用正则取引号外逗号，修复 EXTINF 名中含逗号被截断
-  - parse_json 支持 urls 为数组/逗号串/嵌套 dict 的频道项
-  - 数据源改为并发爬取（ThreadPoolExecutor），保留原始顺序
-  - 增加 exclude_url_patterns，过滤占位符地址
-  - 去重时统一 URL strip + 大小写规范化协议/主机
-
-时效性优化新增：
-  - no_mirror：源级开关，禁用 jsdelivr 自动镜像（其 12h 缓存会拿到上游旧版本）
-  - cache_bust：源级开关，给下载 URL 加 ?t=<epoch> 绕过 CDN 旧副本
-  - download_text 支持 no_cache 参数，逐请求禁用响应的缓存复用
-"""
+"""爬取多个直播源，解析 m3u / txt / json，过滤去重。"""
 import json
 import os
 import re
@@ -99,7 +86,7 @@ def parse_txt(text, source):
         if not line:
             continue
         # 兼容两种分组头写法：#genre#组名（旧）与 组名,#genre#（TVBox 标准，
-        # 也是本项目 write_txt 的输出格式）。修复标准格式被误当频道的问题。
+        # 也是本项目 write_txt 的输出格式，两种都认。
         if "#genre#" in line:
             g = line.replace("#genre#", "").strip().strip(",").strip()
             group = g if g else "未分组"

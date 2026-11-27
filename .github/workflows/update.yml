@@ -1,14 +1,5 @@
-# ============================================================
-# TVBox-Sources · 直播源自动更新工作流（优化版）
-#   · 定时触发：每 4 小时错峰运行（UTC 1/5/9/13/17/21 = 北京 09/13/17/21/01/05）
-#     上游在 UTC 0/4/8/12/16/20 的 :10 左右推送，这里晚约 50 分钟，
-#     既避开 CDN 缓存窗口，又保证每次都用上上游最新版本。
-#   · Webhook 触发：repository_dispatch，上游更新可立即触发（准实时，见 README）
-#   · 手动触发：Actions 页面 Run workflow（可临时关闭测速 / 限制数量）
-#   · 代码或配置变更立即触发（output/ 变更不触发，避免循环）
-#   · 自动提交：仅在直播源文件有实质变化时提交，附带上游 commit 信息
-# ============================================================
-name: IPTV 直播源自动更新（优化版）
+# 每 4 小时跑一次，代码或配置变更时也跑；output/ 变更不触发，避免循环
+name: 直播源自动更新
 
 on:
   schedule:
@@ -88,16 +79,16 @@ jobs:
           up = s.get("upstream", {})
           with open("GITHUB_STEP_SUMMARY_ADD", "w", encoding="utf-8") as f:
               if up.get("ok"):
-                  f.write("## 🔗 上游数据源状态\n\n")
+                  f.write("## 上游数据源状态\n\n")
                   f.write(f"- 仓库: `{up.get('repo')}`\n")
                   f.write(f"- 文件: `{up.get('file')}`\n")
                   f.write(f"- 最新提交: `{up.get('sha')}`\n")
                   f.write(f"- 提交时间: {up.get('commit_time')}\n")
                   f.write(f"- 滞后: {up.get('lag_minutes')} 分钟\n")
                   if up.get("stale"):
-                      f.write("\n> ⚠️ 上游超过阈值未更新，请留意。\n")
+                      f.write("\n> 上游超过阈值未更新，请留意。\n")
               else:
-                  f.write("## 🔗 上游数据源状态\n\n")
+                  f.write("## 上游数据源状态\n\n")
                   f.write(f"- 查询未成功: {up.get('error', '未启用')}\n")
           PY
           cat GITHUB_STEP_SUMMARY_ADD >> "$GITHUB_STEP_SUMMARY"
