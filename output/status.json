@@ -1,8 +1,8 @@
 {
-  "update_time": "2026-11-27 19:04:23",
+  "update_time": "2026-11-27 20:02:39",
   "sources": [
-    "vbskycn IPTV4(上游·带台标EPG)",
-    "vbskycn IPTV4 TXT(上游·备份)",
+    "IPTV4 主源(带台标EPG)",
+    "IPTV4 TXT(备份)",
     "iptv-org 中国频道",
     "fanmingming 央视/卫视高清(IPv4)",
     "fanmingming 综合源(央视/卫视/地方/付费)",
@@ -22,23 +22,23 @@
   "dedup": 5845,
   "upstream": {
     "enabled": true,
-    "repo": "vbskycn/iptv",
+    "repo": "primary-upstream",
     "file": "tv/iptv4.m3u",
     "ok": true,
     "sha": "0d0e7b94ee36",
     "commit_time": "2026-11-27T08:14:50Z",
     "message": "更新IPTV4/IPTV6最新可用直播源by198(iptvfind) 2026-11-27 16:14:50",
-    "lag_minutes": 169
+    "lag_minutes": 227
   },
-  "http_ok": 1448,
-  "passed": 591,
-  "dead": 4397,
+  "http_ok": 1257,
+  "passed": 549,
+  "dead": 4588,
   "groups": 10,
-  "avg_latency_ms": 635,
+  "avg_latency_ms": 714,
   "keyword_blocked": 0,
   "dup_urls": 0,
-  "channels": 278,
-  "redundant_channels": 369,
-  "cross_group_copies": 56,
+  "channels": 253,
+  "redundant_channels": 344,
+  "cross_group_copies": 48,
   "multi_group": true
 }
