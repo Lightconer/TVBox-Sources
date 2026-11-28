@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-11-28 08:09:05",
+  "update_time": "2026-11-28 15:28:41",
   "sources": [
     "IPTV4 主源(带台标EPG)",
     "IPTV4 TXT(备份)",
@@ -18,17 +18,17 @@
     "gitee xxy002 直播源",
     "iptv-org 全球索引(港澳台+大陆)"
   ],
-  "crawled": 3076,
-  "dedup": 2266,
+  "crawled": 3066,
+  "dedup": 2260,
   "upstream": {
     "enabled": true,
     "repo": "primary-upstream",
     "file": "tv/iptv4.m3u",
     "ok": true,
-    "sha": "500e44d7f144",
-    "commit_time": "2026-11-27T20:11:24Z",
-    "message": "更新IPTV4/IPTV6最新可用直播源by198(iptvfind) 2026-11-28 04:11:24",
-    "lag_minutes": 237
+    "sha": "5c8116cb0e71",
+    "commit_time": "2026-11-28T04:13:28Z",
+    "message": "更新IPTV4/IPTV6最新可用直播源by198(iptvfind) 2026-11-28 12:13:28",
+    "lag_minutes": 195
   },
   "alias": {
     "enabled": true,
@@ -58,15 +58,15 @@
       "xml": true
     }
   ],
-  "http_ok": 804,
-  "passed": 523,
-  "dead": 1462,
+  "http_ok": 914,
+  "passed": 587,
+  "dead": 1346,
   "groups": 10,
-  "avg_latency_ms": 607,
+  "avg_latency_ms": 800,
   "keyword_blocked": 0,
   "dup_urls": 0,
-  "channels": 228,
-  "redundant_channels": 355,
-  "cross_group_copies": 60,
+  "channels": 266,
+  "redundant_channels": 384,
+  "cross_group_copies": 63,
   "multi_group": true
 }
