@@ -1,8 +1,9 @@
 {
-  "update_time": "2026-11-28 07:58:00",
+  "update_time": "2026-11-28 08:09:05",
   "sources": [
     "IPTV4 主源(带台标EPG)",
     "IPTV4 TXT(备份)",
+    "河北本地清单(自维护)",
     "iptv-org 中国频道",
     "fanmingming 央视/卫视高清(IPv4)",
     "fanmingming 综合源(央视/卫视/地方/付费)",
@@ -17,8 +18,8 @@
     "gitee xxy002 直播源",
     "iptv-org 全球索引(港澳台+大陆)"
   ],
-  "crawled": 3059,
-  "dedup": 2257,
+  "crawled": 3076,
+  "dedup": 2266,
   "upstream": {
     "enabled": true,
     "repo": "primary-upstream",
@@ -27,7 +28,7 @@
     "sha": "500e44d7f144",
     "commit_time": "2026-11-27T20:11:24Z",
     "message": "更新IPTV4/IPTV6最新可用直播源by198(iptvfind) 2026-11-28 04:11:24",
-    "lag_minutes": 226
+    "lag_minutes": 237
   },
   "alias": {
     "enabled": true,
@@ -57,15 +58,15 @@
       "xml": true
     }
   ],
-  "http_ok": 907,
-  "passed": 569,
-  "dead": 1350,
+  "http_ok": 804,
+  "passed": 523,
+  "dead": 1462,
   "groups": 10,
-  "avg_latency_ms": 670,
+  "avg_latency_ms": 607,
   "keyword_blocked": 0,
   "dup_urls": 0,
-  "channels": 253,
-  "redundant_channels": 373,
-  "cross_group_copies": 57,
+  "channels": 228,
+  "redundant_channels": 355,
+  "cross_group_copies": 60,
   "multi_group": true
 }
