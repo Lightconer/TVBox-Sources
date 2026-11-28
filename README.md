@@ -127,6 +127,16 @@ Actions 跑在海外，测速出来的「快」和家里的实际体验不是一
 
 zbefine、茶客源、BigBigGrandG 这三个源最后更新停在 2023 年，已经标成 `[停更]` 并 `enabled: false`，地址留着方便以后复查。
 
+河北的市县台（冀云、长城网那套）公开源里基本抓不到，放在 `config/regions/hebei.txt` 自己维护，源配置里用 `path` 指向它：
+
+```yaml
+- name: "河北本地清单(自维护)"
+  path: "config/regions/hebei.txt"
+  source_group: "河北"      # 县台名字里没有「河北」，靠这个标记归到河北频道
+```
+
+这份清单每轮照样参与测速，挂掉的会被剔掉；补新的直接往里加一行。
+
 想让上游一更新就立刻触发，可以配 `repository_dispatch`：
 
 ```bash

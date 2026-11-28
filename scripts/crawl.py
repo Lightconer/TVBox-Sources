@@ -265,6 +265,28 @@ def _apply_source_filters(channels, src):
 def _fetch_source(src, req_cfg, prefer_mirror):
     """抓取并解析单个源，返回 (source_name, channels)"""
     name = src.get("name") or "未命名源"
+
+    # 本地清单（path 指向仓库里的文件）：自己维护的市县台就靠这个，不用依赖第三方
+    local = src.get("path")
+    if local:
+        p = local if os.path.isabs(local) else os.path.join(os.getcwd(), local)
+        try:
+            with open(p, "r", encoding="utf-8") as f:
+                text = f.read()
+        except OSError as e:
+            LOGGER.warning("本地源 %s 读取失败: %s", name, e)
+            return name, []
+        parser = detect_parser(local, text)
+        channels = PARSERS[parser](text, name)
+        # 本地清单里的县台名字（丰宁/清苑/迁西…）不带「河北」，靠这个分组标记归位
+        sg = src.get("source_group")
+        if sg:
+            for ch in channels:
+                ch.group = str(sg)
+        kept = _apply_source_filters(channels, src)
+        LOGGER.info("本地源 %s：%d 条", name, len(kept))
+        return name, kept
+
     urls = candidate_urls(src, prefer_mirror)
     if not urls:
         LOGGER.warning("跳过无 URL 来源: %s", name)

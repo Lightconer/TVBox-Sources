@@ -1,0 +1,40 @@
+# 河北本地清单（自维护）
+#
+# 这些是冀云（hebyun）和长城网（chinashadt）的市县台地址，公开源里基本抓不到，
+# 之前挂在已经停更的第三方列表上。干脆自己留一份，每轮照样参与测速，
+# 挂了就会被自动剔掉，补新的直接往这里加一行就行。
+#
+# 格式：频道名,地址    （和 live.txt 一样，测速时按画质/速度择优）
+
+# ---- 省级 ----
+河北卫视,http://event.pull.hebtv.com/jishi/weishi_tingyun.m3u8
+河北4K,https://event.pull.hebtv.com:443/live/live101.m3u8
+
+# ---- 邯郸 ----
+邯郸新闻,https://jwcdnqx.hebyun.com.cn/live/hdxwzh/1500k/tzwj_video.m3u8
+邯郸公共频道,https://jwcdnqx.hebyun.com.cn/live/hdgg/1500k/tzwj_video.m3u8
+邯郸科技教育,https://jwcdnqx.hebyun.com.cn/live/hdkj/1500k/tzwj_video.m3u8
+涉县新闻综合,https://jwcdnqx.hebyun.com.cn/live/SXTV1/1500k/tzwj_video.m3u8
+
+# ---- 邢台 ----
+邢台生活,https://jwcdnqx.hebyun.com.cn/live/xtcsshpd/1500k/tzwj_video.m3u8
+邢台综合,https://jwplay.hebyun.com.cn:443/live/xtsrmtzs/1500k/tzwj_video.m3u8
+
+# ---- 保定 ----
+清苑新闻频道,https://jwcdnqx.hebyun.com.cn/live/qyxwpd/1500k/tzwj_video.m3u8
+涞水新闻,https://jwcdnqx.hebyun.com.cn/live/lsdst/1500k/tzwj_video.m3u8
+
+# ---- 承德 ----
+丰宁综合频道,https://jwcdnqx.hebyun.com.cn/live/fengningzonghe/1500k/tzwj_video.m3u8
+双滦新闻频道,https://jwcdnqx.hebyun.com.cn/live/slxw/1500k/tzwj_video.m3u8
+平泉综合,https://jwcdnqx.hebyun.com.cn/live/pqzh/1500k/tzwj_video.m3u8
+平泉影视频道,https://jwcdnqx.hebyun.com.cn/live/pqys/1500k/tzwj_video.m3u8
+
+# ---- 唐山 ----
+迁西综合频道,https://jwcdnqx.hebyun.com.cn/live/qxzhpd/1500k/tzwj_video.m3u8
+
+# ---- 沧州 ----
+青县新闻,https://jwcdnqx.hebyun.com.cn/live/qxtvlive1/1500k/tzwj_video.m3u8
+
+# ---- 衡水 ----
+枣强综合,http://hbzqdb.chinashadt.com:1937/live/zqzh.stream_360p/playlist.m3u8
