@@ -1,5 +1,5 @@
 {
-  "update_time": "2026-11-28 06:23:32",
+  "update_time": "2026-11-28 07:58:00",
   "sources": [
     "IPTV4 主源(带台标EPG)",
     "IPTV4 TXT(备份)",
@@ -9,18 +9,16 @@
     "fanmingming IPv6专用",
     "best-fan 每日检测",
     "myernestlu 国内直播源",
-    "zbefine 直播源",
-    "茶客源",
     "YueChan 直播源",
-    "BigBigGrandG 集合源(部分IPv6)",
+    "wwb521 直播源",
     "Kimentanm 集合源(部分IPv6)",
     "YanG 集合源(部分IPv6)",
     "iptv-org 中国台湾频道",
     "gitee xxy002 直播源",
     "iptv-org 全球索引(港澳台+大陆)"
   ],
-  "crawled": 6950,
-  "dedup": 5881,
+  "crawled": 3059,
+  "dedup": 2257,
   "upstream": {
     "enabled": true,
     "repo": "primary-upstream",
@@ -29,17 +27,45 @@
     "sha": "500e44d7f144",
     "commit_time": "2026-11-27T20:11:24Z",
     "message": "更新IPTV4/IPTV6最新可用直播源by198(iptvfind) 2026-11-28 04:11:24",
-    "lag_minutes": 132
+    "lag_minutes": 226
   },
-  "http_ok": 1434,
-  "passed": 615,
-  "dead": 4447,
-  "groups": 11,
-  "avg_latency_ms": 582,
+  "alias": {
+    "enabled": true,
+    "aliases": 98,
+    "channels": 25
+  },
+  "epg": [
+    {
+      "url": "https://raw.githubusercontent.com/fanmingming/live/main/e.xml",
+      "ok": true,
+      "status": 200,
+      "type": "text/plain; charset=utf-8",
+      "xml": true
+    },
+    {
+      "url": "https://live.fanmingming.com/e.xml",
+      "ok": true,
+      "status": 200,
+      "type": "application/xml",
+      "xml": true
+    },
+    {
+      "url": "https://epg.112114.xyz/pp.xml",
+      "ok": true,
+      "status": 200,
+      "type": "text/xml",
+      "xml": true
+    }
+  ],
+  "http_ok": 907,
+  "passed": 569,
+  "dead": 1350,
+  "groups": 10,
+  "avg_latency_ms": 670,
   "keyword_blocked": 0,
   "dup_urls": 0,
-  "channels": 292,
-  "redundant_channels": 387,
-  "cross_group_copies": 64,
+  "channels": 253,
+  "redundant_channels": 373,
+  "cross_group_copies": 57,
   "multi_group": true
 }

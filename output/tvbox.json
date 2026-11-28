@@ -3,12 +3,12 @@
     {
       "name": "自动更新直播源 (TXT)",
       "url": "https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.txt",
-      "epg": ""
+      "epg": "https://raw.githubusercontent.com/fanmingming/live/main/e.xml"
     },
     {
       "name": "自动更新直播源 (M3U)",
       "url": "https://cdn.jsdelivr.net/gh/Lightconer/TVBox-Sources@main/output/live.m3u",
-      "epg": ""
+      "epg": "https://raw.githubusercontent.com/fanmingming/live/main/e.xml"
     }
   ],
   "sites": [],
